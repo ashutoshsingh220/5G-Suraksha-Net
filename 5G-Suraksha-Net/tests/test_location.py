@@ -26,6 +26,13 @@ from suraksha.location import (
 )
 
 
+@pytest.fixture(autouse=True)
+def default_clean_maps_key(monkeypatch):
+    """By default in Phase 3A tests, ensure GOOGLE_MAPS_API_KEY is unset unless specifically provided."""
+    monkeypatch.delenv("GOOGLE_MAPS_API_KEY", raising=False)
+    monkeypatch.delenv("SURAKSHA_GOOGLE_MAPS_API_KEY", raising=False)
+
+
 # ---------------------------------------------------------------------------
 # Test 1: DEMO_LOCATION_QUERY loads from environment
 # ---------------------------------------------------------------------------

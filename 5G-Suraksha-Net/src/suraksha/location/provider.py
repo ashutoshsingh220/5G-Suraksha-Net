@@ -48,7 +48,7 @@ class DemoLocationProvider(LocationProvider):
     def __init__(self, query: str | None = None, api_key: str | None = None) -> None:
         env_query = os.environ.get("DEMO_LOCATION_QUERY") or os.environ.get("SURAKSHA_DEMO_LOCATION_QUERY")
         raw_query = query if query is not None else env_query
-        self.query: str = (raw_query or "Yashobhoomi, Dwarka Sector 25, New Delhi").strip()
+        self.query: str = (raw_query or "").strip()
         self.demo_location_query: str = self.query
         self.api_key: str = (
             api_key
@@ -60,6 +60,15 @@ class DemoLocationProvider(LocationProvider):
 
     def _resolve_geocoding(self) -> Location:
         if self._cached_location is not None:
+            return self._cached_location
+
+        if not self.query:
+            self._cached_location = Location(
+                name="Unknown Location",
+                latitude=None,
+                longitude=None,
+                source=LocationSource.UNKNOWN,
+            )
             return self._cached_location
 
         if self.api_key and self.query:
@@ -79,7 +88,7 @@ class DemoLocationProvider(LocationProvider):
                         lng = geom.get("lng")
                         if lat is not None and lng is not None:
                             self._cached_location = Location(
-                                name=f"{self.query} ({fmt_addr})",
+                                name=self.query,
                                 latitude=float(lat),
                                 longitude=float(lng),
                                 source=LocationSource.GEOCODED_DEMO,
@@ -89,11 +98,15 @@ class DemoLocationProvider(LocationProvider):
             except Exception as e:
                 log.warning("Google Maps geocoding query failed: %s", e)
 
-        # Verified fallback coordinates for Yashobhoomi, Sector 25 Dwarka
+        # If API key was configured but geocoding failed/offline, use verified fallback coords
+        lat, lng = None, None
+        if self.api_key:
+            lat, lng = 28.552553, 77.044893
+
         self._cached_location = Location(
-            name=f"{self.query} (Sector 25 Dwarka, New Delhi, 110077, India)",
-            latitude=28.552553,
-            longitude=77.044893,
+            name=self.query,
+            latitude=lat,
+            longitude=lng,
             source=LocationSource.GEOCODED_DEMO,
         )
         return self._cached_location
