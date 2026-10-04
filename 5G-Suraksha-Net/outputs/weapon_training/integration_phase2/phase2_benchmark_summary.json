@@ -1,0 +1,73 @@
+{
+  "benchmark": {
+    "Mode 1: Baseline (Weapon Disabled)": {
+      "frames": 60,
+      "total_time_s": 2.4,
+      "effective_fps": 25.0,
+      "detect_track_ms": 27.4,
+      "weapon_ms": 0.01,
+      "crowd_ms": 1.21,
+      "fight_ms": 0.01,
+      "total_latency_ms": 28.62,
+      "peak_vram_mb": 105.5
+    },
+    "Mode 2: Phase 1 (Weapon Enabled, Fusion Off)": {
+      "frames": 60,
+      "total_time_s": 1.21,
+      "effective_fps": 49.6,
+      "detect_track_ms": 8.35,
+      "weapon_ms": 9.03,
+      "crowd_ms": 1.17,
+      "fight_ms": 0.01,
+      "total_latency_ms": 18.55,
+      "peak_vram_mb": 165.3
+    },
+    "Mode 3: Phase 2 (Weapon + Multimodal Fusion)": {
+      "frames": 60,
+      "total_time_s": 1.21,
+      "effective_fps": 49.7,
+      "detect_track_ms": 8.34,
+      "weapon_ms": 9.04,
+      "crowd_ms": 1.16,
+      "fight_ms": 0.01,
+      "total_latency_ms": 18.55,
+      "peak_vram_mb": 238.1
+    }
+  },
+  "simulation": {
+    "incident_id": "586ee2a41493",
+    "final_type": "armed_fight",
+    "final_severity": "critical",
+    "final_status": "finalized",
+    "snapshot_exists": true,
+    "clip_exists": true,
+    "bus_events_count": 3,
+    "events_log": [
+      {
+        "incident_id": "586ee2a41493",
+        "type": "weapon",
+        "severity": "high",
+        "status": "recording_post_event",
+        "confidence": 0.89,
+        "escalated": false
+      },
+      {
+        "incident_id": "586ee2a41493",
+        "type": "armed_fight",
+        "severity": "critical",
+        "status": "recording_post_event",
+        "confidence": 0.93,
+        "escalated": true
+      },
+      {
+        "incident_id": "586ee2a41493",
+        "type": "armed_fight",
+        "severity": "critical",
+        "status": "finalized",
+        "confidence": 0.93,
+        "escalated": true
+      }
+    ]
+  },
+  "timestamp": "2026-10-02 23:27:49"
+}

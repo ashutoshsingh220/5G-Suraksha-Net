@@ -1,0 +1,29 @@
+# 5G Suraksha-Net — IMC Demo Configuration
+# Target hardware: Raspberry Pi 4 (10.254.18.48) + Logitech C270 HD Webcam -> Windows Ground Station
+
+pi:
+  host: "10.254.18.48"
+  user: "student"
+  ssh_port: 22
+  mediamtx_path: "/home/student/mediamtx"
+  camera_device: "/dev/video0"
+
+rtsp:
+  port: 8554
+  path: "drone"
+
+camera:
+  width: 640
+  height: 360
+  fps: 15
+  gop_size: 15
+  input_format: "mjpeg"
+  encoder: "libx264"
+  preset: "ultrafast"
+  tune: "zerolatency"
+  pix_fmt: "yuv420p"
+
+probe:
+  timeout_s: 20.0
+  max_retries: 5
+  retry_interval_s: 1.0

@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "source_module": "crowd_fight",
+  "incident_id": "586ee2a41493",
+  "status": "finalized",
+  "camera_id": "sim_cam_01",
+  "incident_type": "armed_fight",
+  "severity": "critical",
+  "confidence": 0.93,
+  "start_time": "1970-01-01T00:01:43Z",
+  "end_time": "1970-01-01T00:01:44.466667Z",
+  "zone": null,
+  "track_ids": [
+    1,
+    2
+  ],
+  "bbox": {
+    "x1": 90.0,
+    "y1": 80.0,
+    "x2": 270.0,
+    "y2": 280.0
+  },
+  "person_count": null,
+  "details": {
+    "weapon_class": "pistol",
+    "track_id": 1,
+    "persistence_count": 4,
+    "confidence": 0.89,
+    "escalated": true,
+    "escalated_from": "weapon",
+    "weapon_track_id": 1,
+    "weapon_confidence": 0.93,
+    "carrier_track_id": 1,
+    "fight_confidence": 0.91,
+    "fight_track_ids": [
+      1,
+      2
+    ],
+    "correlation_confidence": 0.93,
+    "roi_xyxy": [
+      90.0,
+      80.0,
+      270.0,
+      280.0
+    ]
+  },
+  "evidence": {
+    "snapshot_path": "C:\\Projects\\5G Suraksha-Net\\outputs\\weapon_training\\integration_phase2\\sim_snapshots\\586ee2a41493.jpg",
+    "clip_path": "C:\\Projects\\5G Suraksha-Net\\outputs\\weapon_training\\integration_phase2\\sim_clips\\586ee2a41493.mp4",
+    "frame_idx": null
+  },
+  "finalized_at": "2026-10-02T17:57:49.402635Z"
+}

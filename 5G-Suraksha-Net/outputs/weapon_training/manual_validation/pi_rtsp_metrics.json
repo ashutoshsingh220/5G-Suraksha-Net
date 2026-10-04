@@ -1,0 +1,6 @@
+{
+  "source": "Raspberry Pi C270 RTSP",
+  "source_type": "rtsp",
+  "success": false,
+  "error": "Failed to open capture source"
+}

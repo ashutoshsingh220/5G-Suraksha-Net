@@ -1,0 +1,118 @@
+# Main pipeline configuration.
+# Secrets / machine-specific values live in .env (see .env.example).
+
+capture:
+  # Overridden by SURAKSHA_RTSP_URL env var or run_pipeline.py --source/--path.
+  # Accepts: rtsp://... URL | local video file path | webcam index (e.g. "0")
+  rtsp_url: "rtsp://localhost:554/stream1"
+  frame_width: 1280          # requested; actual depends on camera
+  frame_height: 720
+  target_fps: 15             # processing rate cap (pace=throttle)
+  # pace: throttle | realtime (simulate live camera at source fps) | fast (benchmark)
+  pace: "throttle"
+  max_frames: 0              # 0 = unlimited; >0 stops after N frames (smoke tests)
+  reconnect_delay_s: 3.0
+  max_reconnect_attempts: -1 # -1 = retry forever (streams only; files end at EOF)
+
+detection:
+  weights: "models/yolo11s.pt"
+  person_class_id: 0         # COCO 'person'
+  conf_threshold: 0.25       # Calibrated in Phase 4 benchmark (+15.1% detection yield on 320x240 CCTV, aligns with ByteTrack track_high_thresh: 0.25, 0% FPR)
+  iou_threshold: 0.5
+  imgsz: 640
+
+weapon:
+  enabled: true
+  weights: "outputs/weapon_training/best.pt"
+  conf_threshold: 0.70         # base candidate detection threshold (firearms >= 0.70 to eliminate false positives)
+  iou_threshold: 0.45          # NMS IoU threshold
+  inference_interval: 2        # process every 2nd frame (calibrated for live webcam FPS)
+  device: "auto"
+  imgsz: 640
+  confirmation:
+    confirm_conf_threshold: 0.75  # high-confidence threshold required to confirm weapon before police dispatch
+    min_hits: 3                   # min detections in window to confirm
+    window_size: 5                # sliding window size
+    iou_match_threshold: 0.25     # spatial overlap / proximity consistency
+    expiry_frames: 15             # frames without detection before reset to NORMAL
+
+tracking:
+  tracker_config: "configs/bytetrack.yaml"   # extended track_buffer=60 ByteTrack
+  persist: true
+
+crowd:
+  zones_file: "configs/zones.yaml"
+  density_high_threshold: 0.35   # fraction of zone area covered by person boxes
+  density_critical_threshold: 0.55
+  growth_window_s: 30            # sliding window for crowd-growth slope
+  growth_alert_per_min: 10       # persons/min sustained increase -> alert
+  enable_density_incidents: false # density is environmental context; does not trigger incidents alone
+  min_panic_persons: 8           # minimum persons in scene for crowd panic incident
+  movement:
+    flow_grid_size: 32           # optical-flow grid cell px
+    panic_speed_threshold: 2.2   # median track speed (box-widths/sec) for panic run
+    panic_min_tracks: 3          # tracks needed to consider crowd panic
+
+fight:
+  candidate:
+    min_pair_speed: 1.6          # relative approach speed (box-widths/sec)
+    proximity_iou: 0.08          # sustained bbox overlap between two tracks
+    proximity_distance: 1.25     # max center distance in body-widths (leaning/grappling envelope)
+    proximity_min_frames: 8      # sustained proximity persistence (~0.5s at 15 FPS)
+    missed_frames_tolerance: 2   # grace frames for ByteTrack jitter during close grappling
+    motion_energy_threshold: 0.12 # normalized motion gate (body-widths/sec) separates talking from physical interaction
+    motion_variance_threshold: 0.0 # candidate generator detects active interaction, GRU evaluates struggle
+    decay_timeout_s: 1.0         # time without motion before candidate decays to NORMAL
+    cooldown_s: 2.0
+  temporal:
+    window_frames: 32            # frames per clip snippet
+    stride_frames: 8
+    model_weights: "models/temporal/rwf2000_v2_best.pt"  # retrained v2 champion checkpoint
+    score_threshold: 0.65        # conservative verification threshold
+  verify:
+    min_duration_s: 2.5          # candidate must persist this long
+    min_consecutive_windows: 3   # temporal windows above threshold
+    min_motion_variance: 0.0     # action dynamics evaluated by temporal GRU classifier
+    incident_cooldown_s: 60      # dedupe per camera
+
+incidents:
+  snapshot_dir: "outputs/snapshots"
+  clip_dir: "outputs/clips"
+  report_dir: "outputs/incidents"
+  clip_seconds_before: 5
+  clip_seconds_after: 5
+  clip_fps: 15
+  async_write: true
+
+fusion:
+  enabled: true
+  correlation_window_s: 2.5
+  spatial_proximity_threshold: 1.5  # max body widths for spatial fight-weapon proximity
+  escalation_enabled: true
+  weapon_cooldown_s: 30.0
+  armed_fight_cooldown_s: 60.0
+
+location:
+  mode: demo
+  query_from_env: true
+
+email:
+  enabled: false
+  smtp_host: ""
+  smtp_port: 587
+  smtp_username: ""
+  smtp_password: ""
+  email_from: ""
+  email_to: []
+  use_tls: true
+  max_attachment_mb: 25.0
+
+api:
+  host: "0.0.0.0"
+  port: 8100
+
+telemetry:
+  enabled: true
+  connection_string: "udpin:127.0.0.1:14550"
+  timeout_s: 3.0
+  broadcast_rate_hz: 5.0

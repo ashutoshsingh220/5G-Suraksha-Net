@@ -1,0 +1,16 @@
+ultralytics>=8.3.0
+opencv-python>=4.9.0
+numpy>=1.24
+pandas>=2.0
+scipy>=1.11
+lap>=0.4.0
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.6
+pydantic-settings>=2.2
+PyYAML>=6.0
+python-dotenv>=1.0
+websockets>=12.0
+
+[dev]
+pytest>=8.0

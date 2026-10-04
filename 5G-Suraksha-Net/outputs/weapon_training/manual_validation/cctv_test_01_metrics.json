@@ -1,0 +1,19 @@
+{
+  "source": "File: cctv_test_01.mp4",
+  "source_type": "file",
+  "success": true,
+  "resolution": "500x290",
+  "frames_processed": 200,
+  "elapsed_sec": 4.08,
+  "avg_fps": 49.0,
+  "mean_latency_ms": 19.09,
+  "p95_latency_ms": 15.15,
+  "peak_vram_mb": 93.9,
+  "total_detections": 0,
+  "detections_by_class": {
+    "knife": 0,
+    "long_gun": 0,
+    "pistol": 0
+  },
+  "saved_video": "outputs/weapon_training/manual_validation/cctv_test_01_annotated.mp4"
+}

@@ -1,0 +1,25 @@
+source_dataset,source_class,target_label,confidence,ambiguity,sample_count,reason
+RWF-2000,Fight,FIGHT,High,None,1000,Real-world CCTV violent fights and street combat
+RWF-2000,NonFight,NORMAL,High,None,1000,"CCTV pedestrians, standing, walking, everyday public activity"
+RLVS,Violence,FIGHT,High,None,1000,"Real-world street violence, brawls, physical altercations"
+RLVS,NonViolence,NORMAL,High,None,1000,"Everyday civilian activities, people gathering, talking"
+Hockey Fight,Fight,FIGHT,Medium,Sport context,500,Aggressive physical fighting on ice rink; high intensity grappling
+Hockey Fight,NonFight,NORMAL,Medium,Sport context,500,Hockey gameplay and skating without physical violence
+Movies Fight,Fight,FIGHT,Medium,Cinematic staging,100,Staged fighting from films; rapid cuts and dramatic angles
+Movies Fight,NonFight,NORMAL,Medium,Cinematic staging,101,Dialogue and non-violent interactions from films
+HMDB51,punch,FIGHT,High,Low,126,Direct upper-body striking action; core combat primitive
+HMDB51,kick,FIGHT,High,Low,130,Direct lower-body striking action; core combat primitive
+HMDB51,hit,FIGHT,High,Medium,127,Striking action against person or object; strong violent movement
+HMDB51,push,FIGHT,Medium,Contextual,116,Forceful pushing interaction; can be aggressive shove or non-violent shove
+HMDB51,hug,NORMAL,High,Visual overlap,118,Two people in close torso contact without violence; critical hard negative
+HMDB51,shake_hands,NORMAL,High,Arm reaching,162,Two people in close standing proximity shaking hands; critical hard negative
+HMDB51,talk,NORMAL,High,Upper body gestures,120,Two or more people in conversational standing/sitting posture; critical hard negative
+HMDB51,stand,NORMAL,High,None,154,"Standing upright, standing still, or standing up; baseline normal posture"
+HMDB51,sit,NORMAL,High,None,142,Sitting on chair/bed; directly matches our real-world hard-negative case
+HMDB51,walk,NORMAL,High,Trajectory overlap,548,"Pedestrian walking, crossing paths, and moving in groups"
+HMDB51,wave,NORMAL,High,Rapid hand motion,104,Hand waving gesture; teaches model that arm oscillation != striking
+HMDB51,kiss,NORMAL,High,Face/head proximity,102,Close head-to-head proximity without violence
+HMDB51,clap,NORMAL,High,Repetitive hand motion,130,Hand clapping; repetitive motion that could fool simple energy filters
+HMDB51,fall_floor,NORMAL,Medium,Accidental collapse,136,Tripping/falling without an assailant; separates accidental fall from assault
+Hard Negative (Webcam),standing_close,NORMAL,High,Severe spatial overlap,1,"One person standing close to seated person; Candidate=1, GRU=0.13"
+Hard Negative (Webcam),grappling_test,FIGHT,High,Low lighting/blur,1,Controlled physical struggle test in deployment bedroom setting

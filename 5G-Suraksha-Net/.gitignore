@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+logs/*.log
+outputs/snapshots/*
+outputs/clips/*
+outputs/incidents/*
+models/*.pt
+models/*.onnx
+datasets/raw/
+datasets/processed/
+!outputs/**/.gitkeep
+!models/.gitkeep
+.pytest_cache/

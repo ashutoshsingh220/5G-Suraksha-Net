@@ -1,0 +1,2327 @@
+{
+  "hmbd": {
+    "dataset_name": "HMDB51 (HMBD)",
+    "path": "datasets/action/HMBD",
+    "structure": "51 per-class RAR archives in datasets/action/HMBD/",
+    "num_classes": 51,
+    "classes": {
+      "brush_hair": 107,
+      "cartwheel": 107,
+      "catch": 102,
+      "chew": 109,
+      "clap": 130,
+      "climb": 108,
+      "climb_stairs": 112,
+      "dive": 127,
+      "draw_sword": 103,
+      "dribble": 145,
+      "drink": 164,
+      "eat": 108,
+      "fall_floor": 136,
+      "fencing": 116,
+      "flic_flac": 107,
+      "golf": 105,
+      "handstand": 113,
+      "hit": 127,
+      "hug": 118,
+      "jump": 151,
+      "kick": 130,
+      "kick_ball": 128,
+      "kiss": 102,
+      "laugh": 128,
+      "pick": 106,
+      "pour": 106,
+      "pullup": 104,
+      "punch": 126,
+      "push": 116,
+      "pushup": 103,
+      "ride_bike": 103,
+      "ride_horse": 116,
+      "run": 232,
+      "shake_hands": 162,
+      "shoot_ball": 131,
+      "shoot_bow": 112,
+      "shoot_gun": 103,
+      "sit": 142,
+      "situp": 105,
+      "smile": 102,
+      "smoke": 109,
+      "somersault": 140,
+      "stand": 154,
+      "swing_baseball": 143,
+      "sword": 127,
+      "sword_exercise": 127,
+      "talk": 120,
+      "throw": 102,
+      "turn": 240,
+      "walk": 548,
+      "wave": 104
+    },
+    "total_rar_files": 51,
+    "total_video_files": 6766,
+    "extensions": {
+      ".avi": 6766
+    },
+    "sample_probes": [],
+    "official_splits_present": false,
+    "official_splits_paths": []
+  },
+  "existing_datasets": {
+    "summary_stats": {
+      "generated_at": "2026-09-27",
+      "totals": {
+        "manifests": 7,
+        "videos": 19995,
+        "total_duration_hours": 42.004,
+        "labels": {
+          "UNKNOWN": 14794,
+          "NON_FIGHT": 2601,
+          "FIGHT": 2600
+        },
+        "validation_statuses": {
+          "VALID": 19804,
+          "DUPLICATE": 182,
+          "CORRUPTED": 9
+        },
+        "duplicate_content_groups": 180,
+        "by_group": {
+          "A": {
+            "manifests": 4,
+            "videos": 5201,
+            "hours": 6.247,
+            "labels": {
+              "NON_FIGHT": 2601,
+              "FIGHT": 2600
+            },
+            "statuses": {
+              "VALID": 5170,
+              "DUPLICATE": 31
+            }
+          },
+          "B": {
+            "manifests": 3,
+            "videos": 14794,
+            "hours": 35.757,
+            "labels": {
+              "UNKNOWN": 14794
+            },
+            "statuses": {
+              "VALID": 14634,
+              "DUPLICATE": 151,
+              "CORRUPTED": 9
+            }
+          }
+        }
+      },
+      "datasets": [
+        {
+          "manifest": "crowd_abnormal_eval_v1",
+          "group": "B",
+          "task": "fight_temporal",
+          "license": "UNSPECIFIED - YouTube-sourced footage, contact dataset author (see Read Me.txt)",
+          "created_at": "2026-09-27T17:09:45.164071+00:00",
+          "datasets": [
+            "crowd_abnormal"
+          ],
+          "videos": 9,
+          "labels": {
+            "UNKNOWN": 9
+          },
+          "label_ratio": {},
+          "splits": {
+            "train": 6,
+            "val": 1,
+            "test": 2
+          },
+          "labels_by_split": {
+            "test": {
+              "UNKNOWN": 2
+            },
+            "train": {
+              "UNKNOWN": 6
+            },
+            "val": {
+              "UNKNOWN": 1
+            }
+          },
+          "validation_statuses": {
+            "VALID": 9
+          },
+          "corrupt_frames_total": 0,
+          "problem_files": [],
+          "duration_sec": {
+            "n": 9,
+            "total": 2225.36,
+            "mean": 247.26,
+            "median": 122.24,
+            "min": 28.04,
+            "max": 1189.92,
+            "missing": 0
+          },
+          "duration_by_label_sec": {
+            "UNKNOWN": {
+              "n": 9,
+              "total": 2225.36,
+              "mean": 247.26,
+              "median": 122.24,
+              "min": 28.04,
+              "max": 1189.92,
+              "missing": 0
+            }
+          },
+          "total_duration_hours": 0.618,
+          "fps": {
+            "n": 9,
+            "total": 210.47,
+            "mean": 23.39,
+            "median": 25.0,
+            "min": 15.17,
+            "max": 30.0,
+            "missing": 0
+          },
+          "fps_distribution": {
+            "15.17": 3,
+            "25": 3,
+            "30": 2,
+            "29.97": 1
+          },
+          "frame_count": {
+            "n": 9,
+            "total": 54478.0,
+            "mean": 6053.11,
+            "median": 2190.0,
+            "min": 701.0,
+            "max": 29748.0,
+            "missing": 0
+          },
+          "resolution_distribution": {
+            "1280x720": 7,
+            "992x468": 2
+          },
+          "distinct_resolutions": 2,
+          "fourcc_distribution": {
+            "h264": 8,
+            "MP42": 1
+          },
+          "container_distribution": {
+            ".mp4": 8,
+            ".avi": 1
+          },
+          "entries_with_unknown_metadata": 0,
+          "duplicate_content_groups": 0,
+          "duplicate_content_files": 0,
+          "duplicates": {},
+          "temporal_windows": {
+            "stride": 8,
+            "totals": {
+              "16": 6795,
+              "32": 6777
+            },
+            "by_label": {
+              "16": {
+                "UNKNOWN": 6795
+              },
+              "32": {
+                "UNKNOWN": 6777
+              }
+            },
+            "mean_per_video": {
+              "16": 755.0,
+              "32": 753.0
+            },
+            "videos_shorter_than_window": {
+              "16": 0,
+              "32": 0
+            }
+          },
+          "source_classes": {
+            "1_Times_Square": 1,
+            "2_Las_Vegas": 1,
+            "3_Love Parade": 1,
+            "Test_1": 1,
+            "Test_2": 1,
+            "Test_3": 1,
+            "Test_4": 1,
+            "View_1": 1,
+            "View_2": 1
+          },
+          "proposed_labels": {
+            "CROWD_ANOMALY": 9
+          },
+          "provenance": "Downloaded manually from Kaggle mirror angelchi56/abnormal-highdensity-crowds; footage originates from YouTube (URLs in Read Me.txt). Frame-level labels only; videos are long untrimmed footage.",
+          "sources": {
+            "kaggle_mirror": 9
+          }
+        },
+        {
+          "manifest": "hockey_fight_v1",
+          "group": "A",
+          "task": "fight_temporal",
+          "license": "research-use-only (Hockey Fight Dataset terms)",
+          "created_at": "2026-09-27T17:11:25.125908+00:00",
+          "datasets": [
+            "hockey_fight"
+          ],
+          "videos": 1000,
+          "labels": {
+            "NON_FIGHT": 500,
+            "FIGHT": 500
+          },
+          "label_ratio": {
+            "nonfight_per_fight": 1.0,
+            "fight_share": 0.5
+          },
+          "splits": {
+            "val": 158,
+            "train": 694,
+            "test": 148
+          },
+          "labels_by_split": {
+            "test": {
+              "NON_FIGHT": 64,
+              "FIGHT": 84
+            },
+            "train": {
+              "NON_FIGHT": 363,
+              "FIGHT": 331
+            },
+            "val": {
+              "NON_FIGHT": 73,
+              "FIGHT": 85
+            }
+          },
+          "validation_statuses": {
+            "VALID": 997,
+            "DUPLICATE": 3
+          },
+          "corrupt_frames_total": 0,
+          "problem_files": [],
+          "duration_sec": {
+            "n": 1000,
+            "total": 1635.22,
+            "mean": 1.64,
+            "median": 1.63,
+            "min": 1.6,
+            "max": 1.95,
+            "missing": 0
+          },
+          "duration_by_label_sec": {
+            "FIGHT": {
+              "n": 500,
+              "total": 818.76,
+              "mean": 1.64,
+              "median": 1.63,
+              "min": 1.6,
+              "max": 1.95,
+              "missing": 0
+            },
+            "NON_FIGHT": {
+              "n": 500,
+              "total": 816.47,
+              "mean": 1.63,
+              "median": 1.63,
+              "min": 1.6,
+              "max": 1.63,
+              "missing": 0
+            }
+          },
+          "total_duration_hours": 0.454,
+          "fps": {
+            "n": 1000,
+            "total": 25102.17,
+            "mean": 25.1,
+            "median": 25.1,
+            "min": 25.0,
+            "max": 25.2,
+            "missing": 0
+          },
+          "fps_distribution": {
+            "25.1": 985,
+            "25.13": 7,
+            "25": 4,
+            "25.2": 4
+          },
+          "frame_count": {
+            "n": 1000,
+            "total": 41056.0,
+            "mean": 41.06,
+            "median": 41.0,
+            "min": 40.0,
+            "max": 49.0,
+            "missing": 0
+          },
+          "resolution_distribution": {
+            "1280x720": 1000
+          },
+          "distinct_resolutions": 1,
+          "fourcc_distribution": {
+            "h264": 1000
+          },
+          "container_distribution": {
+            ".mp4": 1000
+          },
+          "entries_with_unknown_metadata": 0,
+          "duplicate_content_groups": 3,
+          "duplicate_content_files": 6,
+          "duplicates": {
+            "2351d97cda2f": [
+              "hockey_fight_00043",
+              "hockey_fight_00054"
+            ],
+            "9b6b167b9db7": [
+              "hockey_fight_00025",
+              "hockey_fight_00039"
+            ],
+            "eb801293d4ce": [
+              "hockey_fight_00334",
+              "hockey_fight_00335"
+            ]
+          },
+          "temporal_windows": {
+            "stride": 8,
+            "totals": {
+              "16": 4007,
+              "32": 2007
+            },
+            "by_label": {
+              "16": {
+                "NON_FIGHT": 2000,
+                "FIGHT": 2007
+              },
+              "32": {
+                "NON_FIGHT": 1000,
+                "FIGHT": 1007
+              }
+            },
+            "mean_per_video": {
+              "16": 4.01,
+              "32": 2.01
+            },
+            "videos_shorter_than_window": {
+              "16": 0,
+              "32": 0
+            }
+          },
+          "source_classes": {
+            "fi": 500,
+            "no": 500
+          },
+          "proposed_labels": {
+            "FIGHT": 500,
+            "NON_FIGHT": 500
+          },
+          "provenance": "Downloaded manually from Kaggle mirror inzilele/rlvs-hockey-fight-dataset-mp4-files; Hockey Fight clips identified by fi*/no*_xvid filenames.",
+          "sources": {
+            "kaggle_mirror": 1000
+          }
+        },
+        {
+          "manifest": "movies_fight_v1",
+          "group": "A",
+          "task": "fight_temporal",
+          "license": "research-use-only (Movies Fight Dataset terms)",
+          "created_at": "2026-09-27T16:53:28.459448+00:00",
+          "datasets": [
+            "movies_fight"
+          ],
+          "videos": 201,
+          "labels": {
+            "FIGHT": 100,
+            "NON_FIGHT": 101
+          },
+          "label_ratio": {
+            "nonfight_per_fight": 1.01,
+            "fight_share": 0.498
+          },
+          "splits": {
+            "train": 140,
+            "test": 35,
+            "val": 26
+          },
+          "labels_by_split": {
+            "test": {
+              "FIGHT": 22,
+              "NON_FIGHT": 13
+            },
+            "train": {
+              "FIGHT": 69,
+              "NON_FIGHT": 71
+            },
+            "val": {
+              "FIGHT": 9,
+              "NON_FIGHT": 17
+            }
+          },
+          "validation_statuses": {
+            "VALID": 198,
+            "DUPLICATE": 3
+          },
+          "corrupt_frames_total": 0,
+          "problem_files": [],
+          "duration_sec": {
+            "n": 201,
+            "total": 349.76,
+            "mean": 1.74,
+            "median": 1.67,
+            "min": 1.67,
+            "max": 2.04,
+            "missing": 0
+          },
+          "duration_by_label_sec": {
+            "FIGHT": {
+              "n": 100,
+              "total": 181.29,
+              "mean": 1.81,
+              "median": 1.68,
+              "min": 1.67,
+              "max": 2.04,
+              "missing": 0
+            },
+            "NON_FIGHT": {
+              "n": 101,
+              "total": 168.47,
+              "mean": 1.67,
+              "median": 1.67,
+              "min": 1.67,
+              "max": 1.67,
+              "missing": 0
+            }
+          },
+          "total_duration_hours": 0.097,
+          "fps": {
+            "n": 201,
+            "total": 5661.16,
+            "mean": 28.16,
+            "median": 29.97,
+            "min": 25.0,
+            "max": 29.97,
+            "missing": 0
+          },
+          "fps_distribution": {
+            "29.97": 128,
+            "25": 73
+          },
+          "frame_count": {
+            "n": 201,
+            "total": 9841.0,
+            "mean": 48.96,
+            "median": 50.0,
+            "min": 42.0,
+            "max": 60.0,
+            "missing": 0
+          },
+          "resolution_distribution": {
+            "720x480": 128,
+            "720x576": 73
+          },
+          "distinct_resolutions": 2,
+          "fourcc_distribution": {
+            "mpg2": 101,
+            "dvsd": 100
+          },
+          "container_distribution": {
+            ".mpg": 101,
+            ".avi": 100
+          },
+          "entries_with_unknown_metadata": 0,
+          "duplicate_content_groups": 3,
+          "duplicate_content_files": 6,
+          "duplicates": {
+            "16d86a59db4e": [
+              "movies_fight_00173",
+              "movies_fight_00195"
+            ],
+            "60955d05748f": [
+              "movies_fight_00172",
+              "movies_fight_00194"
+            ],
+            "dbb18579779a": [
+              "movies_fight_00000",
+              "movies_fight_00012"
+            ]
+          },
+          "temporal_windows": {
+            "stride": 8,
+            "totals": {
+              "16": 973,
+              "32": 571
+            },
+            "by_label": {
+              "16": {
+                "FIGHT": 468,
+                "NON_FIGHT": 505
+              },
+              "32": {
+                "FIGHT": 268,
+                "NON_FIGHT": 303
+              }
+            },
+            "mean_per_video": {
+              "16": 4.84,
+              "32": 2.84
+            },
+            "videos_shorter_than_window": {
+              "16": 0,
+              "32": 0
+            }
+          },
+          "source_classes": {
+            "noFights": 101,
+            "fights": 100
+          },
+          "proposed_labels": {
+            "NON_FIGHT": 101,
+            "FIGHT": 100
+          },
+          "provenance": "Downloaded manually from Kaggle mirror naveenk903/movies-fight-detection-dataset; staged movie footage, domain gap vs CCTV.",
+          "sources": {
+            "kaggle_mirror": 201
+          }
+        },
+        {
+          "manifest": "rlvs_v1",
+          "group": "A",
+          "task": "fight_temporal",
+          "license": "research-use-only (Real Life Violence Situations terms)",
+          "created_at": "2026-09-27T17:12:55.063467+00:00",
+          "datasets": [
+            "rlvs"
+          ],
+          "videos": 2000,
+          "labels": {
+            "NON_FIGHT": 1000,
+            "FIGHT": 1000
+          },
+          "label_ratio": {
+            "nonfight_per_fight": 1.0,
+            "fight_share": 0.5
+          },
+          "splits": {
+            "train": 1383,
+            "val": 295,
+            "test": 322
+          },
+          "labels_by_split": {
+            "test": {
+              "NON_FIGHT": 152,
+              "FIGHT": 170
+            },
+            "train": {
+              "NON_FIGHT": 694,
+              "FIGHT": 689
+            },
+            "val": {
+              "NON_FIGHT": 154,
+              "FIGHT": 141
+            }
+          },
+          "validation_statuses": {
+            "VALID": 1986,
+            "DUPLICATE": 14
+          },
+          "corrupt_frames_total": 0,
+          "problem_files": [],
+          "duration_sec": {
+            "n": 2000,
+            "total": 10505.64,
+            "mean": 5.25,
+            "median": 5.0,
+            "min": 1.0,
+            "max": 375.73,
+            "missing": 0
+          },
+          "duration_by_label_sec": {
+            "FIGHT": {
+              "n": 1000,
+              "total": 5403.28,
+              "mean": 5.4,
+              "median": 5.0,
+              "min": 2.9,
+              "max": 375.73,
+              "missing": 0
+            },
+            "NON_FIGHT": {
+              "n": 1000,
+              "total": 5102.36,
+              "mean": 5.1,
+              "median": 5.0,
+              "min": 1.0,
+              "max": 179.9,
+              "missing": 0
+            }
+          },
+          "total_duration_hours": 2.918,
+          "fps": {
+            "n": 2000,
+            "total": 54433.54,
+            "mean": 27.22,
+            "median": 29.0,
+            "min": 10.5,
+            "max": 37.0,
+            "missing": 0
+          },
+          "fps_distribution": {
+            "30": 511,
+            "25": 469,
+            "29.97": 365,
+            "29": 176,
+            "23": 145,
+            "37": 97,
+            "11": 90,
+            "21": 26,
+            "24": 19,
+            "20": 18,
+            "29.93": 15,
+            "23.98": 14,
+            "24.27": 11,
+            "24.16": 5,
+            "28.73": 4,
+            "29.47": 4,
+            "29.91": 4,
+            "18": 3,
+            "16.67": 2,
+            "10.5": 1,
+            "12.36": 1,
+            "12.49": 1,
+            "15.42": 1,
+            "15.98": 1,
+            "16.1": 1,
+            "16.66": 1,
+            "18.22": 1,
+            "18.28": 1,
+            "19.36": 1,
+            "19.42": 1,
+            "19.48": 1,
+            "20.06": 1,
+            "20.72": 1,
+            "22.5": 1,
+            "24.86": 1,
+            "24.9": 1,
+            "24.91": 1,
+            "25.36": 1,
+            "29.77": 1,
+            "29.94": 1,
+            "30.02": 1
+          },
+          "frame_count": {
+            "n": 2000,
+            "total": 287369.0,
+            "mean": 143.68,
+            "median": 132.0,
+            "min": 29.0,
+            "max": 11272.0,
+            "missing": 0
+          },
+          "resolution_distribution": {
+            "224x224": 948,
+            "1280x720": 279,
+            "640x360": 193,
+            "360x360": 49,
+            "854x480": 36,
+            "202x360": 24,
+            "406x720": 23,
+            "1920x1080": 21,
+            "292x360": 21,
+            "320x240": 18,
+            "204x360": 14,
+            "442x720": 11,
+            "240x320": 10,
+            "288x360": 10,
+            "396x720": 10,
+            "402x720": 10,
+            "406x406": 10,
+            "726x670": 10,
+            "1080x1920": 9,
+            "1280x574": 9,
+            "198x360": 8,
+            "368x272": 8,
+            "136x240": 7,
+            "408x720": 7,
+            "1280x628": 6,
+            "194x298": 6,
+            "404x716": 6,
+            "406x536": 6,
+            "424x360": 6,
+            "576x712": 6,
+            "640x352": 6,
+            "716x720": 6,
+            "260x360": 5,
+            "408x534": 5,
+            "438x452": 5,
+            "724x720": 5,
+            "206x360": 4,
+            "288x296": 4,
+            "406x530": 4,
+            "410x720": 4,
+            "654x650": 4,
+            "726x650": 4,
+            "1280x546": 3,
+            "1280x570": 3,
+            "398x720": 3,
+            "406x614": 3,
+            "428x606": 3,
+            "438x720": 3,
+            "440x360": 3,
+            "452x360": 3,
+            "484x360": 3,
+            "492x224": 3,
+            "632x466": 3,
+            "656x712": 3,
+            "714x620": 3,
+            "714x720": 3,
+            "724x668": 3,
+            "728x720": 3,
+            "804x546": 3,
+            "1280x530": 2,
+            "1280x542": 2,
+            "228x296": 2,
+            "262x484": 2,
+            "400x546": 2,
+            "406x440": 2,
+            "406x514": 2,
+            "406x664": 2,
+            "406x712": 2,
+            "410x652": 2,
+            "416x548": 2,
+            "424x512": 2,
+            "424x712": 2,
+            "428x720": 2,
+            "430x720": 2,
+            "470x720": 2,
+            "576x720": 2,
+            "584x650": 2,
+            "592x712": 2,
+            "644x714": 2,
+            "650x482": 2,
+            "650x504": 2,
+            "670x692": 2,
+            "718x720": 2,
+            "720x720": 2,
+            "724x714": 2,
+            "728x714": 2,
+            "834x714": 2,
+            "976x600": 2,
+            "1038x720": 1,
+            "1070x548": 1,
+            "1070x720": 1,
+            "1280x434": 1,
+            "1280x548": 1,
+            "1280x602": 1,
+            "1280x626": 1,
+            "1280x672": 1,
+            "162x350": 1,
+            "180x240": 1,
+            "210x358": 1,
+            "228x360": 1,
+            "230x360": 1,
+            "282x260": 1,
+            "286x360": 1,
+            "314x720": 1,
+            "338x720": 1,
+            "352x600": 1,
+            "360x302": 1,
+            "368x656": 1,
+            "394x548": 1,
+            "398x336": 1,
+            "400x224": 1,
+            "400x510": 1,
+            "402x546": 1,
+            "404x360": 1,
+            "406x242": 1,
+            "406x360": 1,
+            "406x404": 1,
+            "406x510": 1,
+            "406x600": 1,
+            "406x700": 1,
+            "410x498": 1,
+            "414x720": 1,
+            "424x608": 1,
+            "428x362": 1,
+            "474x302": 1,
+            "488x720": 1,
+            "526x714": 1,
+            "608x1080": 1,
+            "614x604": 1,
+            "614x714": 1,
+            "640x354": 1,
+            "640x644": 1,
+            "656x530": 1,
+            "712x720": 1,
+            "718x714": 1,
+            "726x620": 1,
+            "744x714": 1,
+            "766x430": 1,
+            "822x714": 1,
+            "854x540": 1,
+            "926x472": 1,
+            "960x720": 1
+          },
+          "distinct_resolutions": 142,
+          "fourcc_distribution": {
+            "h264": 1052,
+            "FMP4": 948
+          },
+          "container_distribution": {
+            ".mp4": 1951,
+            ".avi": 49
+          },
+          "entries_with_unknown_metadata": 0,
+          "duplicate_content_groups": 14,
+          "duplicate_content_files": 28,
+          "duplicates": {
+            "0768f2ee60ad": [
+              "rlvs_00090",
+              "rlvs_00101"
+            ],
+            "1b66b9fde599": [
+              "rlvs_01172",
+              "rlvs_01173"
+            ],
+            "22e55aa81502": [
+              "rlvs_01207",
+              "rlvs_01215"
+            ],
+            "524d31e12b2a": [
+              "rlvs_00837",
+              "rlvs_00838"
+            ],
+            "7546d6a66e0f": [
+              "rlvs_01253",
+              "rlvs_01256"
+            ],
+            "7d1630491e54": [
+              "rlvs_01605",
+              "rlvs_01606"
+            ],
+            "824edfa52b7b": [
+              "rlvs_00142",
+              "rlvs_01451"
+            ],
+            "992382c47f49": [
+              "rlvs_00113",
+              "rlvs_00190"
+            ],
+            "a267d4f80b18": [
+              "rlvs_01370",
+              "rlvs_01387"
+            ],
+            "a85a93055d06": [
+              "rlvs_00220",
+              "rlvs_00221"
+            ],
+            "b4899c39e0d4": [
+              "rlvs_00168",
+              "rlvs_00179"
+            ],
+            "cbee54f8cbcc": [
+              "rlvs_01109",
+              "rlvs_01110"
+            ],
+            "fbcc259d3853": [
+              "rlvs_00334",
+              "rlvs_00445"
+            ],
+            "fcff55a63ffb": [
+              "rlvs_01072",
+              "rlvs_01078"
+            ]
+          },
+          "temporal_windows": {
+            "stride": 8,
+            "totals": {
+              "16": 33035,
+              "32": 29036
+            },
+            "by_label": {
+              "16": {
+                "NON_FIGHT": 14474,
+                "FIGHT": 18561
+              },
+              "32": {
+                "NON_FIGHT": 12475,
+                "FIGHT": 16561
+              }
+            },
+            "mean_per_video": {
+              "16": 16.52,
+              "32": 14.52
+            },
+            "videos_shorter_than_window": {
+              "16": 0,
+              "32": 1
+            }
+          },
+          "source_classes": {
+            "NV": 1000,
+            "V": 1000
+          },
+          "proposed_labels": {
+            "FIGHT": 1000,
+            "NON_FIGHT": 1000
+          },
+          "provenance": "Downloaded manually from Kaggle mirror inzilele/rlvs-hockey-fight-dataset-mp4-files; RLVS clips identified by V_*/NV_* filenames.",
+          "sources": {
+            "kaggle_mirror": 2000
+          }
+        },
+        {
+          "manifest": "rwf2000_v1",
+          "group": "A",
+          "task": "fight_temporal",
+          "license": "research-use-only (RWF-2000 terms)",
+          "created_at": "2026-09-27T17:19:36.186260+00:00",
+          "datasets": [
+            "rwf2000"
+          ],
+          "videos": 2000,
+          "labels": {
+            "FIGHT": 1000,
+            "NON_FIGHT": 1000
+          },
+          "label_ratio": {
+            "nonfight_per_fight": 1.0,
+            "fight_share": 0.5
+          },
+          "splits": {
+            "train": 1600,
+            "val": 400
+          },
+          "labels_by_split": {
+            "train": {
+              "FIGHT": 800,
+              "NON_FIGHT": 800
+            },
+            "val": {
+              "FIGHT": 200,
+              "NON_FIGHT": 200
+            }
+          },
+          "validation_statuses": {
+            "VALID": 1989,
+            "DUPLICATE": 11
+          },
+          "corrupt_frames_total": 0,
+          "problem_files": [],
+          "duration_sec": {
+            "n": 2000,
+            "total": 10000.0,
+            "mean": 5.0,
+            "median": 5.0,
+            "min": 5.0,
+            "max": 5.0,
+            "missing": 0
+          },
+          "duration_by_label_sec": {
+            "FIGHT": {
+              "n": 1000,
+              "total": 5000.0,
+              "mean": 5.0,
+              "median": 5.0,
+              "min": 5.0,
+              "max": 5.0,
+              "missing": 0
+            },
+            "NON_FIGHT": {
+              "n": 1000,
+              "total": 5000.0,
+              "mean": 5.0,
+              "median": 5.0,
+              "min": 5.0,
+              "max": 5.0,
+              "missing": 0
+            }
+          },
+          "total_duration_hours": 2.778,
+          "fps": {
+            "n": 2000,
+            "total": 60000.0,
+            "mean": 30.0,
+            "median": 30.0,
+            "min": 30.0,
+            "max": 30.0,
+            "missing": 0
+          },
+          "fps_distribution": {
+            "30": 2000
+          },
+          "frame_count": {
+            "n": 2000,
+            "total": 300000.0,
+            "mean": 150.0,
+            "median": 150.0,
+            "min": 150.0,
+            "max": 150.0,
+            "missing": 0
+          },
+          "resolution_distribution": {
+            "320x240": 700,
+            "1280x720": 628,
+            "640x360": 169,
+            "480x360": 89,
+            "1920x1080": 31,
+            "398x224": 22,
+            "352x288": 16,
+            "406x720": 14,
+            "426x240": 14,
+            "424x320": 13,
+            "960x720": 13,
+            "526x360": 11,
+            "640x358": 11,
+            "300x240": 10,
+            "450x360": 10,
+            "464x348": 10,
+            "480x272": 10,
+            "540x360": 10,
+            "368x276": 9,
+            "528x360": 9,
+            "640x320": 9,
+            "568x320": 8,
+            "636x360": 8,
+            "640x352": 8,
+            "854x480": 8,
+            "384x288": 7,
+            "640x356": 7,
+            "720x720": 7,
+            "400x216": 6,
+            "400x222": 6,
+            "400x300": 6,
+            "428x240": 6,
+            "600x360": 6,
+            "624x352": 6,
+            "632x360": 6,
+            "640x344": 6,
+            "204x360": 5,
+            "626x360": 5,
+            "1152x720": 4,
+            "322x240": 4,
+            "488x360": 4,
+            "640x326": 4,
+            "720x480": 4,
+            "1280x658": 3,
+            "446x360": 3,
+            "478x360": 3,
+            "480x288": 3,
+            "512x288": 3,
+            "640x354": 3,
+            "772x480": 3,
+            "1018x720": 2,
+            "1270x720": 2,
+            "1280x712": 2,
+            "320x262": 2,
+            "400x224": 2,
+            "470x360": 2,
+            "518x360": 2,
+            "636x480": 2,
+            "640x480": 2,
+            "648x486": 2,
+            "872x720": 2,
+            "920x720": 2,
+            "932x720": 2,
+            "320x246": 1,
+            "360x360": 1,
+            "400x188": 1,
+            "432x240": 1,
+            "448x336": 1,
+            "464x332": 1,
+            "512x360": 1,
+            "516x360": 1,
+            "566x360": 1,
+            "576x320": 1,
+            "576x324": 1,
+            "620x312": 1,
+            "848x480": 1,
+            "948x720": 1
+          },
+          "distinct_resolutions": 77,
+          "fourcc_distribution": {
+            "MJPG": 2000
+          },
+          "container_distribution": {
+            ".avi": 2000
+          },
+          "entries_with_unknown_metadata": 0,
+          "duplicate_content_groups": 11,
+          "duplicate_content_files": 22,
+          "duplicates": {
+            "05414b6a92b3": [
+              "rwf2000_01505",
+              "rwf2000_01823"
+            ],
+            "3f9cc7f69f5d": [
+              "rwf2000_00478",
+              "rwf2000_00578"
+            ],
+            "5145462994a9": [
+              "rwf2000_01405",
+              "rwf2000_01569"
+            ],
+            "5561ba5284a1": [
+              "rwf2000_00124",
+              "rwf2000_00125"
+            ],
+            "6dcca31f1b76": [
+              "rwf2000_00479",
+              "rwf2000_00579"
+            ],
+            "73af22960bb0": [
+              "rwf2000_01560",
+              "rwf2000_01980"
+            ],
+            "7988666c3a3d": [
+              "rwf2000_01539",
+              "rwf2000_01991"
+            ],
+            "961e50c0e08d": [
+              "rwf2000_00870",
+              "rwf2000_01571"
+            ],
+            "c344e296d508": [
+              "rwf2000_01318",
+              "rwf2000_01848"
+            ],
+            "d76f2f2a4d8b": [
+              "rwf2000_01088",
+              "rwf2000_01845"
+            ],
+            "ddf8dfdf46b9": [
+              "rwf2000_00967",
+              "rwf2000_01836"
+            ]
+          },
+          "temporal_windows": {
+            "stride": 8,
+            "totals": {
+              "16": 34000,
+              "32": 30000
+            },
+            "by_label": {
+              "16": {
+                "FIGHT": 17000,
+                "NON_FIGHT": 17000
+              },
+              "32": {
+                "FIGHT": 15000,
+                "NON_FIGHT": 15000
+              }
+            },
+            "mean_per_video": {
+              "16": 17.0,
+              "32": 15.0
+            },
+            "videos_shorter_than_window": {
+              "16": 0,
+              "32": 0
+            }
+          },
+          "source_classes": {
+            "Fight": 1000,
+            "NonFight": 1000
+          },
+          "proposed_labels": {
+            "FIGHT": 1000,
+            "NON_FIGHT": 1000
+          },
+          "provenance": "Downloaded manually from Kaggle mirror vulamnguyen/rwf2000; original RWF-2000 attribution preserved.",
+          "sources": {
+            "kaggle_mirror": 2000
+          }
+        },
+        {
+          "manifest": "ucf101_eval_v1",
+          "group": "B",
+          "task": "fight_temporal",
+          "license": "research-use-only (UCF101 terms; YouTube-derived clips)",
+          "created_at": "2026-09-27T17:11:21.644872+00:00",
+          "datasets": [
+            "ucf101"
+          ],
+          "videos": 13451,
+          "labels": {
+            "UNKNOWN": 13451
+          },
+          "label_ratio": {},
+          "splits": {
+            "test": 1723,
+            "train": 10055,
+            "val": 1673
+          },
+          "labels_by_split": {
+            "test": {
+              "UNKNOWN": 1723
+            },
+            "train": {
+              "UNKNOWN": 10055
+            },
+            "val": {
+              "UNKNOWN": 1673
+            }
+          },
+          "validation_statuses": {
+            "VALID": 13291,
+            "DUPLICATE": 151,
+            "CORRUPTED": 9
+          },
+          "corrupt_frames_total": 345,
+          "problem_files": [
+            {
+              "clip_id": "ucf101_01174",
+              "status": "CORRUPTED",
+              "details": "29 corrupt/missing frame(s) during decode",
+              "path": "datasets/evaluation/raw/ucf101/test/PoleVault/v_PoleVault_g14_c04.avi",
+              "label": "UNKNOWN",
+              "split": "test",
+              "source_class": "PoleVault"
+            },
+            {
+              "clip_id": "ucf101_02482",
+              "status": "CORRUPTED",
+              "details": "26 corrupt/missing frame(s) during decode",
+              "path": "datasets/evaluation/raw/ucf101/train/Basketball/v_Basketball_g16_c02.avi",
+              "label": "UNKNOWN",
+              "split": "train",
+              "source_class": "Basketball"
+            },
+            {
+              "clip_id": "ucf101_02484",
+              "status": "CORRUPTED",
+              "details": "6 corrupt/missing frame(s) during decode",
+              "path": "datasets/evaluation/raw/ucf101/train/Basketball/v_Basketball_g16_c04.avi",
+              "label": "UNKNOWN",
+              "split": "train",
+              "source_class": "Basketball"
+            },
+            {
+              "clip_id": "ucf101_02485",
+              "status": "CORRUPTED",
+              "details": "25 corrupt/missing frame(s) during decode",
+              "path": "datasets/evaluation/raw/ucf101/train/Basketball/v_Basketball_g16_c05.avi",
+              "label": "UNKNOWN",
+              "split": "train",
+              "source_class": "Basketball"
+            },
+            {
+              "clip_id": "ucf101_02486",
+              "status": "CORRUPTED",
+              "details": "31 corrupt/missing frame(s) during decode",
+              "path": "datasets/evaluation/raw/ucf101/train/Basketball/v_Basketball_g16_c06.avi",
+              "label": "UNKNOWN",
+              "split": "train",
+              "source_class": "Basketball"
+            },
+            {
+              "clip_id": "ucf101_05112",
+              "status": "CORRUPTED",
+              "details": "55 corrupt/missing frame(s) during decode",
+              "path": "datasets/evaluation/raw/ucf101/train/GolfSwing/v_GolfSwing_g22_c01.avi",
+              "label": "UNKNOWN",
+              "split": "train",
+              "source_class": "GolfSwing"
+            },
+            {
+              "clip_id": "ucf101_05113",
+              "status": "CORRUPTED",
+              "details": "55 corrupt/missing frame(s) during decode",
+              "path": "datasets/evaluation/raw/ucf101/train/GolfSwing/v_GolfSwing_g22_c02.avi",
+              "label": "UNKNOWN",
+              "split": "train",
+              "source_class": "GolfSwing"
+            },
+            {
+              "clip_id": "ucf101_05114",
+              "status": "CORRUPTED",
+              "details": "72 corrupt/missing frame(s) during decode",
+              "path": "datasets/evaluation/raw/ucf101/train/GolfSwing/v_GolfSwing_g22_c03.avi",
+              "label": "UNKNOWN",
+              "split": "train",
+              "source_class": "GolfSwing"
+            },
+            {
+              "clip_id": "ucf101_11907",
+              "status": "CORRUPTED",
+              "details": "46 corrupt/missing frame(s) during decode",
+              "path": "datasets/evaluation/raw/ucf101/val/Basketball/v_Basketball_g16_c01.avi",
+              "label": "UNKNOWN",
+              "split": "val",
+              "source_class": "Basketball"
+            }
+          ],
+          "duration_sec": {
+            "n": 13442,
+            "total": 96261.28,
+            "mean": 7.16,
+            "median": 6.41,
+            "min": 1.07,
+            "max": 71.04,
+            "missing": 9
+          },
+          "duration_by_label_sec": {
+            "UNKNOWN": {
+              "n": 13442,
+              "total": 96261.28,
+              "mean": 7.16,
+              "median": 6.41,
+              "min": 1.07,
+              "max": 71.04,
+              "missing": 0
+            }
+          },
+          "total_duration_hours": 26.739,
+          "fps": {
+            "n": 13442,
+            "total": 348479.55,
+            "mean": 25.92,
+            "median": 25.0,
+            "min": 25.0,
+            "max": 29.97,
+            "missing": 9
+          },
+          "fps_distribution": {
+            "25": 10941,
+            "29.97": 2493,
+            "29.92": 8
+          },
+          "frame_count": {
+            "n": 13442,
+            "total": 2490734.0,
+            "mean": 185.29,
+            "median": 166.0,
+            "min": 29.0,
+            "max": 1776.0,
+            "missing": 9
+          },
+          "resolution_distribution": {
+            "320x240": 13438,
+            "400x226": 4
+          },
+          "distinct_resolutions": 2,
+          "fourcc_distribution": {
+            "FMP4": 13451
+          },
+          "container_distribution": {
+            ".avi": 13451
+          },
+          "entries_with_unknown_metadata": 9,
+          "duplicate_content_groups": 149,
+          "duplicate_content_files": 300,
+          "duplicates": {
+            "0036ee70eeef": [
+              "ucf101_00173",
+              "ucf101_02629"
+            ],
+            "03214ac9bc10": [
+              "ucf101_02589",
+              "ucf101_02688"
+            ],
+            "03599b142118": [
+              "ucf101_00142",
+              "ucf101_02648"
+            ],
+            "03a316a43056": [
+              "ucf101_02557",
+              "ucf101_11931"
+            ],
+            "053faa8ea0a9": [
+              "ucf101_02561",
+              "ucf101_11932"
+            ],
+            "08c9b19912bc": [
+              "ucf101_00140",
+              "ucf101_02643"
+            ],
+            "091e82dc4593": [
+              "ucf101_02544",
+              "ucf101_02641"
+            ],
+            "113336528a1e": [
+              "ucf101_02622",
+              "ucf101_02721"
+            ],
+            "11cd8a225c05": [
+              "ucf101_02701",
+              "ucf101_11923"
+            ],
+            "11d296bd8ccc": [
+              "ucf101_00143",
+              "ucf101_02656"
+            ],
+            "128a60333352": [
+              "ucf101_02642",
+              "ucf101_11916"
+            ],
+            "139c424416b6": [
+              "ucf101_02570",
+              "ucf101_02669"
+            ],
+            "1533de4cef96": [
+              "ucf101_02691",
+              "ucf101_11922"
+            ],
+            "15616534d2ff": [
+              "ucf101_00152",
+              "ucf101_02717"
+            ],
+            "17cc5d937963": [
+              "ucf101_02619",
+              "ucf101_11942"
+            ],
+            "1acda1abefe4": [
+              "ucf101_02577",
+              "ucf101_02674"
+            ],
+            "1e84ce4ef69f": [
+              "ucf101_00127",
+              "ucf101_02518"
+            ],
+            "1f319f199fa4": [
+              "ucf101_02581",
+              "ucf101_02679"
+            ],
+            "23728eca8529": [
+              "ucf101_02586",
+              "ucf101_02684"
+            ],
+            "2637d445f816": [
+              "ucf101_02605",
+              "ucf101_02702"
+            ],
+            "2c107aa211c3": [
+              "ucf101_02578",
+              "ucf101_02675"
+            ],
+            "2ca79f6dc5c5": [
+              "ucf101_00144",
+              "ucf101_00163",
+              "ucf101_02560",
+              "ucf101_02659"
+            ],
+            "2ce9500a488b": [
+              "ucf101_02954",
+              "ucf101_02956"
+            ],
+            "2e2321b9bc97": [
+              "ucf101_00166",
+              "ucf101_02592"
+            ],
+            "339c9a233581": [
+              "ucf101_01658",
+              "ucf101_01666"
+            ],
+            "387ed18294a5": [
+              "ucf101_00164",
+              "ucf101_02572"
+            ],
+            "39e985d92bd0": [
+              "ucf101_02593",
+              "ucf101_02692"
+            ],
+            "3a132e81e58a": [
+              "ucf101_02541",
+              "ucf101_02638"
+            ],
+            "3dffdebfa629": [
+              "ucf101_00238",
+              "ucf101_00239"
+            ],
+            "3e0134967441": [
+              "ucf101_02562",
+              "ucf101_02661"
+            ],
+            "3fbf49aa2bb9": [
+              "ucf101_02609",
+              "ucf101_02706"
+            ],
+            "403a432684dc": [
+              "ucf101_00141",
+              "ucf101_11930"
+            ],
+            "4055a6455483": [
+              "ucf101_02658",
+              "ucf101_11918"
+            ],
+            "4364fdbde9ca": [
+              "ucf101_02533",
+              "ucf101_02632"
+            ],
+            "43fec52c8aa8": [
+              "ucf101_02574",
+              "ucf101_02672"
+            ],
+            "44a5cb436596": [
+              "ucf101_02587",
+              "ucf101_02686"
+            ],
+            "463d995c606b": [
+              "ucf101_02608",
+              "ucf101_02705"
+            ],
+            "4776cec7b813": [
+              "ucf101_00167",
+              "ucf101_02595"
+            ],
+            "4c19d831712e": [
+              "ucf101_02579",
+              "ucf101_02676"
+            ],
+            "50b4991a1ac5": [
+              "ucf101_02550",
+              "ucf101_02646"
+            ],
+            "520a069b9149": [
+              "ucf101_00149",
+              "ucf101_02695"
+            ],
+            "5217cf796723": [
+              "ucf101_02554",
+              "ucf101_02652"
+            ],
+            "52b659d5015b": [
+              "ucf101_02566",
+              "ucf101_02666"
+            ],
+            "548e4681848b": [
+              "ucf101_02709",
+              "ucf101_11926"
+            ],
+            "54d40686ed47": [
+              "ucf101_11925",
+              "ucf101_11940"
+            ],
+            "5a746ac899c3": [
+              "ucf101_00159",
+              "ucf101_02532"
+            ],
+            "5ac7fcfb4ee4": [
+              "ucf101_10769",
+              "ucf101_10770"
+            ],
+            "5d5180e3861e": [
+              "ucf101_02611",
+              "ucf101_02708"
+            ],
+            "5fe9d751e54c": [
+              "ucf101_02597",
+              "ucf101_02696"
+            ],
+            "600e123d3fc4": [
+              "ucf101_02604",
+              "ucf101_11937"
+            ],
+            "6023fca9d7f0": [
+              "ucf101_00889",
+              "ucf101_06910"
+            ],
+            "6039cd7e3464": [
+              "ucf101_02558",
+              "ucf101_02655"
+            ],
+            "63ab69ed6a17": [
+              "ucf101_00157",
+              "ucf101_11915"
+            ],
+            "63d0e8068712": [
+              "ucf101_00151",
+              "ucf101_02715"
+            ],
+            "6600714d7af6": [
+              "ucf101_02435",
+              "ucf101_02445"
+            ],
+            "662fea11aeca": [
+              "ucf101_02627",
+              "ucf101_02724"
+            ],
+            "671d723f3d78": [
+              "ucf101_02615",
+              "ucf101_11941"
+            ],
+            "6dafaa5a6feb": [
+              "ucf101_00147",
+              "ucf101_02677"
+            ],
+            "6edf799fe251": [
+              "ucf101_00154",
+              "ucf101_02719"
+            ],
+            "70b89a9fcbe8": [
+              "ucf101_02530",
+              "ucf101_02631"
+            ],
+            "70bc43879e1b": [
+              "ucf101_02573",
+              "ucf101_02671"
+            ],
+            "71197e94f777": [
+              "ucf101_02399",
+              "ucf101_11888"
+            ],
+            "7160cad9fb7a": [
+              "ucf101_02725",
+              "ucf101_11927"
+            ],
+            "731862386fc0": [
+              "ucf101_02540",
+              "ucf101_02637"
+            ],
+            "75aebc5aecba": [
+              "ucf101_07486",
+              "ucf101_07487"
+            ],
+            "784b2075e875": [
+              "ucf101_02233",
+              "ucf101_02234"
+            ],
+            "798031dddf71": [
+              "ucf101_02614",
+              "ucf101_02712"
+            ],
+            "83254d59f1b6": [
+              "ucf101_00161",
+              "ucf101_02536"
+            ],
+            "83ce1c3247b6": [
+              "ucf101_10845",
+              "ucf101_10894"
+            ],
+            "858856d4d585": [
+              "ucf101_02583",
+              "ucf101_02681"
+            ],
+            "866ee01468f0": [
+              "ucf101_02549",
+              "ucf101_11929"
+            ],
+            "88567c0bd9c0": [
+              "ucf101_00146",
+              "ucf101_11936"
+            ],
+            "898e9136106b": [
+              "ucf101_11446",
+              "ucf101_11460"
+            ],
+            "8996f9d382a4": [
+              "ucf101_02582",
+              "ucf101_02680"
+            ],
+            "8a2921264e1a": [
+              "ucf101_02542",
+              "ucf101_02639"
+            ],
+            "8a78ce908bcb": [
+              "ucf101_02602",
+              "ucf101_02699"
+            ],
+            "8aee497e69d7": [
+              "ucf101_03103",
+              "ucf101_12003"
+            ],
+            "8b39031b6a1e": [
+              "ucf101_00160",
+              "ucf101_02535"
+            ],
+            "8d5c38c7c624": [
+              "ucf101_00162",
+              "ucf101_02547"
+            ],
+            "917b8fc9e1e8": [
+              "ucf101_02539",
+              "ucf101_02636"
+            ],
+            "9580ff185087": [
+              "ucf101_02911",
+              "ucf101_02939"
+            ],
+            "95834fdcb39e": [
+              "ucf101_02662",
+              "ucf101_11920"
+            ],
+            "95b64482ce9f": [
+              "ucf101_00148",
+              "ucf101_02678"
+            ],
+            "9746039618f2": [
+              "ucf101_02551",
+              "ucf101_02647"
+            ],
+            "989ac36de599": [
+              "ucf101_11924",
+              "ucf101_11939"
+            ],
+            "992eaefaf828": [
+              "ucf101_02559",
+              "ucf101_02657"
+            ],
+            "9b117cf66641": [
+              "ucf101_02588",
+              "ucf101_02687"
+            ],
+            "9b8250f37b87": [
+              "ucf101_02625",
+              "ucf101_11943"
+            ],
+            "9c0bf4694a28": [
+              "ucf101_02618",
+              "ucf101_02716"
+            ],
+            "9cb87565ddd8": [
+              "ucf101_02548",
+              "ucf101_02645"
+            ],
+            "9d396bcf7f69": [
+              "ucf101_02556",
+              "ucf101_02654"
+            ],
+            "a10cf7548fdb": [
+              "ucf101_00171",
+              "ucf101_02626"
+            ],
+            "a1fa9e15c838": [
+              "ucf101_02553",
+              "ucf101_02651"
+            ],
+            "a266bf5f803e": [
+              "ucf101_00145",
+              "ucf101_11934"
+            ],
+            "a2ac18f7ee6a": [
+              "ucf101_02624",
+              "ucf101_02723"
+            ],
+            "a2b7e0522adc": [
+              "ucf101_02590",
+              "ucf101_02689"
+            ],
+            "a2e45b49f3ac": [
+              "ucf101_02568",
+              "ucf101_02667"
+            ],
+            "a31da9f6b284": [
+              "ucf101_02660",
+              "ucf101_11919"
+            ],
+            "a408f7c10742": [
+              "ucf101_00150",
+              "ucf101_02704"
+            ],
+            "a647bcd30189": [
+              "ucf101_00165",
+              "ucf101_02580"
+            ],
+            "a64bd63133bd": [
+              "ucf101_02538",
+              "ucf101_02635"
+            ],
+            "a6e7eb93610b": [
+              "ucf101_00155",
+              "ucf101_02726"
+            ],
+            "a7f53562d676": [
+              "ucf101_02607",
+              "ucf101_11938"
+            ],
+            "ab7dfde184b3": [
+              "ucf101_02623",
+              "ucf101_02722"
+            ],
+            "b1e8dc582ef8": [
+              "ucf101_02576",
+              "ucf101_11935"
+            ],
+            "b28ca580866c": [
+              "ucf101_02598",
+              "ucf101_02697"
+            ],
+            "b2c54f3c41a5": [
+              "ucf101_02610",
+              "ucf101_02707"
+            ],
+            "b572dcdfc1ba": [
+              "ucf101_11046",
+              "ucf101_11065"
+            ],
+            "b607d18e733b": [
+              "ucf101_02552",
+              "ucf101_02650"
+            ],
+            "b62388a69bab": [
+              "ucf101_02893",
+              "ucf101_02912"
+            ],
+            "b6e2bfce1847": [
+              "ucf101_02617",
+              "ucf101_02714"
+            ],
+            "b9077641510a": [
+              "ucf101_02584",
+              "ucf101_02682"
+            ],
+            "bb24455862f2": [
+              "ucf101_00156",
+              "ucf101_02727"
+            ],
+            "bb4c12622eea": [
+              "ucf101_02585",
+              "ucf101_02683"
+            ],
+            "be571b30e4b5": [
+              "ucf101_02596",
+              "ucf101_02694"
+            ],
+            "c9087c35109a": [
+              "ucf101_02534",
+              "ucf101_02633"
+            ],
+            "ca113a3d8f05": [
+              "ucf101_02571",
+              "ucf101_02670"
+            ],
+            "cb471a739a99": [
+              "ucf101_02613",
+              "ucf101_02711"
+            ],
+            "cb857965f95f": [
+              "ucf101_02599",
+              "ucf101_02698"
+            ],
+            "cc429a0b30bc": [
+              "ucf101_02603",
+              "ucf101_02700"
+            ],
+            "cd5df2e3625b": [
+              "ucf101_02606",
+              "ucf101_02703"
+            ],
+            "d167cc3b4143": [
+              "ucf101_02545",
+              "ucf101_11928"
+            ],
+            "d251391e5307": [
+              "ucf101_02616",
+              "ucf101_02713"
+            ],
+            "d2bae1540714": [
+              "ucf101_02543",
+              "ucf101_02640"
+            ],
+            "d2f22d8391e8": [
+              "ucf101_02612",
+              "ucf101_02710"
+            ],
+            "d795da601609": [
+              "ucf101_00168",
+              "ucf101_02600"
+            ],
+            "d903315b9947": [
+              "ucf101_02565",
+              "ucf101_02665"
+            ],
+            "da5160fbde31": [
+              "ucf101_00172",
+              "ucf101_02628"
+            ],
+            "da83bd1bed82": [
+              "ucf101_01668",
+              "ucf101_11434"
+            ],
+            "e18996f7d8b8": [
+              "ucf101_02621",
+              "ucf101_02720"
+            ],
+            "e2c056aaa074": [
+              "ucf101_02546",
+              "ucf101_02644"
+            ],
+            "e3854e4eb94d": [
+              "ucf101_00158",
+              "ucf101_02531"
+            ],
+            "e39b531256be": [
+              "ucf101_02649",
+              "ucf101_11917"
+            ],
+            "e4d38723fa68": [
+              "ucf101_02591",
+              "ucf101_02690"
+            ],
+            "e637ad2fb7aa": [
+              "ucf101_02594",
+              "ucf101_02693"
+            ],
+            "e92281cacbeb": [
+              "ucf101_02575",
+              "ucf101_02673"
+            ],
+            "eb467b5546de": [
+              "ucf101_00169",
+              "ucf101_02601"
+            ],
+            "eb640b561c1a": [
+              "ucf101_02685",
+              "ucf101_11921"
+            ],
+            "ec5d272d5155": [
+              "ucf101_02537",
+              "ucf101_02634"
+            ],
+            "ecfec6bfe347": [
+              "ucf101_00170",
+              "ucf101_02620"
+            ],
+            "ef493cf69bfb": [
+              "ucf101_00085",
+              "ucf101_02208"
+            ],
+            "f26b92f7efbc": [
+              "ucf101_02529",
+              "ucf101_02630"
+            ],
+            "f271ba2414e9": [
+              "ucf101_02563",
+              "ucf101_02663"
+            ],
+            "f2ac8021fb30": [
+              "ucf101_00153",
+              "ucf101_02718"
+            ],
+            "f3e846a0af4b": [
+              "ucf101_02555",
+              "ucf101_02653"
+            ],
+            "f796c1586364": [
+              "ucf101_02569",
+              "ucf101_02668"
+            ],
+            "fa670efedef2": [
+              "ucf101_02564",
+              "ucf101_02664"
+            ],
+            "fbd56f0758c6": [
+              "ucf101_02957",
+              "ucf101_11982"
+            ],
+            "fd56a78e432e": [
+              "ucf101_02567",
+              "ucf101_11933"
+            ]
+          },
+          "temporal_windows": {
+            "stride": 8,
+            "totals": {
+              "16": 292109,
+              "32": 265228
+            },
+            "by_label": {
+              "16": {
+                "UNKNOWN": 292109
+              },
+              "32": {
+                "UNKNOWN": 265228
+              }
+            },
+            "mean_per_video": {
+              "16": 21.72,
+              "32": 19.72
+            },
+            "videos_shorter_than_window": {
+              "16": 0,
+              "32": 3
+            }
+          },
+          "source_classes": {
+            "Basketball": 265,
+            "CricketShot": 167,
+            "TennisSwing": 166,
+            "HorseRiding": 164,
+            "PlayingCello": 164,
+            "PlayingDhol": 164,
+            "BoxingPunchingBag": 163,
+            "Drumming": 161,
+            "ShavingBeard": 161,
+            "BenchPress": 160,
+            "PlayingGuitar": 160,
+            "Punch": 160,
+            "IceDancing": 158,
+            "PlayingSitar": 157,
+            "BandMarching": 155,
+            "Bowling": 155,
+            "PlayingFlute": 155,
+            "WritingOnBoard": 152,
+            "PlayingDaf": 151,
+            "BaseballPitch": 150,
+            "Billiards": 150,
+            "Diving": 150,
+            "HammerThrow": 150,
+            "PoleVault": 149,
+            "HeadMassage": 147,
+            "SoccerJuggling": 147,
+            "ApplyEyeMakeup": 145,
+            "Archery": 145,
+            "JumpRope": 144,
+            "RockClimbingIndoor": 144,
+            "Shotput": 144,
+            "Kayaking": 141,
+            "Hammering": 140,
+            "TableTennisShot": 140,
+            "CricketBowling": 139,
+            "GolfSwing": 139,
+            "CliffDiving": 138,
+            "FrontCrawl": 137,
+            "Rowing": 137,
+            "SoccerPenalty": 137,
+            "Mixing": 136,
+            "Typing": 136,
+            "Skiing": 135,
+            "Biking": 134,
+            "BoxingSpeedBag": 134,
+            "SalsaSpin": 133,
+            "BabyCrawling": 132,
+            "Nunchucks": 132,
+            "BasketballDunk": 131,
+            "BlowDryHair": 131,
+            "BrushingTeeth": 131,
+            "LongJump": 131,
+            "Swing": 131,
+            "Haircut": 130,
+            "ThrowDiscus": 130,
+            "WallPushups": 130,
+            "HandstandPushups": 128,
+            "YoYo": 128,
+            "Lunges": 127,
+            "FieldHockeyPenalty": 126,
+            "FrisbeeCatch": 126,
+            "Surfing": 126,
+            "FloorGymnastics": 125,
+            "HulaHoop": 125,
+            "MilitaryParade": 125,
+            "HorseRace": 124,
+            "HighJump": 123,
+            "JumpingJack": 123,
+            "Knitting": 123,
+            "PommelHorse": 123,
+            "WalkingWithDog": 123,
+            "JugglingBalls": 121,
+            "SkateBoarding": 120,
+            "RopeClimbing": 119,
+            "TrampolineJumping": 119,
+            "JavelinThrow": 117,
+            "SumoWrestling": 116,
+            "VolleyballSpiking": 116,
+            "ApplyLipstick": 114,
+            "ParallelBars": 114,
+            "PizzaTossing": 113,
+            "BodyWeightSquats": 112,
+            "CleanAndJerk": 112,
+            "StillRings": 112,
+            "Fencing": 111,
+            "HandstandWalking": 111,
+            "PlayingTabla": 111,
+            "Rafting": 111,
+            "CuttingInKitchen": 110,
+            "MoppingFloor": 110,
+            "SkyDiving": 110,
+            "BlowingCandles": 109,
+            "BalanceBeam": 108,
+            "PlayingPiano": 105,
+            "UnevenBars": 104,
+            "PushUps": 102,
+            "BreastStroke": 101,
+            "PlayingViolin": 100,
+            "PullUps": 100,
+            "Skijet": 100,
+            "TaiChi": 100
+          },
+          "proposed_labels": {
+            "NOT_RELEVANT": 10810,
+            "HARD_NEGATIVE": 1699,
+            "AMBIGUOUS_COMBAT_LIKE": 942
+          },
+          "provenance": "Downloaded manually from Kaggle mirror matthewjansen/ucf101-action-recognition; official train/val/test layout preserved.",
+          "sources": {
+            "kaggle_mirror": 13451
+          }
+        },
+        {
+          "manifest": "ucf_crime_subset_eval_v1",
+          "group": "B",
+          "task": "fight_temporal",
+          "license": "research-use-only (UCF-Crime terms)",
+          "created_at": "2026-09-27T16:53:39.552494+00:00",
+          "datasets": [
+            "ucf_crime_subset"
+          ],
+          "videos": 1334,
+          "labels": {
+            "UNKNOWN": 1334
+          },
+          "label_ratio": {},
+          "splits": {
+            "test": 200,
+            "train": 940,
+            "val": 194
+          },
+          "labels_by_split": {
+            "test": {
+              "UNKNOWN": 200
+            },
+            "train": {
+              "UNKNOWN": 940
+            },
+            "val": {
+              "UNKNOWN": 194
+            }
+          },
+          "validation_statuses": {
+            "VALID": 1334
+          },
+          "corrupt_frames_total": 0,
+          "problem_files": [],
+          "duration_sec": {
+            "n": 1334,
+            "total": 30239.8,
+            "mean": 22.67,
+            "median": 30.0,
+            "min": 4.0,
+            "max": 30.0,
+            "missing": 0
+          },
+          "duration_by_label_sec": {
+            "UNKNOWN": {
+              "n": 1334,
+              "total": 30239.8,
+              "mean": 22.67,
+              "median": 30.0,
+              "min": 4.0,
+              "max": 30.0,
+              "missing": 0
+            }
+          },
+          "total_duration_hours": 8.4,
+          "fps": {
+            "n": 1334,
+            "total": 40014.97,
+            "mean": 30.0,
+            "median": 30.0,
+            "min": 25.0,
+            "max": 30.0,
+            "missing": 0
+          },
+          "fps_distribution": {
+            "30": 1332,
+            "25": 1,
+            "29.97": 1
+          },
+          "frame_count": {
+            "n": 1334,
+            "total": 907043.0,
+            "mean": 679.94,
+            "median": 900.0,
+            "min": 120.0,
+            "max": 900.0,
+            "missing": 0
+          },
+          "resolution_distribution": {
+            "320x240": 906,
+            "1080x1920": 300,
+            "1920x1080": 128
+          },
+          "distinct_resolutions": 3,
+          "fourcc_distribution": {
+            "h264": 1334
+          },
+          "container_distribution": {
+            ".mp4": 1334
+          },
+          "entries_with_unknown_metadata": 0,
+          "duplicate_content_groups": 0,
+          "duplicate_content_files": 0,
+          "duplicates": {},
+          "temporal_windows": {
+            "stride": 8,
+            "totals": {
+              "16": 111410,
+              "32": 108742
+            },
+            "by_label": {
+              "16": {
+                "UNKNOWN": 111410
+              },
+              "32": {
+                "UNKNOWN": 108742
+              }
+            },
+            "mean_per_video": {
+              "16": 83.52,
+              "32": 81.52
+            },
+            "videos_shorter_than_window": {
+              "16": 0,
+              "32": 0
+            }
+          },
+          "source_classes": {
+            "Normal_Videos": 186,
+            "Stealing": 97,
+            "Sitting": 62,
+            "Standing_Still": 62,
+            "Walking": 62,
+            "Walking_While_Reading_Book": 62,
+            "Clapping": 60,
+            "Meet_and_Split": 60,
+            "RoadAccidents": 60,
+            "Robbery": 60,
+            "Walking_While_Using_Phone": 60,
+            "Burglary": 53,
+            "Abuse": 50,
+            "Arrest": 50,
+            "Arson": 50,
+            "Assault": 50,
+            "Explosion": 50,
+            "Fighting": 50,
+            "Shooting": 50,
+            "Shoplifting": 50,
+            "Vandalism": 50
+          },
+          "proposed_labels": {
+            "HARD_NEGATIVE": 614,
+            "NOT_RELEVANT": 460,
+            "AMBIGUOUS_COMBAT_LIKE": 160,
+            "FIGHT": 100
+          },
+          "provenance": "Downloaded manually from Kaggle mirror; UCF-Crime derived subset, real CCTV. Class names parsed from filename prefixes.",
+          "sources": {
+            "kaggle_mirror": 1334
+          }
+        }
+      ]
+    },
+    "paths": {
+      "rwf2000": {
+        "path": "datasets/raw/RWF-2000",
+        "exists": true
+      },
+      "rlvs": {
+        "path": "datasets/raw/rlvs_hockey",
+        "exists": true
+      },
+      "hockey": {
+        "path": "datasets/raw/rlvs_hockey",
+        "exists": true
+      },
+      "movies": {
+        "path": "datasets/raw/movies_fight",
+        "exists": true
+      },
+      "ucf101": {
+        "path": "datasets/evaluation/raw/ucf101",
+        "exists": true
+      },
+      "crowd": {
+        "path": "datasets/evaluation/raw/crowd",
+        "exists": true
+      },
+      "hard_negative": {
+        "path": "datasets/fight_cases/hard_negative",
+        "exists": true
+      }
+    }
+  }
+}

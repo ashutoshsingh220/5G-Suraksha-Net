@@ -1,0 +1,589 @@
+{
+  "timestamp": "2026-10-02T19:14:45.712178+00:00",
+  "formal_verification": {
+    "verify_1_one_frame_candidate_only": {
+      "passed": true,
+      "state": "WEAPON_CANDIDATE",
+      "candidate_count": 1,
+      "confirmed_count": 0,
+      "persistence_count": 1,
+      "description": "1-frame detection creates candidate track with 1 hit, does not confirm"
+    },
+    "verify_2_two_frame_candidate_only": {
+      "passed": true,
+      "state": "WEAPON_CANDIDATE",
+      "candidate_count": 1,
+      "confirmed_count": 0,
+      "persistence_count": 2,
+      "description": "2-frame detection matches existing track, reaches 2 hits, remains candidate without confirming"
+    },
+    "verify_3_three_frame_spatially_inconsistent_no_confirm": {
+      "passed": true,
+      "state": "WEAPON_CANDIDATE",
+      "candidate_count": 3,
+      "confirmed_count": 0,
+      "description": "3 detections at disjoint spatial coordinates fail spatial matching, creating 3 separate 1-hit candidates without confirming"
+    },
+    "verify_4_separated_detections_no_accumulation": {
+      "passed": true,
+      "hits_at_event_a": 2,
+      "expired_during_gap": true,
+      "hits_at_event_b": 1,
+      "confirmed_count": 0,
+      "description": "False detections separated by expiry gap do not accumulate hits across unrelated timestamps"
+    },
+    "verify_5_no_high_weapon_incident": {
+      "passed": true,
+      "weapons_alone_count": 0,
+      "high_incident_count": 0,
+      "description": "Candidate weapon telemetry is excluded by fusion engine; no HIGH incident generated"
+    },
+    "verify_6_no_critical_armed_fight": {
+      "passed": true,
+      "armed_fights_count": 0,
+      "critical_incident_count": 0,
+      "unarmed_fights_count": 1,
+      "description": "Transient false detection does not escalate verified fight to CRITICAL ARMED_FIGHT"
+    },
+    "verify_7_persistent_weapon_confirms": {
+      "passed": true,
+      "state": "WEAPON_CONFIRMED",
+      "confirmed_count": 1,
+      "persistence_count": 3,
+      "high_incidents_emitted": 1,
+      "description": "Persistent detection satisfies min_hits=3, transitions to WEAPON_CONFIRMED and generates HIGH incident"
+    }
+  },
+  "live_webcam_validation": {
+    "validation_timestamp": "2026-10-02T19:14:45.692652+00:00",
+    "target_duration_s": 180.0,
+    "actual_duration_s": 180.62,
+    "camera_index": 0,
+    "total_frames_processed": 1778,
+    "effective_fps": 9.84,
+    "total_raw_weapon_detections": 2,
+    "detections_by_class": {
+      "knife": 0,
+      "long_gun": 0,
+      "pistol": 2
+    },
+    "number_of_candidates": 30,
+    "number_of_confirmed_weapons": 0,
+    "number_of_high_incidents": 0,
+    "number_of_critical_incidents": 0,
+    "false_long_gun_reached_confirmation": false,
+    "raw_detection_events": [
+      {
+        "frame_idx": 327,
+        "timestamp": 1790968322.3294,
+        "class_name": "pistol",
+        "cls_id": 2,
+        "confidence": 0.3097,
+        "bbox_xyxy": [
+          3.21,
+          0.0,
+          1276.58,
+          720.0
+        ]
+      },
+      {
+        "frame_idx": 4534,
+        "timestamp": 1790968470.8837,
+        "class_name": "pistol",
+        "cls_id": 2,
+        "confidence": 0.3396,
+        "bbox_xyxy": [
+          1145.89,
+          361.16,
+          1262.11,
+          526.88
+        ]
+      }
+    ],
+    "candidate_events": [
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3097,
+        "bbox": [
+          3.21,
+          0.0,
+          1276.58,
+          720.0
+        ],
+        "frame_timestamp": 1790968322.329391,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 1,
+        "frame_idx": 327,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3097,
+        "bbox": [
+          3.21,
+          0.0,
+          1276.58,
+          720.0
+        ],
+        "frame_timestamp": 1790968322.329391,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 1,
+        "frame_idx": 328,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3097,
+        "bbox": [
+          3.21,
+          0.0,
+          1276.58,
+          720.0
+        ],
+        "frame_timestamp": 1790968322.329391,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 1,
+        "frame_idx": 330,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3097,
+        "bbox": [
+          3.21,
+          0.0,
+          1276.58,
+          720.0
+        ],
+        "frame_timestamp": 1790968322.329391,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 1,
+        "frame_idx": 332,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3097,
+        "bbox": [
+          3.21,
+          0.0,
+          1276.58,
+          720.0
+        ],
+        "frame_timestamp": 1790968322.329391,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 1,
+        "frame_idx": 334,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3097,
+        "bbox": [
+          3.21,
+          0.0,
+          1276.58,
+          720.0
+        ],
+        "frame_timestamp": 1790968322.329391,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 1,
+        "frame_idx": 336,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3097,
+        "bbox": [
+          3.21,
+          0.0,
+          1276.58,
+          720.0
+        ],
+        "frame_timestamp": 1790968322.329391,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 1,
+        "frame_idx": 338,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3097,
+        "bbox": [
+          3.21,
+          0.0,
+          1276.58,
+          720.0
+        ],
+        "frame_timestamp": 1790968322.329391,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 1,
+        "frame_idx": 340,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3097,
+        "bbox": [
+          3.21,
+          0.0,
+          1276.58,
+          720.0
+        ],
+        "frame_timestamp": 1790968322.329391,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 1,
+        "frame_idx": 342,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3097,
+        "bbox": [
+          3.21,
+          0.0,
+          1276.58,
+          720.0
+        ],
+        "frame_timestamp": 1790968322.329391,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 1,
+        "frame_idx": 344,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3097,
+        "bbox": [
+          3.21,
+          0.0,
+          1276.58,
+          720.0
+        ],
+        "frame_timestamp": 1790968322.329391,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 1,
+        "frame_idx": 346,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3097,
+        "bbox": [
+          3.21,
+          0.0,
+          1276.58,
+          720.0
+        ],
+        "frame_timestamp": 1790968322.329391,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 1,
+        "frame_idx": 348,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3097,
+        "bbox": [
+          3.21,
+          0.0,
+          1276.58,
+          720.0
+        ],
+        "frame_timestamp": 1790968322.329391,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 1,
+        "frame_idx": 350,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3097,
+        "bbox": [
+          3.21,
+          0.0,
+          1276.58,
+          720.0
+        ],
+        "frame_timestamp": 1790968322.329391,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 1,
+        "frame_idx": 352,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3097,
+        "bbox": [
+          3.21,
+          0.0,
+          1276.58,
+          720.0
+        ],
+        "frame_timestamp": 1790968322.329391,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 1,
+        "frame_idx": 354,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3396,
+        "bbox": [
+          1145.89,
+          361.16,
+          1262.11,
+          526.88
+        ],
+        "frame_timestamp": 1790968470.8837247,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 2,
+        "frame_idx": 4534,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3396,
+        "bbox": [
+          1145.89,
+          361.16,
+          1262.11,
+          526.88
+        ],
+        "frame_timestamp": 1790968470.8837247,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 2,
+        "frame_idx": 4535,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3396,
+        "bbox": [
+          1145.89,
+          361.16,
+          1262.11,
+          526.88
+        ],
+        "frame_timestamp": 1790968470.8837247,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 2,
+        "frame_idx": 4536,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3396,
+        "bbox": [
+          1145.89,
+          361.16,
+          1262.11,
+          526.88
+        ],
+        "frame_timestamp": 1790968470.8837247,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 2,
+        "frame_idx": 4537,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3396,
+        "bbox": [
+          1145.89,
+          361.16,
+          1262.11,
+          526.88
+        ],
+        "frame_timestamp": 1790968470.8837247,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 2,
+        "frame_idx": 4538,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3396,
+        "bbox": [
+          1145.89,
+          361.16,
+          1262.11,
+          526.88
+        ],
+        "frame_timestamp": 1790968470.8837247,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 2,
+        "frame_idx": 4539,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3396,
+        "bbox": [
+          1145.89,
+          361.16,
+          1262.11,
+          526.88
+        ],
+        "frame_timestamp": 1790968470.8837247,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 2,
+        "frame_idx": 4540,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3396,
+        "bbox": [
+          1145.89,
+          361.16,
+          1262.11,
+          526.88
+        ],
+        "frame_timestamp": 1790968470.8837247,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 2,
+        "frame_idx": 4541,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3396,
+        "bbox": [
+          1145.89,
+          361.16,
+          1262.11,
+          526.88
+        ],
+        "frame_timestamp": 1790968470.8837247,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 2,
+        "frame_idx": 4542,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3396,
+        "bbox": [
+          1145.89,
+          361.16,
+          1262.11,
+          526.88
+        ],
+        "frame_timestamp": 1790968470.8837247,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 2,
+        "frame_idx": 4543,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3396,
+        "bbox": [
+          1145.89,
+          361.16,
+          1262.11,
+          526.88
+        ],
+        "frame_timestamp": 1790968470.8837247,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 2,
+        "frame_idx": 4544,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3396,
+        "bbox": [
+          1145.89,
+          361.16,
+          1262.11,
+          526.88
+        ],
+        "frame_timestamp": 1790968470.8837247,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 2,
+        "frame_idx": 4545,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3396,
+        "bbox": [
+          1145.89,
+          361.16,
+          1262.11,
+          526.88
+        ],
+        "frame_timestamp": 1790968470.8837247,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 2,
+        "frame_idx": 4546,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3396,
+        "bbox": [
+          1145.89,
+          361.16,
+          1262.11,
+          526.88
+        ],
+        "frame_timestamp": 1790968470.8837247,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 2,
+        "frame_idx": 4547,
+        "overall_state": "WEAPON_CANDIDATE"
+      },
+      {
+        "weapon_class": "pistol",
+        "confidence": 0.3396,
+        "bbox": [
+          1145.89,
+          361.16,
+          1262.11,
+          526.88
+        ],
+        "frame_timestamp": 1790968470.8837247,
+        "persistence_count": 0,
+        "confirmation_state": "WEAPON_CANDIDATE",
+        "track_id": 2,
+        "frame_idx": 4548,
+        "overall_state": "WEAPON_CANDIDATE"
+      }
+    ],
+    "confirmed_events": [],
+    "generated_incidents": [],
+    "detail_log_file": "outputs\\weapon_training\\manual_validation\\webcam_weapon_persistence_events.jsonl"
+  }
+}

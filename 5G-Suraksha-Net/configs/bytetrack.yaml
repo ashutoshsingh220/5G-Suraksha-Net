@@ -1,0 +1,10 @@
+# ByteTrack tracker configuration for 5G Suraksha-Net CCTV surveillance
+# Extended track buffer to prevent track fragmentation during occlusions/struggles.
+
+tracker_type: bytetrack       # Tracker backend: bytetrack
+track_high_thresh: 0.25      # First-stage match threshold
+track_low_thresh: 0.10       # Second-stage threshold for low-score matches
+new_track_thresh: 0.20       # Start a new track if no match >= this (recovers low-conf surveillance persons)
+track_buffer: 60             # Frames to keep lost tracks alive (raised from 30 to 60: 2.0s buffer)
+match_thresh: 0.80           # Association similarity threshold (IoU/cost)
+fuse_score: true             # Fuse detection score with motion/IoU for matching

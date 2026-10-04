@@ -1,0 +1,39 @@
+{
+  "timestamp": "2026-10-02 12:38:47",
+  "dataset_yaml": "C:\\Projects\\5G Suraksha-Net\\datasets\\weapon\\curated\\weapon_data.yaml",
+  "target_taxonomy": {
+    "0": "knife",
+    "1": "long_gun",
+    "2": "pistol"
+  },
+  "hyperparameters": {
+    "model": "yolo11s.pt",
+    "data": "C:/Projects/5G Suraksha-Net/datasets/weapon/curated/weapon_data.yaml",
+    "epochs": 50,
+    "patience": 15,
+    "batch": 16,
+    "imgsz": 640,
+    "device": 0,
+    "workers": 0,
+    "optimizer": "AdamW",
+    "lr0": 0.001,
+    "lrf": 0.01,
+    "warmup_epochs": 3.0,
+    "amp": true,
+    "seed": 42,
+    "deterministic": true,
+    "plots": true,
+    "save": true,
+    "val": true,
+    "split": "val",
+    "project": "C:/Projects/5G Suraksha-Net/outputs/weapon_training/runs",
+    "name": "yolo11s_weapon",
+    "exist_ok": true,
+    "verbose": true
+  },
+  "split_protocol": {
+    "train": "80% (21,621 images)",
+    "validation": "10% (2,703 images) used for epoch validation and checkpoint selection",
+    "locked_test": "10% (2,703 images) strictly locked / NOT evaluated during training"
+  }
+}

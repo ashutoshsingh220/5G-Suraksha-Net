@@ -1,0 +1,19 @@
+{
+  "source": "File: videotest1.mp4",
+  "source_type": "file",
+  "success": true,
+  "resolution": "1920x1080",
+  "frames_processed": 200,
+  "elapsed_sec": 5.67,
+  "avg_fps": 35.2,
+  "mean_latency_ms": 17.37,
+  "p95_latency_ms": 14.99,
+  "peak_vram_mb": 93.9,
+  "total_detections": 4,
+  "detections_by_class": {
+    "knife": 0,
+    "long_gun": 4,
+    "pistol": 0
+  },
+  "saved_video": "outputs/weapon_training/manual_validation/videotest1_annotated.mp4"
+}

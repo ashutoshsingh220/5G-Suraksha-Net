@@ -1,0 +1,6 @@
+{
+  "source": "RTSP Stream (rtsp://localhost:554/stre...)",
+  "source_type": "rtsp",
+  "success": false,
+  "error": "Failed to open capture source"
+}

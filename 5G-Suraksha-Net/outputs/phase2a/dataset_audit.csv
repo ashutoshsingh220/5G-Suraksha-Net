@@ -1,0 +1,9 @@
+dataset_name,location,total_videos,classes,fight_clips,non_fight_clips,avg_duration_s,fps_common,resolution_common,duplicates,corrupted,split_safety
+crowd_abnormal_eval_v1,datasets/evaluation/raw/crowd,9,Multi-class / Anomaly,0,0,247.26s,25-30,Mixed (240p - 720p),0,0,SAFE
+hockey_fight_v1,datasets/raw/rlvs_hockey,1000,"Binary: FIGHT(500), NON_FIGHT(500)",500,500,1.64s,25-30,Mixed (240p - 720p),0,0,SAFE
+movies_fight_v1,datasets/raw/movies_fight,201,"Binary: FIGHT(100), NON_FIGHT(101)",100,101,1.74s,25-30,Mixed (240p - 720p),0,0,SAFE
+rlvs_v1,datasets/raw/rlvs_hockey,2000,"Binary: FIGHT(1000), NON_FIGHT(1000)",1000,1000,5.25s,25-30,Mixed (240p - 720p),0,0,SAFE
+rwf2000_v1,datasets/raw/RWF-2000,2000,"Binary: FIGHT(1000), NON_FIGHT(1000)",1000,1000,5.00s,30.0,Mixed (240p - 720p),0,0,SAFE
+ucf101_eval_v1,datasets/evaluation/raw/ucf101,13451,Multi-class / Anomaly,0,0,7.16s,25-30,Mixed (240p - 720p),0,9,SAFE
+ucf_crime_subset_eval_v1,datasets/evaluation/raw/activity,1334,Multi-class / Anomaly,0,0,22.67s,25-30,Mixed (240p - 720p),0,0,"CAUTION (long surveillance anomaly videos, not clean binary clips)"
+HMDB51 (HMBD),datasets/action/HMBD,6766,"51 action classes (6,766 clips)",499,1616,~2.5s (range 1.0s - 3.5s),30.0 / 25.0,Mostly 320x240 (240p),0,0,SAFE if using source-grouped splits (prevent same movie in train and val)

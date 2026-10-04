@@ -1,0 +1,13 @@
+# Crowd density zones per camera.
+# Polygons use NORMALIZED coordinates (0..1 of frame width/height),
+# so they work at any resolution.
+#
+# camera_id must match the id used by the pipeline (from .env / stream name).
+
+zones:
+  - camera_id: "cam_default"
+    regions:
+      - name: "market_square"
+        polygon: [[0.05, 0.30], [0.55, 0.30], [0.55, 0.95], [0.05, 0.95]]
+      - name: "street_corridor"
+        polygon: [[0.58, 0.35], [0.98, 0.35], [0.98, 0.95], [0.58, 0.95]]

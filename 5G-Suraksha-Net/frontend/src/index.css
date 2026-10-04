@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #0B0F14;
+    color: #E8EDF3;
+    font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Compact, restrained operational scrollbars */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0B0F14;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #263341;
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3B9EFF;
+  }
+}
+
+@layer utilities {
+  /* Solid, restrained professional operational panels */
+  .suraksha-panel {
+    background: #111821;
+    border: 1px solid #263341;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .suraksha-panel-header {
+    background: #151E28;
+    border-bottom: 1px solid #263341;
+  }
+
+  /* High priority emergency alert panel (clean dark red border, no neon bloom) */
+  .suraksha-panel-emergency {
+    background: #151014;
+    border: 1px solid #E05252;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(224, 82, 82, 0.15);
+  }
+
+  .suraksha-card-inner {
+    background: #151E28;
+    border: 1px solid #263341;
+    border-radius: 6px;
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "mp4": {
+    "source_name": "MP4 CCTV (Recorded)",
+    "source_path": "C:\\Projects\\5G Suraksha-Net\\datasets\\videos\\external\\cctv_test_01.mp4",
+    "source_kind": "file",
+    "frames_processed": 120,
+    "wall_time_s": 3.52,
+    "resolution": "500x290",
+    "source_fps": 12.5,
+    "processing_fps": 34.1,
+    "detect_track_ms": 20.28,
+    "crowd_ms": 1.38,
+    "fight_ms": 0.01,
+    "total_ms": 21.67,
+    "person_count_final": 0,
+    "incidents_count": 0,
+    "device": "cuda"
+  },
+  "rtsp": {
+    "source_name": "Drone Stream (Simulated RTSP)",
+    "source_path": "rtsp://192.168.1.100:8554/drone",
+    "source_kind": "stream",
+    "frames_processed": 120,
+    "wall_time_s": 1.42,
+    "resolution": "500x290",
+    "source_fps": 25.0,
+    "processing_fps": 84.3,
+    "detect_track_ms": 9.62,
+    "crowd_ms": 1.36,
+    "fight_ms": 0.01,
+    "total_ms": 10.98,
+    "person_count_final": 0,
+    "incidents_count": 0,
+    "device": "cuda"
+  }
+}

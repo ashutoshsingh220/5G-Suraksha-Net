@@ -1,0 +1,116 @@
+# Temporal fight-classifier training configuration (PROMPT 4).
+#
+# Every hyperparameter the trainer uses lives here — nothing is hardcoded in
+# scripts/train_temporal.py. Defaults are deliberately conservative for the
+# development machine (RTX 4050 Laptop, 6 GB VRAM); the GRU is only ~16k
+# parameters, so VRAM is never the constraint. The real cost is feature
+# extraction (~150 min for all 2000 RWF-2000 clips, single process).
+#
+# SCOPE: RWF-2000 ONLY. No other dataset is referenced, and datasets are never
+# merged at this stage.
+#
+# DO NOT RUN FULL TRAINING from this file yet — see docs/TRAINING_PIPELINE.md.
+
+dataset:
+  manifest: "rwf2000_v1"
+  # Only these two labels may ever reach the loss. UNKNOWN / ambiguous clips are
+  # rejected by suraksha.training.dataset.label_to_int, not silently skipped.
+  labels: ["NON_FIGHT", "FIGHT"]
+  # Official RWF-2000 split, preserved verbatim from the folder layout. No test
+  # split is fabricated.
+  train_split: "train"
+  val_split: "val"
+  # Window geometry MUST match configs/app.yaml -> fight.temporal, otherwise the
+  # checkpoint cannot be consumed by the live recognizer.
+  window_frames: 32
+  stride_frames: 8
+  feature_dim: 8              # from FightCandidateDetector.FEATURE_DIM — do not edit
+  # Compact per-clip .npz cache. No frame images are ever written to disk.
+  feature_cache_dir: "datasets/processed/features"
+  # Deterministic sample sizes for the verification stages (Steps 10-13).
+  # 0 means "use everything available in the cache".
+  sample:
+    survey_videos_per_cell: 20      # 80 videos total for the yield survey
+    smoke_windows: 64               # synthetic, shape-only
+    overfit_videos_per_cell: 8      # 16 videos for the tiny-overfit test
+    overfit_val_videos_per_cell: 2  # held-out sanity check, not a metric
+  # Extraction settings — must match what the live detector sees.
+  extraction:
+    frame_width: 640
+    frame_height: 360
+    device: "auto"
+    max_frames_per_clip: 0          # 0 = decode the whole clip
+
+normalization:
+  # Fitted on TRAIN windows ONLY and stored inside the checkpoint so
+  # TorchTemporalClassifier re-applies the identical transform at inference.
+  method: "standard"                # none | standard | minmax
+  eps: 1.0e-6                       # constant features get std=1.0 instead of 0
+
+augmentation:
+  # There is NO feature-space augmentation. data/sequences.py implements hflip
+  # and brightness jitter, but those are pixel transforms for the unused
+  # (T,128,128,3) clip path and have no meaning for 8 kinematic features.
+  # Stated explicitly rather than invented.
+  enabled: false
+  reason: >-
+    The GRU consumes per-frame pair kinematics, not pixels. Horizontal flip is
+    a no-op on relative distance / IoU / flow magnitude, and brightness does not
+    exist in this representation. Adding jitter here would create a train/test
+    mismatch the live detector cannot reproduce.
+
+model:
+  # Read off the existing inference network — NOT redesigned. These values are
+  # asserted against suraksha.training.model at load time.
+  feature_dim: 8
+  hidden_size: 64
+  head_hidden: 32
+  num_layers: 1
+  bidirectional: false
+  dropout: 0.0
+
+training:
+  epochs: 30
+  batch_size: 64              # ~16k-param GRU; 64x32x8 floats is negligible VRAM
+  eval_batch_size: 256
+  optimizer: "adam"
+  lr: 1.0e-3
+  weight_decay: 0.0
+  grad_clip: 5.0
+  # Step 9: class weighting is enabled ONLY because the measured window-level
+  # distribution is imbalanced (FIGHT:NON_FIGHT ~ 3.1:1 overall, ~18:1 on the
+  # official val split) even though videos are perfectly 1000:1000. The cause is
+  # structural — proximity_iou>=0.05 engagement is itself correlated with
+  # fighting. Disabled automatically when the ratio is under 1.25:1.
+  balanced_class_weights: true
+  early_stopping_patience: 0   # 0 = disabled for verification runs
+  seed: 42
+  deterministic_cuda: false    # true costs throughput; see Step 15 caveat
+  device: "auto"
+  num_workers: 0               # corpus fits in RAM (~20 MiB); workers add nothing
+
+evaluation:
+  # Binary metrics are reported at the neutral 0.5 boundary. The 0.60 value in
+  # configs/app.yaml is the INCIDENT VERIFICATION threshold and is deliberately
+  # not tuned here.
+  threshold: 0.5
+  # The official val split contains 6 clips that are byte-identical to a training
+  # clip. Metrics are ALWAYS reported twice. Neither is leakage-free.
+  report_leakage_adjusted: true
+
+leakage:
+  registry_path: "datasets/reports/rwf2000_duplicate_leakage.json"
+
+outputs:
+  checkpoint_dir: "models/temporal"
+  report_dir: "datasets/reports"
+  # Names for the verification artifacts (Steps 10-17). Full-training artifacts
+  # are named by the training run itself.
+  survey_report: "rwf2000_feature_yield.json"
+  verification_report: "rwf2000_pipeline_verification.json"
+
+benchmark:
+  batch_sizes: [8, 16, 32, 64]
+  iters: 30
+  warmup: 5
+  corpus_sizes: [5000, 20725]   # 20725 = measured projection for all 2000 clips

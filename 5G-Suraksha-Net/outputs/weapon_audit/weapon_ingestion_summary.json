@@ -1,0 +1,83 @@
+{
+  "timestamp": "2026-10-02",
+  "status": "INGESTION_COMPLETE",
+  "source_counts": {
+    "WeaponDataset_v11_raw_images": 24083,
+    "WeaponDataset_v11_raw_annotations": 30730,
+    "NoGun_v5_raw_images": 2947,
+    "NoGun_v5_raw_annotations": 3675,
+    "combined_raw_images": 27030,
+    "combined_raw_annotations": 34405
+  },
+  "curated_counts": {
+    "total_images": 27027,
+    "total_annotations": 29023,
+    "foreground_annotations_by_class": {
+      "0_knife": 6001,
+      "1_long_gun": 10110,
+      "2_pistol": 12912
+    },
+    "background_images_total": 3456,
+    "background_images_breakdown": {
+      "NoGun_v5": 2947,
+      "WeaponDataset_v11_empty_or_only_other": 509
+    },
+    "removed_other_annotations": 1692,
+    "flagged_synthetic_images": 3,
+    "flagged_synthetic_details": [
+      {
+        "dataset": "WeaponDataset_v11",
+        "split": "train",
+        "filename": "png-clipart-glock-9-19mm-parabellum-semi-automatic-pistol-handgun-pistol-grenades-ammunition-black_png_jpg.rf.81becce24d7f8a1df7a0db4d9b5ba732.jpg",
+        "reason": "Synthetic clipart/cartoon icon illustration"
+      },
+      {
+        "dataset": "WeaponDataset_v11",
+        "split": "train",
+        "filename": "set-weapon-military-rifle-revolver-desert-eagle-pistol-shotgun-carbine-grenade-knife-submachine-gun-cartoon-icon-illustration-isolated-white_106293-263_png_jpg.rf.1e4a064881d6acf7bfc6c555a9d2861e.jpg",
+        "reason": "Synthetic clipart/cartoon icon illustration"
+      },
+      {
+        "dataset": "WeaponDataset_v11",
+        "split": "train",
+        "filename": "stock-vector-vector-rifles-and-guns-different-weapons-knife-bomb-pistol-1418343290_jpg.rf.f25c9ab9f7890c65d12bc3ddf1c2acb6.jpg",
+        "reason": "Synthetic clipart/cartoon icon illustration"
+      }
+    ],
+    "corrupt_images": 0,
+    "sha256_duplicates": 0
+  },
+  "splits": {
+    "train": {
+      "images": 21621,
+      "percentage": 80.0,
+      "background_images": 2764,
+      "total_boxes": 23229,
+      "knife_boxes": 4807,
+      "long_gun_boxes": 8095,
+      "pistol_boxes": 10327
+    },
+    "val": {
+      "images": 2703,
+      "percentage": 10.0,
+      "background_images": 346,
+      "total_boxes": 2911,
+      "knife_boxes": 598,
+      "long_gun_boxes": 1018,
+      "pistol_boxes": 1295
+    },
+    "test": {
+      "images": 2703,
+      "percentage": 10.0,
+      "background_images": 346,
+      "total_boxes": 2883,
+      "knife_boxes": 596,
+      "long_gun_boxes": 997,
+      "pistol_boxes": 1290
+    }
+  },
+  "curated_path": "C:\\Projects\\5G Suraksha-Net\\datasets\\weapon\\curated",
+  "yaml_path": "C:\\Projects\\5G Suraksha-Net\\datasets\\weapon\\curated\\weapon_data.yaml",
+  "yolo_training_started": false,
+  "original_datasets_modified": false
+}

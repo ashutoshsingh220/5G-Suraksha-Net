@@ -1,0 +1,23 @@
+{
+  "video": "datasets/videos/external/cctv_test_01.mp4",
+  "total_frames": 1703,
+  "elapsed_sec": 27.45,
+  "processing_fps": 62.04,
+  "resolution": "500x290",
+  "frames_with_ge1_person": 904,
+  "pct_frames_with_ge1": 53.08,
+  "frames_with_ge2_persons": 359,
+  "pct_frames_with_ge2": 21.08,
+  "max_simultaneous_persons": 4,
+  "mean_persons_per_frame": 0.8,
+  "unique_track_ids_count": 40,
+  "mean_detection_confidence": 0.543,
+  "min_detection_confidence": 0.25,
+  "max_detection_confidence": 0.873,
+  "active_candidate_pairs_count": 15,
+  "temporal_windows_scored": 93,
+  "temporal_scores_mean": 0.776,
+  "temporal_scores_max": 0.776,
+  "verified_fights_count": 0,
+  "verified_fights": []
+}

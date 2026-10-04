@@ -1,0 +1,47 @@
+# Environments & Packages
+.venv/
+*/.venv/
+node_modules/
+*/node_modules/
+dist/
+*/dist/
+
+# Python Cache & Bytecode
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*/.pytest_cache/
+
+# Local Environment & Secrets
+.env
+*/.env
+.env.*
+*/.env.*
+!.env.example
+!*/.env.example
+
+# Logs & Temporary Artifacts
+*.log
+logs/
+*/logs/
+outputs/incidents/*.json
+outputs/snapshots/*.jpg
+!outputs/**/.gitkeep
+!models/**/.gitkeep
+
+# Datasets
+datasets/
+*/datasets/
+data/
+*/data/
+acc_det/dataset/
+acc_det/output/
+acc_det/runs/
+
+# OS / Editor Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

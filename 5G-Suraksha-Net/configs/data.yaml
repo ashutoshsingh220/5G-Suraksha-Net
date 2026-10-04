@@ -1,0 +1,153 @@
+# Dataset configuration — acquisition, validation, splitting, temporal sequences.
+# Used by scripts/ingest_dataset.py and src/suraksha/data/*.
+
+labels:
+  # Canonical training labels (do not invent labels a source dataset lacks)
+  fight: "FIGHT"
+  non_fight: "NON_FIGHT"
+  # Mapping from raw folder names / source labels to canonical labels
+  aliases:
+    fight: ["fight", "fights", "fighting", "violence", "abnormal"]
+    non_fight: ["no_fight", "non_fight", "nofight", "nofights", "no_fights",
+                "nonfight", "normal", "peaceful", "no-violence", "nonviolence",
+                "non-violence"]
+
+groups:
+  # Group A = training/validation data. Group B = independent CCTV-style
+  # evaluation. The two groups must NEVER appear in the same manifest.
+  A: "training"
+  B: "evaluation"
+
+splitting:
+  ratios: {train: 0.70, val: 0.15, test: 0.15}
+  seed: 42
+  level: "video"              # HARD RULE: split at video/group level only
+  respect_predefined: true    # keep official dataset splits when provided
+
+validation:
+  decode_check: "sample"      # "all" | "sample" | "none"
+  sample_frames: 16           # frames decoded per video when decode_check=sample
+  reports_dir: "datasets/reports"
+
+sequences:
+  # Temporal sequence preparation (design + tooling only — NO training yet).
+  # Sequences are generated LAZILY from video files at train time; frames are
+  # never pre-extracted to disk (avoids millions of duplicate stored frames).
+  windows: [16, 32]           # configurable sequence lengths (frames)
+  stride: 8                   # sliding-window stride within a video
+  sampler: "uniform"          # uniform | stride (deterministic when seeded)
+  seed: 42
+
+preprocessing:
+  frame_size: [128, 128]      # resize (w, h); motion cues preserved (no crop)
+  normalization: "unit"       # unit = /255 → [0,1] | imagenet = mean/std
+  imagenet_mean: [0.485, 0.456, 0.406]
+  imagenet_std: [0.229, 0.224, 0.225]
+
+augmentation:
+  # Keep motion cues intact: temporal order is NEVER shuffled/dropped here.
+  enabled: false              # configurable; default off for reproducibility
+  horizontal_flip_p: 0.5      # safe: does not destroy motion
+  brightness_jitter: 0.1      # mild photometric only
+  # Explicitly NOT allowed (destroy motion cues): frame shuffling, random
+  # temporal drops, heavy crops/warps, large rotations.
+
+hard_negatives:
+  # Categories required for Group B evaluation (docs/DATASET_REPORT.md §14).
+  # Recorded per manifest entry in notes.hard_negative_category.
+  categories:
+    - normal_walking
+    - normal_crowd
+    - running
+    - gathering
+    - dispersing
+    - arguing_gesturing
+    - hugging
+    - handshaking
+    - dancing
+    - sports_like
+    - pushing_shoving
+    - waving_gesturing
+    - sudden_nonviolent_movement
+    - actual_fighting
+
+# ---------------------------------------------------------------------------
+# LABEL MAPPING — PROPOSAL ONLY (docs/DATASET_AUDIT.md §10)
+#
+# Nothing here rewrites the canonical `label` field. The ingester copies the
+# proposed value into notes.proposed_label so a human can review the semantics
+# BEFORE any of it is allowed to reach a training set. Reason: several source
+# classes are combat-like but not street fights (boxing, fencing, wrestling) and
+# labelling them NON_FIGHT would teach the model that fast arm contact is
+# harmless, while labelling them FIGHT would teach it that sport is violence.
+#
+# Proposed values:
+#   FIGHT                 source states violence/fighting
+#   NON_FIGHT             source states normal/non-violent
+#   HARD_NEGATIVE         non-violent but easily confused with a fight
+#   AMBIGUOUS_COMBAT_LIKE sport/staged combat — EXCLUDE from training by default
+#   CROWD_ANOMALY         crowd panic/surge — not interpersonal violence
+#   NOT_RELEVANT          unrelated to street-CCTV fight detection
+# ---------------------------------------------------------------------------
+label_mapping:
+  rwf2000:
+    Fight: FIGHT
+    NonFight: NON_FIGHT
+  rlvs:
+    V: FIGHT
+    NV: NON_FIGHT
+  hockey_fight:
+    fi: FIGHT
+    "no": NON_FIGHT        # quoted: bare `no` is a YAML boolean
+  movies_fight:
+    fights: FIGHT          # domain gap: staged movie footage, not CCTV
+    noFights: NON_FIGHT
+  ucf101:
+    WalkingWithDog: HARD_NEGATIVE
+    SalsaSpin: HARD_NEGATIVE
+    IceDancing: HARD_NEGATIVE
+    JumpingJack: HARD_NEGATIVE
+    TrampolineJumping: HARD_NEGATIVE
+    BasketballDunk: HARD_NEGATIVE
+    SkateBoarding: HARD_NEGATIVE
+    MilitaryParade: HARD_NEGATIVE
+    BandMarching: HARD_NEGATIVE
+    HorseRiding: HARD_NEGATIVE
+    CliffDiving: HARD_NEGATIVE
+    SkyDiving: HARD_NEGATIVE
+    TaiChi: HARD_NEGATIVE
+    # combat-like sport / staged violence — never silently NON_FIGHT
+    Fencing: AMBIGUOUS_COMBAT_LIKE
+    BoxingPunchingBag: AMBIGUOUS_COMBAT_LIKE
+    BoxingSpeedBag: AMBIGUOUS_COMBAT_LIKE
+    Punch: AMBIGUOUS_COMBAT_LIKE
+    Wrestling: AMBIGUOUS_COMBAT_LIKE
+    SumoWrestling: AMBIGUOUS_COMBAT_LIKE
+    Nunchucks: AMBIGUOUS_COMBAT_LIKE
+    FieldHockeyPenalty: AMBIGUOUS_COMBAT_LIKE
+    __default__: NOT_RELEVANT
+  ucf_crime_subset:
+    Fighting: FIGHT                    # real CCTV violence
+    Assault: FIGHT
+    Abuse: AMBIGUOUS_COMBAT_LIKE       # verbal/physical abuse, not always a fight
+    Arrest: AMBIGUOUS_COMBAT_LIKE      # restraint by police looks like grappling
+    Walking: HARD_NEGATIVE
+    Walking_While_Using_Phone: HARD_NEGATIVE
+    Walking_While_Reading_Book: HARD_NEGATIVE
+    Standing_Still: HARD_NEGATIVE
+    Sitting: HARD_NEGATIVE
+    Normal_Videos: HARD_NEGATIVE
+    Meet_and_Split: HARD_NEGATIVE      # gathering / dispersing
+    Clapping: HARD_NEGATIVE            # gesturing / sudden arm movement
+    RoadAccidents: AMBIGUOUS_COMBAT_LIKE
+    Arson: NOT_RELEVANT                # other module's responsibility (teammate)
+    Explosion: NOT_RELEVANT
+    Shooting: NOT_RELEVANT
+    Robbery: NOT_RELEVANT
+    Stealing: NOT_RELEVANT
+    Shoplifting: NOT_RELEVANT
+    Vandalism: NOT_RELEVANT
+    Burglary: NOT_RELEVANT
+    __default__: NOT_RELEVANT
+  crowd_abnormal:
+    __default__: CROWD_ANOMALY         # frame-level labels only; videos unlabelled

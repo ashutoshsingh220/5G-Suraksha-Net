@@ -1,0 +1,203 @@
+{
+  "timestamp": "2026-10-02",
+  "datasets": {
+    "NoGun_v5": {
+      "dataset_name": "NoGun_v5",
+      "dataset_path": "C:\\Projects\\5G Suraksha-Net\\datasets\\weapon\\NoGun_v5",
+      "yaml_config": {
+        "train": "../train/images",
+        "val": "../valid/images",
+        "test": "../test/images",
+        "nc": 1,
+        "names": [
+          "nogun"
+        ],
+        "roboflow": {
+          "workspace": "gundetectiondataset",
+          "project": "nogun",
+          "version": 5,
+          "license": "CC BY 4.0",
+          "url": "https://universe.roboflow.com/gundetectiondataset/nogun/dataset/5"
+        }
+      },
+      "class_names": [
+        "nogun"
+      ],
+      "num_classes": 1,
+      "total_images": 2947,
+      "total_annotations": 3675,
+      "splits": {
+        "train": {
+          "image_count": 2829,
+          "label_file_count": 2829,
+          "annotation_count": 3518,
+          "empty_label_count": 30
+        },
+        "valid": {
+          "image_count": 88,
+          "label_file_count": 88,
+          "annotation_count": 121,
+          "empty_label_count": 0
+        },
+        "test": {
+          "image_count": 30,
+          "label_file_count": 30,
+          "annotation_count": 36,
+          "empty_label_count": 0
+        }
+      },
+      "per_class": [
+        {
+          "class_id": 0,
+          "class_name": "nogun",
+          "image_count": 2917,
+          "annotation_count": 3675,
+          "avg_width": 0.242,
+          "avg_height": 0.326,
+          "avg_area": 0.1022,
+          "scale_distribution": {
+            "small_pct": 11.76,
+            "medium_pct": 59.35,
+            "large_pct": 28.9
+          }
+        }
+      ],
+      "resolutions": {
+        "640x640": 2947
+      },
+      "corrupt_images": [],
+      "invalid_labels_count": 0,
+      "invalid_labels_sample": [],
+      "empty_labels_count": 30,
+      "missing_labels_count": 0,
+      "total_duplicate_files": 0,
+      "leakage_count": 0,
+      "leakage_sample": []
+    },
+    "WeaponDataset_v11": {
+      "dataset_name": "WeaponDataset_v11",
+      "dataset_path": "C:\\Projects\\5G Suraksha-Net\\datasets\\weapon\\WeaponDataset_v11",
+      "yaml_config": {
+        "train": "../train/images",
+        "val": "../valid/images",
+        "test": "../test/images",
+        "nc": 4,
+        "names": [
+          "knife",
+          "long_gun",
+          "other",
+          "pistol"
+        ],
+        "roboflow": {
+          "workspace": "gundetectiondataset",
+          "project": "weapondataset-oi2g3",
+          "version": 11,
+          "license": "CC BY 4.0",
+          "url": "https://universe.roboflow.com/gundetectiondataset/weapondataset-oi2g3/dataset/11"
+        }
+      },
+      "class_names": [
+        "knife",
+        "long_gun",
+        "other",
+        "pistol"
+      ],
+      "num_classes": 4,
+      "total_images": 24083,
+      "total_annotations": 30730,
+      "splits": {
+        "train": {
+          "image_count": 23361,
+          "label_file_count": 23361,
+          "annotation_count": 29831,
+          "empty_label_count": 423
+        },
+        "valid": {
+          "image_count": 722,
+          "label_file_count": 722,
+          "annotation_count": 899,
+          "empty_label_count": 21
+        }
+      },
+      "per_class": [
+        {
+          "class_id": 0,
+          "class_name": "knife",
+          "image_count": 5360,
+          "annotation_count": 6003,
+          "avg_width": 0.3067,
+          "avg_height": 0.3733,
+          "avg_area": 0.1378,
+          "scale_distribution": {
+            "small_pct": 13.64,
+            "medium_pct": 44.33,
+            "large_pct": 42.03
+          }
+        },
+        {
+          "class_id": 1,
+          "class_name": "long_gun",
+          "image_count": 8149,
+          "annotation_count": 10116,
+          "avg_width": 0.3204,
+          "avg_height": 0.3463,
+          "avg_area": 0.1349,
+          "scale_distribution": {
+            "small_pct": 8.61,
+            "medium_pct": 50.92,
+            "large_pct": 40.47
+          }
+        },
+        {
+          "class_id": 2,
+          "class_name": "other",
+          "image_count": 1283,
+          "annotation_count": 1692,
+          "avg_width": 0.1969,
+          "avg_height": 0.2875,
+          "avg_area": 0.0608,
+          "scale_distribution": {
+            "small_pct": 15.01,
+            "medium_pct": 66.96,
+            "large_pct": 18.03
+          }
+        },
+        {
+          "class_id": 3,
+          "class_name": "pistol",
+          "image_count": 11262,
+          "annotation_count": 12919,
+          "avg_width": 0.2362,
+          "avg_height": 0.2846,
+          "avg_area": 0.1078,
+          "scale_distribution": {
+            "small_pct": 24.96,
+            "medium_pct": 48.94,
+            "large_pct": 26.11
+          }
+        }
+      ],
+      "resolutions": {
+        "640x640": 24083
+      },
+      "corrupt_images": [],
+      "invalid_labels_count": 0,
+      "invalid_labels_sample": [],
+      "empty_labels_count": 444,
+      "missing_labels_count": 0,
+      "total_duplicate_files": 0,
+      "leakage_count": 0,
+      "leakage_sample": []
+    }
+  },
+  "cross_dataset": {
+    "duplicate_count": 0,
+    "sample_duplicates": [],
+    "safe_to_merge_directly": false,
+    "merge_risk_rationale": "1. Class ID mismatch: NoGun_v5 uses class 0 for 'nogun', whereas WeaponDataset_v11 uses class 0 for 'knife'. 2. Conflicting label semantics: In YOLO, 'no-weapon' hard negatives MUST be represented as empty label files (zero bounding boxes), NOT as a detected foreground bounding box class. Training 'nogun' as a detected class forces the model to predict bounding boxes on every phone, bottle, and flashlight. 3. Cross-dataset deduplication and remapping into background images is strictly required."
+  },
+  "totals": {
+    "combined_raw_images": 27030,
+    "combined_raw_annotations": 34405
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "source": "Webcam (0)",
+  "source_type": "webcam",
+  "success": true,
+  "resolution": "640x480",
+  "frames_processed": 150,
+  "elapsed_sec": 6.81,
+  "avg_fps": 22.0,
+  "mean_latency_ms": 20.33,
+  "p95_latency_ms": 13.53,
+  "peak_vram_mb": 99.7,
+  "total_detections": 0,
+  "detections_by_class": {
+    "knife": 0,
+    "long_gun": 0,
+    "pistol": 0
+  },
+  "saved_video": "outputs/weapon_training/manual_validation/webcam_annotated.mp4"
+}
