@@ -1,0 +1,2714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5G Suraksha-Net — Complete Technical Documentation</title>
+
+<style>
+    @page { margin: 15mm; size: A4; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: #24292f;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 30px;
+        background-color: #ffffff;
+    }
+    h1 {
+        font-size: 26pt;
+        color: #0969da;
+        border-bottom: 2px solid #0969da;
+        padding-bottom: 10px;
+        margin-top: 0;
+    }
+    h2 {
+        font-size: 18pt;
+        color: #1f2328;
+        border-bottom: 1px solid #d0d7de;
+        padding-bottom: 8px;
+        margin-top: 36px;
+    }
+    h3 {
+        font-size: 14pt;
+        color: #24292f;
+        margin-top: 24px;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 20px 0;
+        font-size: 9.5pt;
+    }
+    th, td {
+        border: 1px solid #d0d7de;
+        padding: 8px 12px;
+        text-align: left;
+    }
+    th {
+        background-color: #f6f8fa;
+        font-weight: 600;
+        color: #1f2328;
+    }
+    tr:nth-child(even) {
+        background-color: #fcfcfc;
+    }
+    pre {
+        background-color: #f6f8fa;
+        border: 1px solid #d0d7de;
+        border-radius: 6px;
+        padding: 14px;
+        overflow-x: auto;
+        font-size: 9pt;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        line-height: 1.45;
+    }
+    code {
+        background-color: rgba(175, 184, 193, 0.2);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 90%;
+        font-family: Consolas, monospace;
+    }
+    pre code {
+        background: none;
+        padding: 0;
+    }
+    blockquote {
+        border-left: 4px solid #0969da;
+        padding: 8px 16px;
+        color: #57606a;
+        background: #f6f8fa;
+        margin: 16px 0;
+        border-radius: 0 6px 6px 0;
+    }
+    hr {
+        border: 0;
+        border-top: 1px solid #d0d7de;
+        margin: 28px 0;
+    }
+    .print-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 10px 18px;
+        background: #0969da;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .print-button:hover { background: #0756b5; }
+    @media print {
+        .print-button { display: none; }
+        body { padding: 0; max-width: 100%; }
+        h1, h2, h3 { page-break-after: avoid; }
+        table, pre { page-break-inside: avoid; }
+    }
+</style>
+
+</head>
+<body>
+<button class="print-button" onclick="window.print()">Print / Save as PDF</button>
+<h1 id="5g-suraksha-net-complete-technical-documentation">5G Suraksha-Net — Complete Technical Documentation</h1>
+<blockquote>
+<p><strong>Combined Repository:</strong> <a href="https://github.com/ashutoshsingh220/5G-Suraksha-Net"><code>github.com/ashutoshsingh220/5G-Suraksha-Net</code></a>
+<strong>Classification:</strong> Internal Technical Reference — All Figures Extracted from Source Code &amp; Training Artefacts
+<strong>Date:</strong> October 2026</p>
+</blockquote>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-executive-summary">Executive Summary</a></li>
+<li><a href="#2-system-architecture-overview">System Architecture Overview</a></li>
+<li><a href="#3-subsystem-a--aerial-uav--tactical-ai">Subsystem A — Aerial UAV &amp; Tactical AI (5G-Suraksha-Net)</a></li>
+<li>3.1 <a href="#31-pipeline-architecture">Pipeline Architecture</a></li>
+<li>3.2 <a href="#32-person-detection--multi-object-tracking">Person Detection &amp; Multi-Object Tracking</a></li>
+<li>3.3 <a href="#33-weapon-detection-system">Weapon Detection System</a></li>
+<li>3.4 <a href="#34-fight-detection-system-temporal-bigru">Fight Detection System (Temporal BiGRU)</a></li>
+<li>3.5 <a href="#35-crowd-analytics--panic-detection">Crowd Analytics &amp; Panic Detection</a></li>
+<li>3.6 <a href="#36-multimodal-incident-fusion-engine">Multimodal Incident Fusion Engine</a></li>
+<li>3.7 <a href="#37-5g-network-slicing-policy-engine">5G Network Slicing Policy Engine</a></li>
+<li>3.8 <a href="#38-emergency-response-policy--planner">Emergency Response Policy &amp; Planner</a></li>
+<li>3.9 <a href="#39-drone-telemetry-mavlink">Drone Telemetry (MAVLink)</a></li>
+<li>3.10 <a href="#310-email-notification-system">Email Notification System</a></li>
+<li>3.11 <a href="#311-ai-agent-assessment">AI Agent Assessment (Deterministic + LLM)</a></li>
+<li>3.12 <a href="#312-demo-simulation-system">Demo Simulation System</a></li>
+<li><a href="#4-subsystem-b--sparsh-municipal-ground-cctv">Subsystem B — Sparsh Municipal Ground CCTV</a></li>
+<li>4.1 <a href="#41-architecture-overview">Architecture Overview</a></li>
+<li>4.2 <a href="#42-accident-detection--detr-backbone">Accident Detection — DETR Backbone</a></li>
+<li>4.3 <a href="#43-accident-detection--yolo-hierarchical-primary">Accident Detection — YOLO Hierarchical (Primary)</a></li>
+<li>4.4 <a href="#44-fire--smoke-detection">Fire &amp; Smoke Detection</a></li>
+<li>4.5 <a href="#45-emergency-alert-dispatch-pipeline">Emergency Alert Dispatch Pipeline</a></li>
+<li>4.6 <a href="#46-emergency-facility-registry">Emergency Facility Registry</a></li>
+<li>4.7 <a href="#47-surveillance-engine">Surveillance Engine</a></li>
+<li><a href="#5-datasets-used">Datasets Used</a></li>
+<li><a href="#6-training-metrics--evaluation-scores">Training Metrics &amp; Evaluation Scores</a></li>
+<li><a href="#7-threshold-value-reference-table">Threshold Value Reference Table</a></li>
+<li><a href="#8-hardware--infrastructure">Hardware &amp; Infrastructure</a></li>
+<li><a href="#9-api-surface">API Surface</a></li>
+<li><a href="#10-dependencies--tech-stack">Dependencies &amp; Tech Stack</a></li>
+</ol>
+<hr />
+<h2 id="1-executive-summary">1. Executive Summary</h2>
+<p><strong>5G Suraksha-Net</strong> is a dual-subsystem, AI-powered public safety surveillance platform designed for real-time threat detection, incident classification, and automated emergency response coordination across urban environments. The combined system provides:</p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Subsystem</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Weapon Detection (knife, pistol, long gun)</td>
+<td>Aerial UAV (A)</td>
+<td>✅ Active</td>
+</tr>
+<tr>
+<td>Physical Fight Detection (temporal)</td>
+<td>Aerial UAV (A)</td>
+<td>✅ Active</td>
+</tr>
+<tr>
+<td>Armed Fight Escalation (weapon + fight fusion)</td>
+<td>Aerial UAV (A)</td>
+<td>✅ Active</td>
+</tr>
+<tr>
+<td>Crowd Density &amp; Panic Detection</td>
+<td>Aerial UAV (A)</td>
+<td>✅ Active</td>
+</tr>
+<tr>
+<td>Traffic Accident Detection &amp; Severity</td>
+<td>Ground CCTV (B)</td>
+<td>✅ Active</td>
+</tr>
+<tr>
+<td>Fire &amp; Smoke Detection</td>
+<td>Ground CCTV (B)</td>
+<td>✅ Active</td>
+</tr>
+<tr>
+<td>5G Network Policy Engine</td>
+<td>Aerial UAV (A)</td>
+<td>✅ Application-layer</td>
+</tr>
+<tr>
+<td>Emergency Email/SMS Dispatch</td>
+<td>Both (A + B)</td>
+<td>✅ Active</td>
+</tr>
+<tr>
+<td>Drone MAVLink Telemetry</td>
+<td>Aerial UAV (A)</td>
+<td>✅ Active</td>
+</tr>
+<tr>
+<td>Raspberry Pi RTSP Edge Streaming</td>
+<td>Aerial UAV (A)</td>
+<td>✅ Active</td>
+</tr>
+<tr>
+<td>Sparsh CCTV RTSP Integration</td>
+<td>Ground CCTV (B)</td>
+<td>✅ Active</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!IMPORTANT]
+All emergency dispatch actions require <strong>mandatory human approval</strong> before execution. Autonomous emergency dispatch is strictly prohibited by design.</p>
+</blockquote>
+<hr />
+<h2 id="2-system-architecture-overview">2. System Architecture Overview</h2>
+<pre><code class="language-mermaid">flowchart TB
+    subgraph EdgeLayer[&quot;Edge Capture Layer&quot;]
+        PI[&quot;Raspberry Pi 4B&lt;br/&gt;Logitech C270 USB&lt;br/&gt;640x360 @ 15 FPS&quot;]
+        SPARSH[&quot;Sparsh CCTV Camera&lt;br/&gt;RTSP @ 192.168.128.10:554&quot;]
+        WEBCAM[&quot;Local Webcam&lt;br/&gt;USB / Built-in&quot;]
+        MP4[&quot;Pre-recorded MP4&lt;br/&gt;Test &amp; Demo Files&quot;]
+    end
+
+    subgraph AerialAI[&quot;Subsystem A — Aerial UAV &amp; Tactical AI&quot;]
+        PIPE[&quot;CrowdFightPipeline&lt;br/&gt;Source-Agnostic Orchestrator&quot;]
+        YOLO_P[&quot;YOLO11s Person Detector&lt;br/&gt;conf: 0.25 | imgsz: 640&quot;]
+        BT[&quot;ByteTrack MOT&lt;br/&gt;track_buffer: 60&quot;]
+        WPN[&quot;YOLO11s Weapon Detector&lt;br/&gt;conf: 0.70 | 3-class&quot;]
+        GRU[&quot;BiGRU Temporal Classifier&lt;br/&gt;16,321 params | score: 0.65&quot;]
+        CROWD[&quot;Crowd Analyzer&lt;br/&gt;Density + Optical Flow&quot;]
+        FUSION[&quot;Multimodal Fusion Engine&lt;br/&gt;2.5s correlation window&quot;]
+        NET[&quot;5G Network Policy Engine&lt;br/&gt;NORMAL → EVENT → CRITICAL&quot;]
+        RESP[&quot;Response Planner&lt;br/&gt;human_approval = True&quot;]
+        MAV[&quot;MAVLink Telemetry Bridge&lt;br/&gt;14550 UDP | READ-ONLY&quot;]
+    end
+
+    subgraph GroundCCTV[&quot;Subsystem B — Sparsh Ground CCTV&quot;]
+        ENGINE[&quot;SurveillanceEngine&lt;br/&gt;Background Thread Worker&quot;]
+        YOLO_T1[&quot;YOLO11s Tier-1 Detector&lt;br/&gt;normal vs accident | 0.70&quot;]
+        YOLO_T2[&quot;YOLO11n-cls Tier-2&lt;br/&gt;moderate vs severe | 224px&quot;]
+        DETR[&quot;DETR ResNet-50 Fallback&lt;br/&gt;SafeTensors | 800x800&quot;]
+        FIRE[&quot;YOLO Fire/Smoke Detector&lt;br/&gt;conf: 0.75 | 3-class&quot;]
+        DISP[&quot;Emergency Alert Dispatcher&lt;br/&gt;Email + SMS + Webhook&quot;]
+        REG[&quot;Emergency Facility Registry&lt;br/&gt;3km Haversine radius&quot;]
+    end
+
+    subgraph Notification[&quot;Alert &amp; Response Layer&quot;]
+        EMAIL[&quot;SMTP Email Service&lt;br/&gt;Police / Hospital / General&quot;]
+        SMS[&quot;Twilio SMS Gateway&quot;]
+        WH[&quot;Webhook Endpoint&quot;]
+    end
+
+    PI --&gt;|&quot;RTSP rtsp://:8554/drone&quot;| PIPE
+    SPARSH --&gt;|&quot;RTSP rtsp://:554/avstream&quot;| ENGINE
+    WEBCAM --&gt; PIPE
+    WEBCAM --&gt; ENGINE
+    MP4 --&gt; PIPE
+    MP4 --&gt; ENGINE
+
+    PIPE --&gt; YOLO_P --&gt; BT --&gt; CROWD
+    PIPE --&gt; WPN
+    BT --&gt; GRU
+    WPN --&gt; FUSION
+    GRU --&gt; FUSION
+    CROWD --&gt; FUSION
+    FUSION --&gt; NET --&gt; RESP --&gt; EMAIL
+    MAV -.-&gt;|&quot;Telemetry Data&quot;| PIPE
+
+    ENGINE --&gt; YOLO_T1 --&gt; YOLO_T2
+    ENGINE --&gt; FIRE
+    YOLO_T2 --&gt; DISP
+    FIRE --&gt; DISP
+    DISP --&gt; REG
+    DISP --&gt; EMAIL
+    DISP --&gt; SMS
+    DISP --&gt; WH
+</code></pre>
+<hr />
+<h2 id="3-subsystem-a-aerial-uav-tactical-ai">3. Subsystem A — Aerial UAV &amp; Tactical AI</h2>
+<h3 id="31-pipeline-architecture">3.1 Pipeline Architecture</h3>
+<p>The core processing pipeline (<a href="file:///C:/Projects/5G%20Suraksha-Net/src/suraksha/pipeline.py"><code>pipeline.py</code></a>) is a <strong>source-agnostic orchestrator</strong> that processes frames from any video source (webcam, RTSP, MP4) through parallel AI branches:</p>
+<pre><code>StreamCapture → EvidenceWriter (push_frame buffer)
+    ├── Branch A: WeaponDetector → WeaponEvent → FusionEngine
+    └── Branch B: PersonDetector → ByteTrack MOT → CrowdAnalyzer
+                                                  → FightRecognizer → VerifiedFight → FusionEngine
+
+FusionEngine → IncidentManager → EmailNotificationService
+             → FrameAnnotator → AnnotatedVideoWriter
+</code></pre>
+<p><strong>Performance Metrics (RTX 4050, 60 frames benchmark):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Total Time</th>
+<th>Effective FPS</th>
+<th>Detect+Track</th>
+<th>Weapon</th>
+<th>Crowd</th>
+<th>Fight</th>
+<th>Peak VRAM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baseline (weapon off)</td>
+<td>2.40s</td>
+<td>25.0</td>
+<td>27.4ms</td>
+<td>0.01ms</td>
+<td>1.21ms</td>
+<td>0.01ms</td>
+<td>105.5 MB</td>
+</tr>
+<tr>
+<td>Weapon Enabled</td>
+<td>1.21s</td>
+<td>49.6</td>
+<td>8.35ms</td>
+<td>9.03ms</td>
+<td>1.17ms</td>
+<td>0.01ms</td>
+<td>165.3 MB</td>
+</tr>
+<tr>
+<td>Full Fusion</td>
+<td>1.21s</td>
+<td>49.7</td>
+<td>8.34ms</td>
+<td>9.04ms</td>
+<td>1.16ms</td>
+<td>0.01ms</td>
+<td>238.1 MB</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Effective FPS Measurement:</strong> Recalculated every <code>5.0 seconds</code> using a running average formula: <code>m[key] += (val - m[key]) / (n + 1)</code></p>
+<p><strong>Hot-Swapping:</strong> The <code>switch_source()</code> method allows dynamic source changes at runtime, resetting weapon confirmation tracker and active fight candidates.</p>
+<hr />
+<h3 id="32-person-detection-multi-object-tracking">3.2 Person Detection &amp; Multi-Object Tracking</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Model</strong></td>
+<td>YOLO11s (Ultralytics)</td>
+<td><code>models/yolo11s.pt</code></td>
+</tr>
+<tr>
+<td><strong>Architecture</strong></td>
+<td>YOLOv11 Small</td>
+<td>Pre-trained on COCO</td>
+</tr>
+<tr>
+<td><strong>Person Class ID</strong></td>
+<td><code>0</code> (COCO "person")</td>
+<td><code>detection.person_class_id</code></td>
+</tr>
+<tr>
+<td><strong>Confidence Threshold</strong></td>
+<td><code>0.25</code></td>
+<td>Calibrated in Phase 4 benchmark (+15.1% yield on 320×240 CCTV)</td>
+</tr>
+<tr>
+<td><strong>IoU Threshold (NMS)</strong></td>
+<td><code>0.50</code></td>
+<td><code>detection.iou_threshold</code></td>
+</tr>
+<tr>
+<td><strong>Input Size</strong></td>
+<td><code>640 × 640</code></td>
+<td><code>detection.imgsz</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Multi-Object Tracker:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Algorithm</strong></td>
+<td>ByteTrack</td>
+</tr>
+<tr>
+<td><strong>Config</strong></td>
+<td><code>configs/bytetrack.yaml</code></td>
+</tr>
+<tr>
+<td><strong>Track Buffer</strong></td>
+<td><code>60</code> frames</td>
+</tr>
+<tr>
+<td><strong>Persist Mode</strong></td>
+<td><code>true</code> (tracks survive across frames)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!NOTE]
+The low confidence threshold (0.25) was specifically chosen after Phase 4 benchmarking showed a +15.1% person yield improvement on low-resolution CCTV (320×240) feeds. ByteTrack's high threshold alignment ensures that tracking quality is maintained despite the lower detection threshold.</p>
+</blockquote>
+<hr />
+<h3 id="33-weapon-detection-system">3.3 Weapon Detection System</h3>
+<h4 id="331-model-architecture">3.3.1 Model Architecture</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Model</strong></td>
+<td>YOLO11s (custom fine-tuned)</td>
+</tr>
+<tr>
+<td><strong>Weights</strong></td>
+<td><code>outputs/weapon_training/best.pt</code></td>
+</tr>
+<tr>
+<td><strong>Training Epochs</strong></td>
+<td>51 (best at epoch 50)</td>
+</tr>
+<tr>
+<td><strong>Input Size</strong></td>
+<td><code>640 × 640</code></td>
+</tr>
+<tr>
+<td><strong>Device</strong></td>
+<td>Auto (CUDA if available)</td>
+</tr>
+<tr>
+<td><strong>Inference Interval</strong></td>
+<td>Every 2nd frame</td>
+</tr>
+</tbody>
+</table>
+<h4 id="332-detection-classes">3.3.2 Detection Classes</h4>
+<table>
+<thead>
+<tr>
+<th>Class ID</th>
+<th>Name</th>
+<th>Class-Specific Min Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td><code>knife</code></td>
+<td><code>0.65</code></td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td><code>long_gun</code></td>
+<td><code>0.70</code></td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td><code>pistol</code></td>
+<td><code>0.70</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Effective threshold:</strong> <code>max(global_conf_threshold, class_min)</code> — ensures pistol and long_gun detections require ≥ 70% confidence regardless of global setting.</p>
+<h4 id="333-temporal-confirmation-system">3.3.3 Temporal Confirmation System</h4>
+<p>The weapon detector employs a <strong>multi-frame temporal persistence</strong> mechanism to eliminate single-frame false positives:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conf_threshold</code></td>
+<td><code>0.70</code></td>
+<td>Minimum raw detection confidence</td>
+</tr>
+<tr>
+<td><code>confirm_conf_threshold</code></td>
+<td><code>0.75</code></td>
+<td>Confirmation-grade confidence</td>
+</tr>
+<tr>
+<td><code>min_hits</code></td>
+<td><code>3</code></td>
+<td>Minimum detections in sliding window</td>
+</tr>
+<tr>
+<td><code>window_size</code></td>
+<td><code>5</code> frames</td>
+<td>Sliding window length</td>
+</tr>
+<tr>
+<td><code>iou_match_threshold</code></td>
+<td><code>0.25</code></td>
+<td>Box matching across frames</td>
+</tr>
+<tr>
+<td><code>expiry_frames</code></td>
+<td><code>15</code></td>
+<td>Track expiration timeout</td>
+</tr>
+</tbody>
+</table>
+<p><strong>State Machine:</strong></p>
+<pre><code>NORMAL → WEAPON_CANDIDATE (first detection)
+       → WEAPON_CONFIRMED (3+ hits in 5-frame window at ≥0.75 conf)
+</code></pre>
+<p><strong>Latching Hysteresis:</strong> Once a weapon track reaches <code>WEAPON_CONFIRMED</code> state, it remains confirmed for the lifetime of the track — preventing flicker.</p>
+<p><strong>Matching Score:</strong> <code>max(IoU, proximity)</code> where proximity = <code>max(0.0, 1.0 - (center_dist / (2.0 × avg_diagonal)))</code>. Class ID must match strictly.</p>
+<h4 id="334-training-results-epoch-50-best">3.3.4 Training Results (Epoch 50 — Best)</h4>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Overall</th>
+<th>Knife</th>
+<th>Long Gun</th>
+<th>Pistol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precision</strong></td>
+<td>0.8629</td>
+<td>0.8539</td>
+<td>0.8528</td>
+<td>0.8819</td>
+</tr>
+<tr>
+<td><strong>Recall</strong></td>
+<td>0.8289</td>
+<td>0.8378</td>
+<td>0.8134</td>
+<td>0.8355</td>
+</tr>
+<tr>
+<td><strong>mAP@50</strong></td>
+<td>0.8812</td>
+<td>0.8697</td>
+<td>0.8776</td>
+<td>0.8963</td>
+</tr>
+<tr>
+<td><strong>mAP@50-95</strong></td>
+<td>0.5832</td>
+<td>0.6230</td>
+<td>0.5479</td>
+<td>0.5786</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Final Training Losses (Epoch 50):</strong>
+- Box Loss: <code>0.96817</code> (train) / <code>1.03911</code> (val)
+- Cls Loss: <code>0.62382</code> (train) / <code>1.48740</code> (val)
+- DFL Loss: <code>1.19614</code> (train) / <code>1.19446</code> (val)</p>
+<p><strong>Hardware:</strong> NVIDIA GeForce RTX 4050 Laptop GPU, peak VRAM: <code>3.741 GB</code>, epoch duration: <code>442.96s</code></p>
+<h4 id="335-locked-test-set-evaluation">3.3.5 Locked Test Set Evaluation</h4>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Validation</th>
+<th>Test</th>
+<th>Delta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mAP@50</strong></td>
+<td>0.8812</td>
+<td>0.8740</td>
+<td>-0.82%</td>
+</tr>
+<tr>
+<td><strong>mAP@50-95</strong></td>
+<td>0.5832</td>
+<td>0.5857</td>
+<td>+0.43%</td>
+</tr>
+<tr>
+<td><strong>Precision</strong></td>
+<td>0.8629</td>
+<td>0.8377</td>
+<td>-2.92%</td>
+</tr>
+<tr>
+<td><strong>Recall</strong></td>
+<td>0.8289</td>
+<td>0.8308</td>
+<td>+0.23%</td>
+</tr>
+<tr>
+<td><strong>F1</strong></td>
+<td>0.8456</td>
+<td>0.8343</td>
+<td>-1.34%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Test set size:</strong> 2,703 images, 2,883 ground-truth boxes</p>
+<p><strong>Per-Class Test Results:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>GT Boxes</th>
+<th>Precision</th>
+<th>Recall</th>
+<th>F1</th>
+<th>mAP@50</th>
+<th>mAP@50-95</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>knife</td>
+<td>596</td>
+<td>0.796</td>
+<td>0.8249</td>
+<td>0.8102</td>
+<td>0.8516</td>
+<td>0.615</td>
+</tr>
+<tr>
+<td>long_gun</td>
+<td>997</td>
+<td>0.8529</td>
+<td>0.8143</td>
+<td>0.8332</td>
+<td>0.8682</td>
+<td>0.5556</td>
+</tr>
+<tr>
+<td>pistol</td>
+<td>1,290</td>
+<td>0.8642</td>
+<td>0.8533</td>
+<td>0.8587</td>
+<td>0.9023</td>
+<td>0.5866</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Confusion Matrix (rows: GT, cols: predicted → knife, long_gun, pistol, background):</strong></p>
+<pre><code>knife:     518     0     1   187
+long_gun:    2   865    33   211
+pistol:      1    33  1157   264
+background: 75    99    99     0
+</code></pre>
+<p><strong>Background Hard Negative Analysis:</strong>
+- Total background images: <strong>346</strong>
+- True negatives (clean): <strong>293</strong> (84.68%)
+- False alarm images: <strong>53</strong> (15.32% image-level FPR)
+- Total false alarm boxes: <strong>75</strong> (pistol: 23, long_gun: 18, knife: 34)
+- <code>nogun_v5</code> partition (295 images): <strong>14 false alarms</strong> (4.75% FPR) ← robust
+- <code>weapon_empty</code> partition (51 images): <strong>39 false alarms</strong> (76.47% FPR) ← adversarial set</p>
+<h4 id="336-webcam-false-positive-validation">3.3.6 Webcam False-Positive Validation</h4>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Webcam (index 0)</td>
+</tr>
+<tr>
+<td>Resolution</td>
+<td>640 × 480</td>
+</tr>
+<tr>
+<td>Frames Processed</td>
+<td>150</td>
+</tr>
+<tr>
+<td>Elapsed Time</td>
+<td>6.81s</td>
+</tr>
+<tr>
+<td>Average FPS</td>
+<td>22.0</td>
+</tr>
+<tr>
+<td>Mean Latency</td>
+<td>20.33ms</td>
+</tr>
+<tr>
+<td>P95 Latency</td>
+<td>13.53ms</td>
+</tr>
+<tr>
+<td>Peak VRAM</td>
+<td>99.7 MB</td>
+</tr>
+<tr>
+<td><strong>Total False Detections</strong></td>
+<td><strong>0</strong> (0% FPR on clean webcam)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="34-fight-detection-system-temporal-bigru">3.4 Fight Detection System (Temporal BiGRU)</h3>
+<h4 id="341-fight-candidate-detection">3.4.1 Fight Candidate Detection</h4>
+<p>Fight candidate pairs are identified by spatial proximity and motion energy between tracked persons.</p>
+<p><strong>Feature Vector (8 dimensions per pair per frame):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>rel_dist</code></td>
+<td>Center distance / scale</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>iou</code></td>
+<td>Bounding box IoU</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>normalized_motion</code></td>
+<td><code>flow_px/frame × fps / scale</code> (body-widths/sec)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>a.confidence</code></td>
+<td>Person A detection confidence</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>b.confidence</code></td>
+<td>Person B detection confidence</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>a.width / frame_w</code></td>
+<td>Person A relative width</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>b.width / frame_w</code></td>
+<td>Person B relative width</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>1.0</code></td>
+<td>Bias term</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Candidate Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>min_pair_speed</code></td>
+<td><code>1.6</code> body-widths/sec</td>
+<td>Minimum relative approach speed</td>
+</tr>
+<tr>
+<td><code>proximity_iou</code></td>
+<td><code>0.08</code></td>
+<td>IoU threshold for engagement</td>
+</tr>
+<tr>
+<td><code>proximity_distance</code></td>
+<td><code>1.25</code> body-widths</td>
+<td>Max center distance</td>
+</tr>
+<tr>
+<td><code>proximity_min_frames</code></td>
+<td><code>8</code> (~0.5s at 15 FPS)</td>
+<td>Sustained engagement threshold</td>
+</tr>
+<tr>
+<td><code>missed_frames_tolerance</code></td>
+<td><code>2</code> frames</td>
+<td>Jitter tolerance</td>
+</tr>
+<tr>
+<td><code>motion_energy_threshold</code></td>
+<td><code>0.12</code> body-widths/sec</td>
+<td>Minimum motion gate</td>
+</tr>
+<tr>
+<td><code>motion_variance_threshold</code></td>
+<td><code>0.0</code></td>
+<td>Minimum motion variance</td>
+</tr>
+<tr>
+<td><code>decay_timeout_s</code></td>
+<td><code>1.0</code> s</td>
+<td>Reset if motionless</td>
+</tr>
+<tr>
+<td><code>cooldown_s</code></td>
+<td><code>2.0</code> s</td>
+<td>Post-incident cooldown</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Optical Flow (Farneback):</strong>
+- Downscale: <code>0.25×</code> if max dimension &gt; 400px
+- Parameters: <code>pyr_scale=0.5, levels=2, winsize=15, iterations=2, poly_n=5, poly_sigma=1.1</code>
+- Flow energy: averaged over person ROI (min 8×8 patch)</p>
+<h4 id="342-temporal-gru-classifier-architecture">3.4.2 Temporal GRU Classifier Architecture</h4>
+<pre><code>Input: (batch, 32 frames, 8 features)
+    ↓
+nn.GRU(input=8, hidden=64, layers=1, bidirectional=False)
+    ↓
+Temporal Pooling: mean(all steps) + last_step → 64-dim
+    ↓
+nn.Linear(64, 32) → ReLU
+    ↓
+nn.Linear(32, 1) → sigmoid → fight probability
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Total Parameters</strong></td>
+<td><strong>16,321</strong></td>
+</tr>
+<tr>
+<td><strong>Feature Dim</strong></td>
+<td>8</td>
+</tr>
+<tr>
+<td><strong>Hidden Size</strong></td>
+<td>64</td>
+</tr>
+<tr>
+<td><strong>Head Hidden</strong></td>
+<td>32</td>
+</tr>
+<tr>
+<td><strong>Num Layers</strong></td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>Bidirectional</strong></td>
+<td>False</td>
+</tr>
+<tr>
+<td><strong>Dropout</strong></td>
+<td>0.0</td>
+</tr>
+<tr>
+<td><strong>Normalization</strong></td>
+<td>Standard (z-score)</td>
+</tr>
+<tr>
+<td><strong>Model Weights</strong></td>
+<td><code>models/temporal/rwf2000_v2_best.pt</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Heuristic Fallback Scorer (when model unavailable):</strong></p>
+<pre><code>Score = 0.30 × proximity + 0.20 × contact + 0.30 × energy + 0.20 × oscillation
+</code></pre>
+<ul>
+<li>proximity = mean(rel_dist &lt; 1.5)</li>
+<li>contact = mean(iou &gt; 0.02)</li>
+<li>energy = clip(mean(motion) / 0.7, 0, 1) — 0.7 based on RWF-2000 p90</li>
+<li>oscillation = clip(std(motion) / 0.5, 0, 1) — 0.5 based on RWF-2000 p90</li>
+</ul>
+<h4 id="343-temporal-verification-pipeline">3.4.3 Temporal Verification Pipeline</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>window_frames</code></td>
+<td><code>32</code></td>
+<td>Frames per classification window</td>
+</tr>
+<tr>
+<td><code>stride_frames</code></td>
+<td><code>8</code></td>
+<td>New classification every 8 frames</td>
+</tr>
+<tr>
+<td><code>score_threshold</code></td>
+<td><code>0.65</code></td>
+<td>GRU output threshold</td>
+</tr>
+<tr>
+<td><code>min_duration_s</code></td>
+<td><code>2.5</code> s</td>
+<td>Minimum fight duration</td>
+</tr>
+<tr>
+<td><code>min_consecutive_windows</code></td>
+<td><code>3</code></td>
+<td>Consecutive positive windows required</td>
+</tr>
+<tr>
+<td><code>min_motion_variance</code></td>
+<td><code>0.0</code></td>
+<td>Motion variance gate</td>
+</tr>
+<tr>
+<td><code>incident_cooldown_s</code></td>
+<td><code>60</code> s</td>
+<td>Post-incident cooldown</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verification States:</strong> <code>candidate</code> → <code>evaluating</code> → <code>verified</code> → (incident) / <code>expired</code></p>
+<p><strong>Rejection Reasons (diagnostic telemetry):</strong>
+- <code>REJECT: insufficient_consecutive_windows</code>
+- <code>REJECT: insufficient_action_duration</code>
+- <code>REJECT: score_below_threshold</code>
+- <code>REJECT: motion_var_below_threshold</code>
+- <code>REJECT: candidate_expired</code> (3.0s timeout)</p>
+<h4 id="344-training-configuration">3.4.4 Training Configuration</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary Dataset</strong></td>
+<td>RWF-2000</td>
+</tr>
+<tr>
+<td><strong>Labels</strong></td>
+<td><code>FIGHT</code>, <code>NON_FIGHT</code></td>
+</tr>
+<tr>
+<td><strong>Split Ratios</strong></td>
+<td>Train: 0.70, Val: 0.15, Test: 0.15</td>
+</tr>
+<tr>
+<td><strong>Split Level</strong></td>
+<td>Video-level (no frame leakage)</td>
+</tr>
+<tr>
+<td><strong>Seed</strong></td>
+<td>42</td>
+</tr>
+<tr>
+<td><strong>Window Sizes</strong></td>
+<td>[16, 32] frames</td>
+</tr>
+<tr>
+<td><strong>Stride</strong></td>
+<td>8 frames</td>
+</tr>
+<tr>
+<td><strong>Frame Size</strong></td>
+<td>128 × 128</td>
+</tr>
+<tr>
+<td><strong>Normalization</strong></td>
+<td>Unit (/255 → [0,1])</td>
+</tr>
+<tr>
+<td><strong>Augmentation</strong></td>
+<td>Disabled</td>
+</tr>
+<tr>
+<td><strong>Epochs</strong></td>
+<td>30</td>
+</tr>
+<tr>
+<td><strong>Batch Size</strong></td>
+<td>64 (eval: 256)</td>
+</tr>
+<tr>
+<td><strong>Optimizer</strong></td>
+<td>Adam</td>
+</tr>
+<tr>
+<td><strong>Learning Rate</strong></td>
+<td>1e-3</td>
+</tr>
+<tr>
+<td><strong>Grad Clip</strong></td>
+<td>5.0</td>
+</tr>
+<tr>
+<td><strong>Balanced Class Weights</strong></td>
+<td>True</td>
+</tr>
+<tr>
+<td><strong>Evaluation Threshold</strong></td>
+<td>0.5</td>
+</tr>
+<tr>
+<td><strong>Leakage Reporting</strong></td>
+<td>Enabled (adjusted metrics)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="35-crowd-analytics-panic-detection">3.5 Crowd Analytics &amp; Panic Detection</h3>
+<p><strong>Density Levels:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Threshold</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LOW</code></td>
+<td>default</td>
+<td>Normal crowd density</td>
+</tr>
+<tr>
+<td><code>HIGH</code></td>
+<td>≥ 0.35</td>
+<td>35% zone area covered by person boxes</td>
+</tr>
+<tr>
+<td><code>CRITICAL</code></td>
+<td>≥ 0.55</td>
+<td>55% zone area — dangerous overcrowding</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Crowd Growth Monitoring:</strong>
+- Sliding window: <code>30 seconds</code>
+- Minimum samples: <code>5</code>, minimum time span: <code>2.0 seconds</code>
+- Growth rate: linear regression slope × 60 (persons/minute)
+- Alert threshold: <code>10.0 persons/minute</code></p>
+<p><strong>Panic Movement Detection (Optical Flow):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flow Grid Size</td>
+<td>32 px</td>
+</tr>
+<tr>
+<td>Panic Speed Threshold</td>
+<td><code>2.2</code> box-widths/sec</td>
+</tr>
+<tr>
+<td>Panic Min Tracks</td>
+<td><code>3</code> tracks</td>
+</tr>
+<tr>
+<td>Min Panic Persons</td>
+<td><code>8</code> total persons in scene</td>
+</tr>
+<tr>
+<td>Fast Ratio Gate</td>
+<td>≥ 50% of tracks exceed speed threshold</td>
+</tr>
+<tr>
+<td>Direction Entropy Gate</td>
+<td>≥ 0.6 (high directional disorder)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Direction Entropy Calculation:</strong>
+- 8 angular bins over [0, 2π], magnitude-weighted
+- Normalized by log₂(8) = 3.0 → range [0, 1]
+- High entropy = scattered/panicked movement; low entropy = coordinated flow</p>
+<p><strong>Zone Configuration:</strong>
+- Camera: <code>cam_default</code>
+- <code>market_square</code>: polygon <code>[(0.05,0.30), (0.55,0.30), (0.55,0.95), (0.05,0.95)]</code>
+- <code>street_corridor</code>: polygon <code>[(0.58,0.35), (0.98,0.35), (0.98,0.95), (0.58,0.95)]</code></p>
+<hr />
+<h3 id="36-multimodal-incident-fusion-engine">3.6 Multimodal Incident Fusion Engine</h3>
+<p>The fusion engine correlates detections across weapon, fight, and crowd subsystems to produce escalated compound incidents.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>correlation_window_s</code></td>
+<td><code>2.5</code> seconds</td>
+</tr>
+<tr>
+<td><code>spatial_proximity_threshold</code></td>
+<td><code>1.5</code> body-widths</td>
+</tr>
+<tr>
+<td><code>escalation_enabled</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>weapon_cooldown_s</code></td>
+<td><code>30.0</code> s</td>
+</tr>
+<tr>
+<td><code>armed_fight_cooldown_s</code></td>
+<td><code>60.0</code> s</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fusion Outputs:</strong>
+- <code>unarmed_fights</code> — Fight without weapon
+- <code>weapons_alone</code> — Weapon without concurrent fight
+- <code>armed_fights</code> — Weapon + Fight within 2.5s and 1.5 body-widths → <strong>CRITICAL severity</strong></p>
+<p><strong>Simulation Validation (Phase 2 Benchmark):</strong></p>
+<pre><code>Event 1: type=weapon, severity=HIGH, confidence=0.89, escalated=false
+Event 2: type=armed_fight, severity=CRITICAL, confidence=0.93, escalated=true
+Event 3: type=armed_fight, severity=CRITICAL, status=finalized, escalated=true
+</code></pre>
+<hr />
+<h3 id="37-5g-network-slicing-policy-engine">3.7 5G Network Slicing Policy Engine</h3>
+<table>
+<thead>
+<tr>
+<th>Policy Level</th>
+<th>Trigger</th>
+<th>Application Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NORMAL</code></td>
+<td>No active incidents</td>
+<td><code>ROUTINE</code></td>
+</tr>
+<tr>
+<td><code>EVENT</code></td>
+<td>HIGH / MODERATE incident</td>
+<td><code>HIGH</code></td>
+</tr>
+<tr>
+<td><code>CRITICAL</code></td>
+<td>CRITICAL incident (armed fight)</td>
+<td><code>CRITICAL</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Severity Weights:</strong>
+- CRITICAL: <code>4</code>, HIGH: <code>3</code>, MODERATE/MEDIUM: <code>2</code>, LOW: <code>1</code></p>
+<p><strong>Active Window:</strong> <code>60.0 seconds</code> — incidents expire from policy consideration after this period.</p>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>Safety Declaration:</strong> The network policy engine operates at the <strong>application layer only</strong>. It does not have actual 5G control plane access.
+- <code>actual_network_control</code>: <code>false</code>
+- <code>control_plane_connected</code>: <code>false</code>
+- <code>slice_allocated</code>: <code>DEFAULT_BE</code> (Best Effort)
+- <code>measurement_source</code>: <code>APPLICATION_POLICY</code></p>
+</blockquote>
+<hr />
+<h3 id="38-emergency-response-policy-planner">3.8 Emergency Response Policy &amp; Planner</h3>
+<p><strong>Response Policy Matrix:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Incident Type</th>
+<th>Police Required</th>
+<th>Medical Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ARMED_FIGHT</code></td>
+<td>✅ (incident severity)</td>
+<td>✅ (incident severity)</td>
+<td>Both always dispatched</td>
+</tr>
+<tr>
+<td><code>FIGHT</code></td>
+<td>✅ (incident severity)</td>
+<td>Only if injury indicator</td>
+<td>Medical conditional on ground verification</td>
+</tr>
+<tr>
+<td><code>WEAPON</code></td>
+<td>✅ (incident severity)</td>
+<td>Only if injury indicator</td>
+<td>Medical = CRITICAL if sev=CRITICAL</td>
+</tr>
+<tr>
+<td><code>CROWD_PANIC</code></td>
+<td>✅ (incident severity)</td>
+<td>Only if injury indicator</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>CROWD_DENSITY_HIGH</code></td>
+<td>❌ (low)</td>
+<td>❌ (low)</td>
+<td>Routine monitoring only</td>
+</tr>
+<tr>
+<td><code>CROWD_DENSITY_CRITICAL</code></td>
+<td>❌ (low)</td>
+<td>❌ (low)</td>
+<td>Routine monitoring only</td>
+</tr>
+<tr>
+<td><code>CROWD_RAPID_GROWTH</code></td>
+<td>❌ (low)</td>
+<td>❌ (low)</td>
+<td>Routine monitoring only</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Injury Indicator Keys Checked:</strong> <code>injury</code>, <code>injuries</code>, <code>person_down</code>, <code>casualty</code>, <code>medical_need</code>, <code>has_injury</code>, <code>medical.required</code></p>
+<p><strong>Response Planner:</strong>
+- Resource directory: <code>outputs/phase3/nearby_emergency_locations_yashobhoomi.json</code>
+- Facilities sorted by straight-line distance (km), tie-break by name
+- All actions: <code>human_approval_required = True</code>
+- Status: <code>AWAITING_HUMAN_APPROVAL</code> (or <code>RESOURCE_UNAVAILABLE</code> if missing)</p>
+<hr />
+<h3 id="39-drone-telemetry-mavlink">3.9 Drone Telemetry (MAVLink)</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connection</td>
+<td>UDP <code>udpin:127.0.0.1:14550</code></td>
+</tr>
+<tr>
+<td>Serial Baud</td>
+<td>57600 (Pixhawk USB: 115200)</td>
+</tr>
+<tr>
+<td>Timeout</td>
+<td>3.0 seconds</td>
+</tr>
+<tr>
+<td>Data Stream Request</td>
+<td><code>MAV_DATA_STREAM_ALL</code> at 4 Hz</td>
+</tr>
+<tr>
+<td>Broadcast Rate</td>
+<td>5.0 Hz</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Auto-Detection:</strong> Scans COM ports for <code>ardupilot</code>, <code>pixhawk</code>, <code>px4</code>, or USB VID:PID <code>1209:5741</code></p>
+<p><strong>MAVLink Messages Processed:</strong>
+- <code>HEARTBEAT</code>: armed flag, flight mode, vehicle type
+- <code>GLOBAL_POSITION_INT</code>: lat/lon, altitude (relative + AMSL), climb rate, heading
+- <code>VFR_HUD</code>: groundspeed, airspeed, climb rate, heading
+- <code>GPS_RAW_INT</code>: fix type (No GPS → RTK Fixed), satellites, HDOP
+- <code>SYS_STATUS</code> / <code>BATTERY_STATUS</code>: battery %, voltage, current
+- <code>ATTITUDE</code>: roll, pitch, yaw (degrees)</p>
+<p><strong>28 ArduCopter flight modes</strong> supported (STABILIZE through TURTLE).</p>
+<blockquote>
+<p>[!CAUTION]
+The telemetry bridge is <strong>READ-ONLY</strong>. It never transmits flight commands, MAV_CMD, or heartbeat packets. This is a safety-critical design decision.</p>
+</blockquote>
+<hr />
+<h3 id="310-email-notification-system">3.10 Email Notification System</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SMTP Port</td>
+<td>587 (TLS) or 465 (SSL)</td>
+</tr>
+<tr>
+<td>Timeout</td>
+<td>60 seconds</td>
+</tr>
+<tr>
+<td>Max Attachment</td>
+<td>25 MB</td>
+</tr>
+<tr>
+<td>Worker Threads</td>
+<td>2 (ThreadPoolExecutor)</td>
+</tr>
+<tr>
+<td>Deduplication</td>
+<td>1 alert per incident ID</td>
+</tr>
+<tr>
+<td>Demo Suppression</td>
+<td>Suppressed unless <code>allow_demo=True</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Role-Based Email Templates:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Subject Format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POLICE</code></td>
+<td><code>[POLICE ALERT &amp; EVIDENCE] {severity} - {type} DETECTED at {location}</code></td>
+</tr>
+<tr>
+<td><code>HOSPITAL</code></td>
+<td><code>[EMERGENCY MEDICAL / TRAUMA ALERT] CASUALTY RISK &amp; AMBULANCE DISPATCH at {location}</code></td>
+</tr>
+<tr>
+<td><code>GENERAL</code></td>
+<td><code>[5G Suraksha-Net] {severity} - {type} detected at {location}</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Evidence Attachments:</strong>
+- Video: ~10 second MP4 clip (T-5s to T+5s), max 25 MB
+- Image: Keyframe snapshot JPG, max 25 MB</p>
+<p><strong>Pipeline Deferral:</strong> Emails are deferred when incident status = <code>RECORDING_POST_EVENT</code>; dispatched once <code>FINALIZED</code> or <code>VERIFIED</code>.</p>
+<hr />
+<h3 id="311-ai-agent-assessment">3.11 AI Agent Assessment</h3>
+<p><strong>Two providers:</strong>
+1. <strong>DeterministicAgentProvider</strong> — 100% offline, rule-based reasoning engine (always available)
+2. <strong>LLMAgentProvider</strong> — Wraps Gemini/OpenAI API; auto-delegates to Deterministic if no API key</p>
+<p><strong>7-Part Operational Assessment:</strong>
+1. <code>SeverityAssessment</code> — Deterministic severity classification
+2. <code>LocationAssessment</code> — Venue coordinates, nearest facilities, GPS fix
+3. <code>EvidenceAssessment</code> — Snapshot JPG and 10s MP4 clip paths
+4. <code>ResponseAssessment</code> — Police/medical recommendations, <code>AWAITING_HUMAN_APPROVAL</code>
+5. <code>NetworkAssessment</code> — Policy tier, priority, 0 physical slice claims
+6. <code>Recommended Operational Sequence</code> (6 steps, all <code>advisory_only=True</code>)
+7. <code>Supervisor Briefing</code> — Complete situation summary with data traceability checklist</p>
+<hr />
+<h3 id="312-demo-simulation-system">3.12 Demo Simulation System</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Type</th>
+<th>Severity</th>
+<th>Confidence</th>
+<th>Network Policy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WEAPON</td>
+<td>WEAPON</td>
+<td>HIGH</td>
+<td>0.93</td>
+<td>EVENT</td>
+</tr>
+<tr>
+<td>CROWD_PANIC</td>
+<td>CROWD_PANIC</td>
+<td>HIGH</td>
+<td>0.89</td>
+<td>EVENT</td>
+</tr>
+<tr>
+<td>ARMED_FIGHT</td>
+<td>ARMED_FIGHT</td>
+<td>CRITICAL</td>
+<td>0.97</td>
+<td>CRITICAL</td>
+</tr>
+<tr>
+<td>NORMAL</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>NORMAL</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Simulation Timeline:</strong> 7 steps from T+0.0s to T+2.0s → <code>AWAITING_APPROVAL</code></p>
+<p><strong>Evidence Storage:</strong>
+- Clips: <code>outputs/demo/clips/</code>
+- Snapshots: <code>outputs/demo/snapshots/</code>
+- Incidents: <code>outputs/demo/incidents/</code></p>
+<hr />
+<h2 id="4-subsystem-b-sparsh-municipal-ground-cctv">4. Subsystem B — Sparsh Municipal Ground CCTV</h2>
+<h3 id="41-architecture-overview">4.1 Architecture Overview</h3>
+<p>The Sparsh CCTV subsystem is a <strong>FastAPI-based surveillance application</strong> with a background processing engine, real-time MJPEG streaming, and multi-channel emergency dispatch.</p>
+<p><strong>Processing Loop:</strong></p>
+<pre><code>StreamCapture → Frame Read (15 FPS cap)
+    ├── AccidentDetector (YOLO Hierarchical or DETR fallback)
+    │   ├── Tier 1: Normal vs Accident (YOLO11s, conf: 0.70, iou: 0.65)
+    │   └── Tier 2: Moderate vs Severe (YOLO11n-cls, 224×224 crop)
+    ├── FireDetector (YOLO, conf: 0.75, 3-class)
+    ├── IncidentLogger → EmergencyAlertDispatcher
+    │   ├── Email (SMTP, department routing)
+    │   ├── SMS (Twilio)
+    │   └── Webhook
+    └── CCTVVisualizer → Annotated HUD Frame → MJPEG Stream
+</code></pre>
+<p><strong>RTSP Configuration:</strong>
+- IP: <code>192.168.128.10</code> / Port: <code>554</code>
+- Channel: <code>1</code> / Stream: <code>1</code>
+- URL Format: <code>rtsp://admin:admin123@192.168.128.10:554/avstream/channel=1/stream=1.sdp</code>
+- Auto-reconnect interval: <code>8 seconds</code></p>
+<hr />
+<h3 id="42-accident-detection-detr-backbone">4.2 Accident Detection — DETR Backbone</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Architecture</strong></td>
+<td>DETR (DEtection TRansformer)</td>
+</tr>
+<tr>
+<td><strong>Backbone</strong></td>
+<td>ResNet-50</td>
+</tr>
+<tr>
+<td><strong>Weights Format</strong></td>
+<td>SafeTensors (<code>model.safetensors</code>)</td>
+</tr>
+<tr>
+<td><strong>Framework</strong></td>
+<td>HuggingFace <code>transformers</code> v4.35.2</td>
+</tr>
+<tr>
+<td><strong>Input Size</strong></td>
+<td>800 × 800</td>
+</tr>
+<tr>
+<td><strong>Num Queries</strong></td>
+<td>100 (DETR decoder queries)</td>
+</tr>
+<tr>
+<td><strong>d_model</strong></td>
+<td>256</td>
+</tr>
+<tr>
+<td><strong>Encoder/Decoder Layers</strong></td>
+<td>6 each</td>
+</tr>
+<tr>
+<td><strong>Attention Heads</strong></td>
+<td>8 (encoder and decoder)</td>
+</tr>
+<tr>
+<td><strong>FFN Dim</strong></td>
+<td>2048</td>
+</tr>
+<tr>
+<td><strong>Dropout</strong></td>
+<td>0.1</td>
+</tr>
+<tr>
+<td><strong>Position Embedding</strong></td>
+<td>Sine</td>
+</tr>
+<tr>
+<td><strong>FP16 Inference</strong></td>
+<td>Enabled on CUDA</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DETR Class Mapping:</strong></p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Label</th>
+<th>Is Accident</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>accident</td>
+<td>✅ (Level 3)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>accident</td>
+<td>✅ (Level 3)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>vehicle</td>
+<td>❌ (Level 0)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Loss Coefficients (from config.json):</strong>
+- BBox Cost/Loss: <code>5</code>, GIoU Cost/Loss: <code>2</code>, Class Cost: <code>1</code>
+- Dice Loss: <code>1</code>, Mask Loss: <code>1</code>, EOS Coefficient: <code>0.1</code></p>
+<p><strong>ImageNet Normalization:</strong>
+- Mean: <code>[0.485, 0.456, 0.406]</code>
+- Std: <code>[0.229, 0.224, 0.225]</code></p>
+<hr />
+<h3 id="43-accident-detection-yolo-hierarchical-primary">4.3 Accident Detection — YOLO Hierarchical (Primary)</h3>
+<p>This is the <strong>primary</strong> accident detector (<code>detector_backend = "yolo"</code>), a two-tier hierarchical system that replaced the slower DETR model:</p>
+<p><strong>Tier 1 — Spatial YOLO Detector:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model</td>
+<td>YOLO11s (fine-tuned)</td>
+</tr>
+<tr>
+<td>Weights</td>
+<td><code>models/accident_classifier/yolo_detector.pt</code></td>
+</tr>
+<tr>
+<td>Classes</td>
+<td><code>{0: "normal", 1: "accident"}</code></td>
+</tr>
+<tr>
+<td>Confidence</td>
+<td><code>0.70</code></td>
+</tr>
+<tr>
+<td>IoU (NMS)</td>
+<td><code>0.65</code></td>
+</tr>
+<tr>
+<td>Input Size</td>
+<td>640 × 640</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tier 2 — Severity Classifier:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model</td>
+<td>YOLO11n-cls (classification head)</td>
+</tr>
+<tr>
+<td>Weights</td>
+<td><code>models/accident_classifier/yolo_severity.pt</code></td>
+</tr>
+<tr>
+<td>Classes</td>
+<td><code>{0: "moderate", 1: "severe"}</code></td>
+</tr>
+<tr>
+<td>Input Size</td>
+<td>224 × 224 (cropped ROI with 10% padding)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Severity Classification Logic:</strong>
+- If classifier predicts "severe" <strong>OR</strong> collision footprint &gt; 20% of frame area → <strong>Severity Level 3 (SEVERE)</strong> — Red
+- Otherwise → <strong>Severity Level 2 (MODERATE)</strong> — Orange</p>
+<p><strong>Full Severity Scale:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Name</th>
+<th>Display</th>
+<th>Color (BGR)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>vehicle</td>
+<td>Normal Vehicle</td>
+<td>(0, 210, 60) — Green</td>
+</tr>
+<tr>
+<td>2</td>
+<td>accident_moderate</td>
+<td>Moderate Accident</td>
+<td>(0, 165, 255) — Orange</td>
+</tr>
+<tr>
+<td>3</td>
+<td>accident_severe / accident</td>
+<td>Severe Accident</td>
+<td>(0, 40, 240) — Red</td>
+</tr>
+<tr>
+<td>4</td>
+<td>accident_100</td>
+<td>Totaled Vehicle</td>
+<td>(160, 0, 210) — Magenta</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Speed:</strong> &gt; 50-80 FPS real-time on CUDA (vs ~15-25 FPS for DETR)</p>
+<h4 id="training-configuration">Training Configuration</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Tier 1 (Detector)</th>
+<th>Tier 2 (Severity)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base Model</td>
+<td><code>yolo11s.pt</code></td>
+<td><code>yolo11n-cls.pt</code></td>
+</tr>
+<tr>
+<td>Epochs</td>
+<td>35</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Batch Size</td>
+<td>16</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Image Size</td>
+<td>640</td>
+<td>224</td>
+</tr>
+<tr>
+<td>Patience</td>
+<td>10</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Workers</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Device</td>
+<td><code>cuda:0</code></td>
+<td><code>cuda:0</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="44-fire-smoke-detection">4.4 Fire &amp; Smoke Detection</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Model</strong></td>
+<td>YOLO (Ultralytics)</td>
+</tr>
+<tr>
+<td><strong>Weights</strong></td>
+<td><code>models/fire_classifier/fire_classifier.pt</code></td>
+</tr>
+<tr>
+<td><strong>Confidence Threshold</strong></td>
+<td><code>0.75</code></td>
+</tr>
+<tr>
+<td><strong>Classes</strong></td>
+<td><code>["fire", "other", "smoke"]</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Detection Colors (BGR):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Color</th>
+<th>RGB Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fire</td>
+<td>(0, 69, 255)</td>
+<td>Red-Orange</td>
+</tr>
+<tr>
+<td>smoke</td>
+<td>(180, 180, 180)</td>
+<td>Light Gray</td>
+</tr>
+<tr>
+<td>other</td>
+<td>(150, 150, 150)</td>
+<td>Gray</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Output Schema (<code>FireResult</code>):</strong>
+- <code>has_fire</code>: boolean
+- <code>has_smoke</code>: boolean
+- <code>fire_confidence</code>: max fire detection confidence
+- <code>smoke_confidence</code>: max smoke detection confidence
+- <code>predicted_label</code>: "Fire &amp; Smoke" / "Fire" / "Smoke" / "Normal"</p>
+<hr />
+<h3 id="45-emergency-alert-dispatch-pipeline">4.5 Emergency Alert Dispatch Pipeline</h3>
+<p>The Sparsh CCTV uses a <strong>multi-channel emergency alert dispatcher</strong> that routes incidents to appropriate departments:</p>
+<p><strong>Incident-to-Department Routing Matrix:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Incident Type</th>
+<th>Departments Notified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accident</code></td>
+<td>Police, Hospital, Traffic Control</td>
+</tr>
+<tr>
+<td><code>fire</code></td>
+<td>Fire Department, Hospital, Police</td>
+</tr>
+<tr>
+<td><code>smoke</code></td>
+<td>Fire Department, Police</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Alert Channels:</strong>
+1. <strong>SMTP Email</strong> — Departmental routing with snapshot attachment
+2. <strong>Twilio SMS</strong> — Formatted emergency SMS to dispatch number
+3. <strong>Webhook</strong> — HTTP POST to configurable URL
+4. <strong>Console Banner</strong> — ASCII formatted alert display
+5. <strong>JSON Audit Log</strong> — Persistent dispatch record</p>
+<p><strong>Snapshot Cooldown:</strong> <code>5.0 seconds</code> — prevents disk flooding during continuous alerts</p>
+<p><strong>Department Email Configuration (from environment):</strong>
+- Police: <code>POLICE_DEPARTMENT_EMAIL</code>
+- Hospital: <code>HOSPITAL_DEPARTMENT_EMAIL</code>
+- Fire: <code>FIRE_DEPARTMENT_EMAIL</code>
+- Traffic Control: <code>TRAFFIC_CONTROL_EMAIL</code></p>
+<hr />
+<h3 id="46-emergency-facility-registry">4.6 Emergency Facility Registry</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Search Radius</td>
+<td><code>3.0 km</code> (Haversine distance)</td>
+</tr>
+<tr>
+<td>Max Facilities Per Type</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td>API</td>
+<td>Google Places API (New)</td>
+</tr>
+<tr>
+<td>Fallback</td>
+<td>Curated offline database (9 facilities)</td>
+</tr>
+<tr>
+<td>Cache</td>
+<td><code>data/emergency_facilities_cache.json</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Curated Offline Facilities (9 total):</strong>
+- 1 Fire Station (Dwarka Sector 25)
+- 3 Police Stations/Check Posts (Sector 21, Sector 23, Traffic Inspector)
+- 5 Hospitals (Maple Care, Ambe, Helpline, Ayushman, Amerix)</p>
+<p><strong>Incident Routing Logic:</strong>
+- Fire/Smoke → Fire Stations + Hospitals + Police
+- Accident/Crash → Hospitals + Police</p>
+<p><strong>Distance Calculation:</strong> Haversine formula for great-circle distance between camera GPS and facility GPS coordinates.</p>
+<hr />
+<h3 id="47-surveillance-engine">4.7 Surveillance Engine</h3>
+<p>The <code>SurveillanceEngine</code> is a <strong>thread-safe background coordinator</strong> managing:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frame Rate Target</td>
+<td>15.0 FPS (<code>66.66ms</code> frame budget)</td>
+</tr>
+<tr>
+<td>Processing Thread</td>
+<td><code>SparshSurveillanceWorker</code> (daemon)</td>
+</tr>
+<tr>
+<td>Stream States</td>
+<td><code>IDLE</code>, <code>STREAMING</code>, <code>NO_STREAM</code>, <code>PAUSED</code>, <code>STOPPED</code></td>
+</tr>
+<tr>
+<td>RTSP Reconnection</td>
+<td>Every 8 seconds when camera offline</td>
+</tr>
+<tr>
+<td>Video File Looping</td>
+<td>Automatic rewind at EOF for continuous surveillance</td>
+</tr>
+<tr>
+<td>Recording</td>
+<td>Optional MP4 recording of annotated frames</td>
+</tr>
+<tr>
+<td>Dynamic Settings</td>
+<td>Observer pattern — all thresholds hot-reloadable at runtime</td>
+</tr>
+<tr>
+<td>Detector Hot-Swap</td>
+<td>Backend switchable between <code>yolo</code> and <code>detr</code> without restart</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Status Classification:</strong>
+- <code>INCIDENT</code>: Severity ≥ 2 or fire/smoke detected
+- <code>NORMAL</code>: No active threats</p>
+<hr />
+<h2 id="5-datasets-used">5. Datasets Used</h2>
+<h3 id="subsystem-a-aerial-uav">Subsystem A — Aerial UAV</h3>
+<table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th>Purpose</th>
+<th>Labels</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RWF-2000</strong></td>
+<td>Fight detection training (primary)</td>
+<td>Fight / NonFight</td>
+<td>2,000 clips, video-level split</td>
+</tr>
+<tr>
+<td><strong>RLVS</strong></td>
+<td>Fight detection (supplementary)</td>
+<td>V / NV</td>
+<td>Real-Life Violence Situations</td>
+</tr>
+<tr>
+<td><strong>Hockey Fight</strong></td>
+<td>Fight detection (supplementary)</td>
+<td>fi / no</td>
+<td>Hockey fight dataset</td>
+</tr>
+<tr>
+<td><strong>Movies Fight</strong></td>
+<td>Fight detection (supplementary)</td>
+<td>fights / noFights</td>
+<td>Movie violence clips</td>
+</tr>
+<tr>
+<td><strong>UCF-101</strong> (selective)</td>
+<td>Hard negatives + ambiguous combat</td>
+<td>13 HARD_NEGATIVE + 8 AMBIGUOUS</td>
+<td>Sports/dance classes as negatives</td>
+</tr>
+<tr>
+<td><strong>UCF Crime</strong> (subset)</td>
+<td>Crime/fight detection</td>
+<td>Fighting, Assault → FIGHT</td>
+<td>Hard negatives from normal activities</td>
+</tr>
+<tr>
+<td><strong>Custom Weapon Dataset</strong></td>
+<td>Weapon detection</td>
+<td>knife, long_gun, pistol</td>
+<td>Curated dataset with <code>nogun_v5</code> negatives</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hard Negative Categories (14 classes):</strong>
+<code>normal_walking</code>, <code>normal_crowd</code>, <code>running</code>, <code>gathering</code>, <code>dispersing</code>, <code>arguing_gesturing</code>, <code>hugging</code>, <code>handshaking</code>, <code>dancing</code>, <code>sports_like</code>, <code>pushing_shoving</code>, <code>waving_gesturing</code>, <code>sudden_nonviolent_movement</code>, <code>actual_fighting</code></p>
+<h3 id="subsystem-b-sparsh-cctv">Subsystem B — Sparsh CCTV</h3>
+<table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th>Purpose</th>
+<th>Source</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>justjuu/traffic-accident-cctv-object-detection</strong></td>
+<td>Tier 1 accident detection</td>
+<td>HuggingFace</td>
+<td>CCTV accident/vehicle detection</td>
+</tr>
+<tr>
+<td><strong>hiennguyen9874/traffic-accident-detection</strong></td>
+<td>Tier 1 supplementary</td>
+<td>HuggingFace</td>
+<td>Traffic accident dataset</td>
+</tr>
+<tr>
+<td><strong>Enos-123/traffic-accident-detection-yolo11x</strong></td>
+<td>Pre-trained weights</td>
+<td>HuggingFace</td>
+<td><code>epoch61.pt</code> base checkpoint</td>
+</tr>
+<tr>
+<td>Custom Fire/Smoke Dataset</td>
+<td>Fire &amp; smoke detection</td>
+<td>—</td>
+<td>3-class: fire, smoke, other</td>
+</tr>
+<tr>
+<td>DETR Crash Classifier</td>
+<td>Accident detection (fallback)</td>
+<td>Custom trained</td>
+<td>3-class: accident, accident, vehicle</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-training-metrics-evaluation-scores">6. Training Metrics &amp; Evaluation Scores</h2>
+<h3 id="weapon-detection-yolo11s-51-epochs">Weapon Detection (YOLO11s, 51 Epochs)</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Train (E50)</th>
+<th>Val (E50)</th>
+<th>Test (Locked)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Precision</td>
+<td>—</td>
+<td>0.8629</td>
+<td>0.8377</td>
+</tr>
+<tr>
+<td>Recall</td>
+<td>—</td>
+<td>0.8289</td>
+<td>0.8308</td>
+</tr>
+<tr>
+<td>F1</td>
+<td>—</td>
+<td>0.8456</td>
+<td>0.8343</td>
+</tr>
+<tr>
+<td>mAP@50</td>
+<td>—</td>
+<td>0.8812</td>
+<td>0.8740</td>
+</tr>
+<tr>
+<td>mAP@50-95</td>
+<td>—</td>
+<td>0.5832</td>
+<td>0.5857</td>
+</tr>
+<tr>
+<td>Box Loss</td>
+<td>0.968</td>
+<td>1.039</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Cls Loss</td>
+<td>0.624</td>
+<td>1.487</td>
+<td>—</td>
+</tr>
+<tr>
+<td>DFL Loss</td>
+<td>1.196</td>
+<td>1.194</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fight-detection-bigru-rwf-2000">Fight Detection (BiGRU, RWF-2000)</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Score Threshold</td>
+<td>0.65</td>
+<td><code>temporal.score_threshold</code></td>
+</tr>
+<tr>
+<td>Precision (RWF-2000 val)</td>
+<td>~85.2%</td>
+<td>Phase reporting</td>
+</tr>
+<tr>
+<td>Precision (CCTV subset)</td>
+<td>~92.3%</td>
+<td>Phase reporting</td>
+</tr>
+<tr>
+<td>Parameters</td>
+<td>16,321</td>
+<td>Model architecture</td>
+</tr>
+<tr>
+<td>Window Size</td>
+<td>32 frames</td>
+<td>Training config</td>
+</tr>
+<tr>
+<td>Feature Dimension</td>
+<td>8</td>
+<td>Candidate feature vector</td>
+</tr>
+</tbody>
+</table>
+<h3 id="accident-detection-yolo-hierarchical">Accident Detection (YOLO Hierarchical)</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base Model</td>
+<td>YOLO11s (detection) + YOLO11n-cls (severity)</td>
+</tr>
+<tr>
+<td>Pre-trained Weights</td>
+<td><code>epoch61.pt</code> from HF</td>
+</tr>
+<tr>
+<td>Training Epochs</td>
+<td>35 (detector) / 20 (severity)</td>
+</tr>
+<tr>
+<td>Confidence Threshold</td>
+<td>0.70</td>
+</tr>
+<tr>
+<td>IoU Threshold</td>
+<td>0.65</td>
+</tr>
+<tr>
+<td>Real-time FPS</td>
+<td>&gt; 50-80 FPS (CUDA)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-threshold-value-reference-table">7. Threshold Value Reference Table</h2>
+<h3 id="subsystem-a-complete-threshold-map">Subsystem A — Complete Threshold Map</h3>
+<table>
+<thead>
+<tr>
+<th>Subsystem</th>
+<th>Parameter</th>
+<th>Value</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Person Detection</td>
+<td><code>conf_threshold</code></td>
+<td><code>0.25</code></td>
+<td>COCO person detection</td>
+</tr>
+<tr>
+<td>Person Detection</td>
+<td><code>iou_threshold</code></td>
+<td><code>0.50</code></td>
+<td>NMS overlap</td>
+</tr>
+<tr>
+<td>Weapon Detection</td>
+<td><code>conf_threshold</code></td>
+<td><code>0.70</code></td>
+<td>Raw detection gate</td>
+</tr>
+<tr>
+<td>Weapon (pistol)</td>
+<td>class minimum</td>
+<td><code>0.70</code></td>
+<td>Per-class gate</td>
+</tr>
+<tr>
+<td>Weapon (long_gun)</td>
+<td>class minimum</td>
+<td><code>0.70</code></td>
+<td>Per-class gate</td>
+</tr>
+<tr>
+<td>Weapon (knife)</td>
+<td>class minimum</td>
+<td><code>0.65</code></td>
+<td>Per-class gate</td>
+</tr>
+<tr>
+<td>Weapon Confirm</td>
+<td><code>confirm_conf_threshold</code></td>
+<td><code>0.75</code></td>
+<td>Temporal confirmation</td>
+</tr>
+<tr>
+<td>Weapon Confirm</td>
+<td><code>min_hits</code></td>
+<td><code>3 of 5</code></td>
+<td>Sliding window hits</td>
+</tr>
+<tr>
+<td>Weapon Confirm</td>
+<td><code>iou_match_threshold</code></td>
+<td><code>0.25</code></td>
+<td>Cross-frame matching</td>
+</tr>
+<tr>
+<td>Weapon Confirm</td>
+<td><code>expiry_frames</code></td>
+<td><code>15</code></td>
+<td>Track timeout</td>
+</tr>
+<tr>
+<td>Fight GRU</td>
+<td><code>score_threshold</code></td>
+<td><code>0.65</code></td>
+<td>Classifier output</td>
+</tr>
+<tr>
+<td>Fight Verify</td>
+<td><code>min_duration_s</code></td>
+<td><code>2.5</code></td>
+<td>Minimum fight time</td>
+</tr>
+<tr>
+<td>Fight Verify</td>
+<td><code>min_consecutive_windows</code></td>
+<td><code>3</code></td>
+<td>Positive windows</td>
+</tr>
+<tr>
+<td>Fight Verify</td>
+<td><code>incident_cooldown_s</code></td>
+<td><code>60</code></td>
+<td>Post-fight cooldown</td>
+</tr>
+<tr>
+<td>Fight Candidate</td>
+<td><code>proximity_iou</code></td>
+<td><code>0.08</code></td>
+<td>Engagement gate</td>
+</tr>
+<tr>
+<td>Fight Candidate</td>
+<td><code>proximity_distance</code></td>
+<td><code>1.25</code></td>
+<td>Max body-widths</td>
+</tr>
+<tr>
+<td>Fight Candidate</td>
+<td><code>motion_energy_threshold</code></td>
+<td><code>0.12</code></td>
+<td>Motion gate</td>
+</tr>
+<tr>
+<td>Crowd</td>
+<td><code>density_high_threshold</code></td>
+<td><code>0.35</code></td>
+<td>HIGH density</td>
+</tr>
+<tr>
+<td>Crowd</td>
+<td><code>density_critical_threshold</code></td>
+<td><code>0.55</code></td>
+<td>CRITICAL density</td>
+</tr>
+<tr>
+<td>Crowd</td>
+<td><code>growth_alert_per_min</code></td>
+<td><code>10.0</code></td>
+<td>Growth rate alert</td>
+</tr>
+<tr>
+<td>Crowd</td>
+<td><code>panic_speed_threshold</code></td>
+<td><code>2.2</code></td>
+<td>box-widths/sec</td>
+</tr>
+<tr>
+<td>Crowd</td>
+<td><code>min_panic_persons</code></td>
+<td><code>8</code></td>
+<td>Minimum persons</td>
+</tr>
+<tr>
+<td>Fusion</td>
+<td><code>correlation_window_s</code></td>
+<td><code>2.5</code></td>
+<td>Cross-modal window</td>
+</tr>
+<tr>
+<td>Fusion</td>
+<td><code>weapon_cooldown_s</code></td>
+<td><code>30.0</code></td>
+<td>Weapon incident gap</td>
+</tr>
+<tr>
+<td>Fusion</td>
+<td><code>armed_fight_cooldown_s</code></td>
+<td><code>60.0</code></td>
+<td>Armed fight gap</td>
+</tr>
+</tbody>
+</table>
+<h3 id="subsystem-b-complete-threshold-map">Subsystem B — Complete Threshold Map</h3>
+<table>
+<thead>
+<tr>
+<th>Subsystem</th>
+<th>Parameter</th>
+<th>Value</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accident (YOLO)</td>
+<td><code>crash_conf</code></td>
+<td><code>0.70</code></td>
+<td>Tier 1 detection</td>
+</tr>
+<tr>
+<td>Accident (YOLO)</td>
+<td><code>crash_iou</code></td>
+<td><code>0.65</code></td>
+<td>Tier 1 NMS</td>
+</tr>
+<tr>
+<td>Accident (DETR)</td>
+<td><code>conf_threshold</code></td>
+<td><code>0.70</code></td>
+<td>Fallback detector</td>
+</tr>
+<tr>
+<td>Accident (DETR)</td>
+<td><code>iou_threshold</code></td>
+<td><code>0.65</code></td>
+<td>Fallback NMS</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>Severe gate</td>
+<td>ROI &gt; 20% frame OR classifier="severe"</td>
+<td>Level 3 escalation</td>
+</tr>
+<tr>
+<td>Fire/Smoke</td>
+<td><code>fire_conf</code></td>
+<td><code>0.75</code></td>
+<td>Fire detection</td>
+</tr>
+<tr>
+<td>Dispatch</td>
+<td><code>alert_cooldown_sec</code></td>
+<td><code>5.0</code> s</td>
+<td>Snapshot cooldown</td>
+</tr>
+<tr>
+<td>Emergency</td>
+<td><code>search_radius_km</code></td>
+<td><code>3.0</code> km</td>
+<td>Facility search</td>
+</tr>
+<tr>
+<td>Emergency</td>
+<td><code>max_dispatch_per_type</code></td>
+<td><code>2</code></td>
+<td>Max facilities</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-hardware-infrastructure">8. Hardware &amp; Infrastructure</h2>
+<h3 id="development-inference-machine">Development &amp; Inference Machine</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GPU</strong></td>
+<td>NVIDIA GeForce RTX 4050 Laptop GPU</td>
+</tr>
+<tr>
+<td><strong>CUDA Version</strong></td>
+<td>12.1</td>
+</tr>
+<tr>
+<td><strong>PyTorch</strong></td>
+<td>CUDA 12.1 build</td>
+</tr>
+<tr>
+<td><strong>Peak VRAM (Weapon Training)</strong></td>
+<td>3.741 GB</td>
+</tr>
+<tr>
+<td><strong>Peak VRAM (Full Pipeline)</strong></td>
+<td>238.1 MB</td>
+</tr>
+</tbody>
+</table>
+<h3 id="edge-device-raspberry-pi">Edge Device — Raspberry Pi</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Device</strong></td>
+<td>Raspberry Pi 4B</td>
+</tr>
+<tr>
+<td><strong>Camera</strong></td>
+<td>Logitech C270 USB HD Webcam</td>
+</tr>
+<tr>
+<td><strong>Resolution</strong></td>
+<td>640 × 360</td>
+</tr>
+<tr>
+<td><strong>FPS</strong></td>
+<td>15</td>
+</tr>
+<tr>
+<td><strong>Encoder</strong></td>
+<td><code>libx264</code> (<code>ultrafast</code> preset, <code>zerolatency</code> tune)</td>
+</tr>
+<tr>
+<td><strong>Pixel Format</strong></td>
+<td><code>yuv420p</code></td>
+</tr>
+<tr>
+<td><strong>GOP Size</strong></td>
+<td>15</td>
+</tr>
+<tr>
+<td><strong>Input Format</strong></td>
+<td>MJPEG (from camera)</td>
+</tr>
+<tr>
+<td><strong>Streaming Server</strong></td>
+<td>MediaMTX</td>
+</tr>
+<tr>
+<td><strong>RTSP Path</strong></td>
+<td><code>/drone</code> on port <code>8554</code></td>
+</tr>
+<tr>
+<td><strong>Auto-Start</strong></td>
+<td><code>systemd</code> service (<code>suraksha-stream.service</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sparsh-cctv-camera">Sparsh CCTV Camera</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td>Sparsh CCTV (RTSP)</td>
+</tr>
+<tr>
+<td><strong>IP</strong></td>
+<td><code>192.168.128.10</code></td>
+</tr>
+<tr>
+<td><strong>Port</strong></td>
+<td>554</td>
+</tr>
+<tr>
+<td><strong>Stream</strong></td>
+<td><code>avstream/channel=1/stream=1.sdp</code></td>
+</tr>
+<tr>
+<td><strong>Auth</strong></td>
+<td><code>admin:admin123</code> (factory default)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-api-surface">9. API Surface</h2>
+<h3 id="subsystem-a-fastapi-port-8100">Subsystem A — FastAPI (Port 8100)</h3>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/health</code></td>
+<td>GET</td>
+<td>Health check</td>
+</tr>
+<tr>
+<td><code>/system/status</code></td>
+<td>GET</td>
+<td>Full system status with AI metrics</td>
+</tr>
+<tr>
+<td><code>/video/status</code></td>
+<td>GET</td>
+<td>Current video source and pipeline state</td>
+</tr>
+<tr>
+<td><code>/video/source</code></td>
+<td>POST</td>
+<td>Dynamic video source switching</td>
+</tr>
+<tr>
+<td><code>/reset</code></td>
+<td>POST</td>
+<td>Clear all incidents, snapshots, clips</td>
+</tr>
+</tbody>
+</table>
+<h3 id="subsystem-b-fastapi">Subsystem B — FastAPI</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Key Endpoints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Surveillance</td>
+<td><code>/api/surveillance/start</code>, <code>/stop</code>, <code>/status</code>, <code>/mjpeg</code></td>
+</tr>
+<tr>
+<td>Emergency</td>
+<td><code>/api/emergency/dispatches</code>, <code>/facilities</code></td>
+</tr>
+<tr>
+<td>Settings</td>
+<td><code>/api/settings</code>, <code>/api/settings/update</code></td>
+</tr>
+<tr>
+<td>Dashboard</td>
+<td>HTML dashboard at root</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-dependencies-tech-stack">10. Dependencies &amp; Tech Stack</h2>
+<h3 id="subsystem-a">Subsystem A</h3>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python</td>
+<td>3.11.x</td>
+<td>Runtime</td>
+</tr>
+<tr>
+<td>ultralytics</td>
+<td>≥ 8.3.0</td>
+<td>YOLO11 inference</td>
+</tr>
+<tr>
+<td>PyTorch</td>
+<td>CUDA 12.1</td>
+<td>GPU inference</td>
+</tr>
+<tr>
+<td>opencv-python</td>
+<td>≥ 4.9.0</td>
+<td>Video processing</td>
+</tr>
+<tr>
+<td>FastAPI</td>
+<td>≥ 0.110</td>
+<td>REST API</td>
+</tr>
+<tr>
+<td>uvicorn</td>
+<td>≥ 0.29</td>
+<td>ASGI server</td>
+</tr>
+<tr>
+<td>pydantic</td>
+<td>≥ 2.6</td>
+<td>Schema validation</td>
+</tr>
+<tr>
+<td>websockets</td>
+<td>≥ 12.0</td>
+<td>Real-time events</td>
+</tr>
+<tr>
+<td>scipy</td>
+<td>≥ 1.11</td>
+<td>Scientific computing</td>
+</tr>
+<tr>
+<td>lap</td>
+<td>≥ 0.4.0</td>
+<td>Linear assignment (tracking)</td>
+</tr>
+<tr>
+<td>PyYAML</td>
+<td>≥ 6.0</td>
+<td>Configuration</td>
+</tr>
+</tbody>
+</table>
+<h3 id="subsystem-b">Subsystem B</h3>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python</td>
+<td>≥ 3.14</td>
+<td>Runtime</td>
+</tr>
+<tr>
+<td>ultralytics</td>
+<td>≥ 8.4.152</td>
+<td>YOLO inference</td>
+</tr>
+<tr>
+<td>torch</td>
+<td>2.14.0</td>
+<td>GPU inference</td>
+</tr>
+<tr>
+<td>torchvision</td>
+<td>0.29.0</td>
+<td>Image transforms</td>
+</tr>
+<tr>
+<td>transformers</td>
+<td>≥ 4.35.0</td>
+<td>DETR model loading</td>
+</tr>
+<tr>
+<td>safetensors</td>
+<td>≥ 0.4.0</td>
+<td>Weights format</td>
+</tr>
+<tr>
+<td>timm</td>
+<td>≥ 1.0.0</td>
+<td>Backbone models</td>
+</tr>
+<tr>
+<td>FastAPI</td>
+<td>≥ 0.142.2</td>
+<td>REST API</td>
+</tr>
+<tr>
+<td>twilio</td>
+<td>≥ 9.11.2</td>
+<td>SMS alerts</td>
+</tr>
+<tr>
+<td>groq</td>
+<td>≥ 1.7.0</td>
+<td>LLM integration</td>
+</tr>
+<tr>
+<td>deepgram-sdk</td>
+<td>≥ 7.11.0</td>
+<td>Speech-to-text</td>
+</tr>
+<tr>
+<td>livekit-agents</td>
+<td>≥ 0.12.21</td>
+<td>Voice agent</td>
+</tr>
+<tr>
+<td>googlemaps</td>
+<td>≥ 4.10.0</td>
+<td>Geocoding</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p>[!NOTE]
+This document is generated from source code inspection and training artefacts. All threshold values, model parameters, and metrics are extracted directly from configuration files, training logs, and source code — not from external documentation.</p>
+</blockquote>
+</body>
+</html>

@@ -26,7 +26,7 @@ Usage:
     python scripts/run_weapon_detector.py --source webcam --camera-index 0 --conf 0.25
 
     # 3. Raspberry Pi C270 RTSP
-    python scripts/run_weapon_detector.py --source rtsp --path rtsp://10.254.18.48:8554/drone
+    python scripts/run_weapon_detector.py --source rtsp --path rtsp://10.179.184.48:8554/drone
 
     # 4. Generic / Sparsh RTSP
     python scripts/run_weapon_detector.py --source rtsp --path rtsp://user:pass@192.168.1.100:554/live
@@ -221,7 +221,7 @@ def create_capture(source_type: str, path: str, camera_index: int) -> Tuple[cv2.
             except Exception:
                 pass
         # Label source cleanly
-        if "10.254.18.48" in path:
+        if "10.179.184.48" in path or "10.254.18.48" in path or ":8554/drone" in path:
             source_name = "Raspberry Pi C270 RTSP"
         elif "sparsh" in path.lower():
             source_name = "Sparsh CCTV RTSP"

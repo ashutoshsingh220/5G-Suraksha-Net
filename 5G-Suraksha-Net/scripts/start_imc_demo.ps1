@@ -8,7 +8,7 @@
     in a dedicated visible window.
 
 .PARAMETER PiHost
-    IP address or hostname of the Raspberry Pi (default: 10.254.18.48).
+    IP address or hostname of the Raspberry Pi (default: 10.179.184.48).
 .PARAMETER PiUser
     SSH username for the Raspberry Pi (default: student).
 .PARAMETER RtspPort
@@ -25,7 +25,7 @@
 
 [CmdletBinding()]
 param(
-    [string]$PiHost = "10.254.18.48",
+    [string]$PiHost = "10.179.184.48",
     [string]$PiUser = "student",
     [int]$RtspPort = 8554,
     [string]$RtspPath = "drone",

@@ -1,8 +1,8 @@
 # 5G Suraksha-Net — IMC Demo Configuration
-# Target hardware: Raspberry Pi 4 (10.254.18.48) + Logitech C270 HD Webcam -> Windows Ground Station
-
+# Target hardware: Raspberry Pi 4 (10.179.184.48) + Logitech C270 HD Webcam -> Windows Ground Station
+ 
 pi:
-  host: "10.254.18.48"
+  host: "10.179.184.48"
   user: "student"
   ssh_port: 22
   mediamtx_path: "/home/student/mediamtx"

@@ -9,7 +9,7 @@
 .PARAMETER StopPiServices
     Switch to also stop camera streaming services on the Raspberry Pi.
 .PARAMETER PiHost
-    IP address or hostname of the Raspberry Pi (default: 10.254.18.48).
+    IP address or hostname of the Raspberry Pi (default: 10.179.184.48).
 .PARAMETER PiUser
     SSH username for the Raspberry Pi (default: student).
 #>
@@ -17,7 +17,7 @@
 [CmdletBinding()]
 param(
     [switch]$StopPiServices,
-    [string]$PiHost = "10.254.18.48",
+    [string]$PiHost = "10.179.184.48",
     [string]$PiUser = "student"
 )
 
